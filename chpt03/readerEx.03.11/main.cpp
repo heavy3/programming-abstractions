@@ -1,6 +1,5 @@
 //
 //  main.cpp
-//  readerEx.03.11
 //
 //  This program implements the predicate function, isSentencePalindrome(str).
 //
