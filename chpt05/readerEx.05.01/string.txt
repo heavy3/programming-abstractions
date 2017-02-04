@@ -1,0 +1,13 @@
+1.0000 string
+1.4142 string
+1.7321 string
+2.0000 string
+
+1.0000 string
+1.2599 string
+1.4422 string
+1.5874 string
+1.7100 string
+1.8171 string
+1.9129 string
+2.0000 string
