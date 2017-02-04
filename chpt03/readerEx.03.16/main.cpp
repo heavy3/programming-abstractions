@@ -1,31 +1,31 @@
 //
-//  main.cpp
+// main.cpp
 //
-//  This program converts English text into Obenglobish such that the
-//  string "ob" is inserted prior to voiced vowels within a given word.
+// This program converts English text into Obenglobish such that the
+// string "ob" is inserted prior to voiced vowels within a given word.
 //
-//  The following simplifying heuristics are used:
+// The following simplifying heuristics are used:
 //
-//      Don't tokenize on vowels that follow other vowels.
-//      Don't tokenize on final e as it may be silent.
+//     Don't tokenize on vowels that follow other vowels.
+//     Don't tokenize on final e as it may be silent.
 //
-//  For example:
+// For example:
 //
-//      obenglobish("english") returns "obenglobish"
-//      obenglobish("amaze")   returns "obamobaze"
+//     obenglobish("english") returns "obenglobish"
+//     obenglobish("amaze")   returns "obamobaze"
 //
-//  TODO: Add test cases!  Some good test words:
-//        english, hobnob, gooiest, amaze, rot, yoyo, happy, pay, sea
+// TODO: Add test cases!  Some good test words:
+//       english, hobnob, gooiest, amaze, rot, yoyo, happy, pay, sea
 //
-//  --------------------------------------------------------------------------
-//  Attribution: "Programming Abstractions in C++" by Eric Roberts
-//  Chapter 3, Exercise 16
-//  Stanford University, Autumn Quarter 2012
-//  http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
-//  --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
+// Attribution: "Programming Abstractions in C++" by Eric Roberts
+// Chapter 3, Exercise 16
+// Stanford University, Autumn Quarter 2012
+// http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
+// --------------------------------------------------------------------------
 //
-//  Created by Glenn Streiff on 10/7/15.
-//  Copyright © 2015 Glenn Streiff. All rights reserved.
+// Created by Glenn Streiff on 10/7/15.
+// Copyright © 2015 Glenn Streiff. All rights reserved.
 //
 
 #include <iostream>

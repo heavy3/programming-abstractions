@@ -1,27 +1,27 @@
 //
-//  main.cpp
+// main.cpp
 //
-//  The program implements the function
+// The program implements the function
 // 
-//     string addCommas(string digits);
+//    string addCommas(string digits);
 //
-//  which injects commas after every 3rd digit reading right to left.
+// which injects commas after every 3rd digit reading right to left.
 //
-//  For example:
+// For example:
 //
-//     addCommas(1000000) returns "1,000,000"
+//    addCommas(1000000) returns "1,000,000"
 //
-//  --------------------------------------------------------------------------
-//  Attribution: "Programming Abstractions in C++" by Eric Roberts
-//  Chapter 3, Exercise 14
-//  Stanford University, Autumn Quarter 2012
-//  http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
+// --------------------------------------------------------------------------
+// Attribution: "Programming Abstractions in C++" by Eric Roberts
+// Chapter 3, Exercise 14
+// Stanford University, Autumn Quarter 2012
+// http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
 //
-//  The main driver comes from Chapter 3, exercise #14.
-//  --------------------------------------------------------------------------
+// The main driver comes from Chapter 3, exercise #14.
+// --------------------------------------------------------------------------
 //
-//  Created by Glenn Streiff on 10/6/15.
-//  Copyright © 2015 Glenn Streiff. All rights reserved.
+// Created by Glenn Streiff on 10/6/15.
+// Copyright © 2015 Glenn Streiff. All rights reserved.
 //
 
 #include <iostream>

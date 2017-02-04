@@ -1,39 +1,39 @@
 //
-//  main.cpp
+// main.cpp
 //
-//  This program implements the function trim(str) which returns a new
-//  string with a whitespace characters removed from the beginning and
-//  end of the input string.
+// This program implements the function trim(str) which returns a new
+// string with a whitespace characters removed from the beginning and
+// end of the input string.
 //
-//  --------------------------------------------------------------------------
-//  Attribution: "Programming Abstractions in C++" by Eric Roberts
-//  Chapter 3, Exercise 2
-//  Stanford University, Autumn Quarter 2012
-//  http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
-//  --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
+// Attribution: "Programming Abstractions in C++" by Eric Roberts
+// Chapter 3, Exercise 2
+// Stanford University, Autumn Quarter 2012
+// http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
+// --------------------------------------------------------------------------
 //
-//  Created by Glenn Streiff on 10/02/15.
-//  Copyright © 2015 Glenn Streiff. All rights reserved.
+// Created by Glenn Streiff on 10/02/15.
+// Copyright © 2015 Glenn Streiff. All rights reserved.
 //
 
 //
-//  huh, a mystery ...
+// huh, a mystery ...
 //
-//  This idiom runs as expected, iterating backwards through a string ...
+// This idiom runs as expected, iterating backwards through a string ...
 //
-//     string str = "blah";
-//     for (int i = int(str.length() - 1); i >= 0; i--) {
-//          ...
-//     }
-//
-//  But this does /not/ work as expected :-/
-//
-//     string str = "blah";
-//     for (size_t i = str.length() - 1; i == 0; i--) {
+//    string str = "blah";
+//    for (int i = int(str.length() - 1); i >= 0; i--) {
 //         ...
-//     }
+//    }
 //
-//  instead it never enters the body of the loop.  Why?
+// But this does /not/ work as expected :-/
+//
+//    string str = "blah";
+//    for (size_t i = str.length() - 1; i == 0; i--) {
+//        ...
+//    }
+//
+// instead it never enters the body of the loop.  Why?
 //
 
 #include <iostream>

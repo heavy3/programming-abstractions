@@ -1,30 +1,30 @@
 //
-//  main.cpp
+// main.cpp
 //
-//  This programs simulates flipping a coin repeatedly and continues until 
-//  three consecutive heads are tossed. The program then displays total 
-//  number of of coin flips.
+// This programs simulates flipping a coin repeatedly and continues until 
+// three consecutive heads are tossed. The program then displays total 
+// number of of coin flips.
 //
-//  For example:
+// For example:
 //
-//  heads
-//  tails
-//  heads
-//  tails
-//  heads
-//  heads
-//  heads
-//  It took 7 flips to get 3 consecutive heads.
+//    heads
+//    tails
+//    heads
+//    tails
+//    heads
+//    heads
+//    heads
+//    It took 7 flips to get 3 consecutive heads.
 //
-//  --------------------------------------------------------------------------
-//  Attribution: "Programming Abstractions in C++" by Eric Roberts
-//  Chapter 2, Exercise 15
-//  Stanford University, Autumn Quarter 2012
-//  http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
-//  --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
+// Attribution: "Programming Abstractions in C++" by Eric Roberts
+// Chapter 2, Exercise 15
+// Stanford University, Autumn Quarter 2012
+// http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
+// --------------------------------------------------------------------------
 //
-//  Created by Glenn Streiff on 9/23/15.
-//  Copyright © 2015 Glenn Streiff. All rights reserved.
+// Created by Glenn Streiff on 9/23/15.
+// Copyright © 2015 Glenn Streiff. All rights reserved.
 //
 
 #include <iostream>

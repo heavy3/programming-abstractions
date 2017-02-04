@@ -1,18 +1,18 @@
 //
-//  main.cpp
+// main.cpp
 //
-//  This program renders a Yin-Yang symbol using the Stanford C++ Graphics
-//  interface.  Java runtime environment and spl.jar required for rendering.
+// This program renders a Yin-Yang symbol using the Stanford C++ Graphics
+// interface.  Java runtime environment and spl.jar required for rendering.
 //
-//  --------------------------------------------------------------------------
-//  Attribution: "Programming Abstractions in C++" by Eric Roberts
-//  Chapter 2, Exercise 18
-//  Stanford University, Autumn Quarter 2012
-//  http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
-//  --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
+// Attribution: "Programming Abstractions in C++" by Eric Roberts
+// Chapter 2, Exercise 18
+// Stanford University, Autumn Quarter 2012
+// http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
+// --------------------------------------------------------------------------
 //
-//  Created by Glenn Streiff on 9/25/15.
-//  Copyright © 2015 Glenn Streiff. All rights reserved.
+// Created by Glenn Streiff on 9/25/15.
+// Copyright © 2015 Glenn Streiff. All rights reserved.
 //
 
 #include <iostream>

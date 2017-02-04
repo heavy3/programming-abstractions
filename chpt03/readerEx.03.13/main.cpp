@@ -1,30 +1,30 @@
 //
-//  main.cpp
+// main.cpp
 //
-//  This program implements the function, createOrdinalForm(n), which returns
-//  the ordinal version of a number according to the following rules:
+// This program implements the function, createOrdinalForm(n), which returns
+// the ordinal version of a number according to the following rules:
 //
-//  Numbers ending in   are appended with
-//  -----------------   -----------------
+// Numbers ending in   are appended with
+// -----------------   -----------------
 //    11 - 13                  th
 //          1                  st
 //          2                  nd
 //          3                  rd
 //    default                  th
 //
-//  For example:
+// For example:
 //
-//     createOrdinalForm(103); // returns "103rd"
+//    createOrdinalForm(103); // returns "103rd"
 //
-//  --------------------------------------------------------------------------
-//  Attribution: "Programming Abstractions in C++" by Eric Roberts
-//  Chapter 3, Exercise 13
-//  Stanford University, Autumn Quarter 2012
-//  http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
-//  --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
+// Attribution: "Programming Abstractions in C++" by Eric Roberts
+// Chapter 3, Exercise 13
+// Stanford University, Autumn Quarter 2012
+// http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
+// --------------------------------------------------------------------------
 //
-//  Created by Glenn Streiff on 10/6/15.
-//  Copyright © 2015 Glenn Streiff. All rights reserved.
+// Created by Glenn Streiff on 10/6/15.
+// Copyright © 2015 Glenn Streiff. All rights reserved.
 //
 
 #include <iostream>
@@ -132,6 +132,7 @@ string getOrdinalSuffix(int n) {
 // Usage: string str = integerToString(103); // returns "103"
 // ----------------------------------------------------------
 // Returns the string form of an integer.
+//
 
 string integerToString(int n) {
     string result;

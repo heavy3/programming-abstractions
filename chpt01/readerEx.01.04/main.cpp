@@ -1,20 +1,22 @@
 //
-//  main.cpp
+// main.cpp
 //
-//  This program reads a positive integer N and computes the sum of
-//  the first N odd integers.
+// This program reads a positive integer N and computes the sum of
+// the first N odd integers.
 //
-//  For example, N = 4 results in the display of 16 (1 + 3 + 5 + 7).
+// For example:
 //
-//  --------------------------------------------------------------------------
-//  Attribution: "Programming Abstractions in C++" by Eric Roberts
-//  Chapter 1, Exercise 4
-//  Stanford University, Autumn Quarter 2012
-//  http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
-//  --------------------------------------------------------------------------
+//    N = 4 results in the display of 16 (1 + 3 + 5 + 7).
 //
-//  Created by Glenn Streiff on 9/13/15.
-//  Copyright © 2015 Glenn Streiff. All rights reserved.
+// --------------------------------------------------------------------------
+// Attribution: "Programming Abstractions in C++" by Eric Roberts
+// Chapter 1, Exercise 4
+// Stanford University, Autumn Quarter 2012
+// http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
+// --------------------------------------------------------------------------
+//
+// Created by Glenn Streiff on 9/13/15.
+// Copyright © 2015 Glenn Streiff. All rights reserved.
 //
 
 #include <iostream>

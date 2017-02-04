@@ -1,22 +1,22 @@
 //
-//  main.cpp
+// main.cpp
 //
-//  This program implements a function, findEaster(), which computes the month
-//  and day for Easter Sunday for a given year according to an algorithm
-//  attributed to Carl Friedrich Gauss.
+// This program implements a function, findEaster(), which computes the month
+// and day for Easter Sunday for a given year according to an algorithm
+// attributed to Carl Friedrich Gauss.
 //
-//  TODO: Unfortunately, this algorithm only works for 18th and 19th centuries.
-//        Generalize it to other centuries.
+// TODO: Unfortunately, this algorithm only works for 18th and 19th centuries.
+//       Generalize it to other centuries.
 //
-//  --------------------------------------------------------------------------
-//  Attribution: "Programming Abstractions in C++" by Eric Roberts
-//  Chapter 2, Exercise 8
-//  Stanford University, Autumn Quarter 2012
-//  http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
-//  --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
+// Attribution: "Programming Abstractions in C++" by Eric Roberts
+// Chapter 2, Exercise 8
+// Stanford University, Autumn Quarter 2012
+// http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
+// --------------------------------------------------------------------------
 //
-//  Created by Glenn Streiff on 9/18/15.
-//  Copyright © 2015 Glenn Streiff. All rights reserved.
+// Created by Glenn Streiff on 9/18/15.
+// Copyright © 2015 Glenn Streiff. All rights reserved.
 //
 
 #include <iostream>

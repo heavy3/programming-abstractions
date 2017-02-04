@@ -1,23 +1,23 @@
 //
-//  main.cpp
+// main.cpp
 //
-//  This program implements the function
+// This program implements the function
 //
-//     string removeCharacters(string str, string remove)
+//    string removeCharacters(string str, string remove);
 //
-//  which returns a new string consisting of the characters in str 
-//  after removing all instances of the characters in the 'remove'
-//  string.
+// which returns a new string consisting of the characters in str 
+// after removing all instances of the characters in the 'remove'
+// string.
 //  
-//  --------------------------------------------------------------------------
-//  Attribution: "Programming Abstractions in C++" by Eric Roberts
-//  Chapter 3, Exercise 7
-//  Stanford University, Autumn Quarter 2012
-//  http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
-//  --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
+// Attribution: "Programming Abstractions in C++" by Eric Roberts
+// Chapter 3, Exercise 7
+// Stanford University, Autumn Quarter 2012
+// http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
+// --------------------------------------------------------------------------
 //
-//  Created by Glenn Streiff on 10/4/15.
-//  Copyright © 2015 Glenn Streiff. All rights reserved.
+// Created by Glenn Streiff on 10/4/15.
+// Copyright © 2015 Glenn Streiff. All rights reserved.
 //
 
 #include <iostream>

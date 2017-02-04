@@ -1,18 +1,19 @@
 //
-//  main.cpp
+// main.cpp
 //
-//  This program implements the removeCharacters() function using an 
-//  in-place algorithm.
+// This program implements the removeCharacters() function using an 
+// in-place algorithm.
 //
-//  --------------------------------------------------------------------------
-//  Attribution: "Programming Abstractions in C++" by Eric Roberts
-//  Chapter 3, Exercise 8
-//  Stanford University, Autumn Quarter 2012
-//  http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
-//  --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
+// Attribution: "Programming Abstractions in C++" by Eric Roberts
+// Chapter 3, Exercise 8
+// Stanford University, Autumn Quarter 2012
+// http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
+// --------------------------------------------------------------------------
 //
-//  Created by Glenn Streiff on 10/4/15.
-//  Copyright © 2015 Glenn Streiff. All rights reserved.
+// Created by Glenn Streiff on 10/4/15.
+// Copyright © 2015 Glenn Streiff. All rights reserved.
+//
 
 #include <iostream>
 #include <string>

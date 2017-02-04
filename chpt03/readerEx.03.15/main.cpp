@@ -1,24 +1,24 @@
 //
-//  main.cpp
+// main.cpp
 //
-//  This program enhances a function that converts English sentences
-//  to Pig Latin to handle capitalized words sensibly.
+// This program enhances a function that converts English sentences
+// to Pig Latin to handle capitalized words sensibly.
 //
-//  For example:
+// For example:
 //
-//     lineToPigLatin("Capital") returns "Apitalcay" (not "apitalClay")
+//    lineToPigLatin("Capital") returns "Apitalcay" (not "apitalClay")
 //
-//  --------------------------------------------------------------------------
-//  Attribution: "Programming Abstractions in C++" by Eric Roberts
-//  Chapter 3, Exercise 15
-//  Stanford University, Autumn Quarter 2012
-//  http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
+// --------------------------------------------------------------------------
+// Attribution: "Programming Abstractions in C++" by Eric Roberts
+// Chapter 3, Exercise 15
+// Stanford University, Autumn Quarter 2012
+// http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
 //
-//  This program refines the english-to-pig-latin function given in Figure 3-2
-//  --------------------------------------------------------------------------
+// This program refines the english-to-pig-latin function given in Figure 3-2
+// --------------------------------------------------------------------------
 //
-//  Created by Glenn Streiff on 10/6/15.
-//  Copyright © 2015 Glenn Streiff. All rights reserved.
+// Created by Glenn Streiff on 10/6/15.
+// Copyright © 2015 Glenn Streiff. All rights reserved.
 //
 
 #include <iostream>

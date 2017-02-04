@@ -1,23 +1,23 @@
 //
-//  main.cpp
+// main.cpp
 //
-//  This program displays the prime factorizationn of a number, N.
+// This program displays the prime factorizationn of a number, N.
 //
-//  For example:
+// For example:
 //
-//  This program factors a number.
-//  Enter number to be factored: 60
-//  2 x 2 x 3 x 5
+//    This program factors a number.
+//    Enter number to be factored: 60
+//    2 x 2 x 3 x 5
 //
-//  --------------------------------------------------------------------------
-//  Attribution: "Programming Abstractions in C++" by Eric Roberts
-//  Chapter 1, Exercise 9
-//  Stanford University, Autumn Quarter 2012
-//  http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
-//  --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
+// Attribution: "Programming Abstractions in C++" by Eric Roberts
+// Chapter 1, Exercise 9
+// Stanford University, Autumn Quarter 2012
+// http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
+// --------------------------------------------------------------------------
 //
-//  Created by Glenn Streiff on 9/14/15.
-//  Copyright © 2015 Glenn Streiff. All rights reserved.
+// Created by Glenn Streiff on 9/14/15.
+// Copyright © 2015 Glenn Streiff. All rights reserved.
 //
 
 #include <iostream>

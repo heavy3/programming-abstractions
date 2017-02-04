@@ -1,23 +1,24 @@
 //
-//  main.cpp
+// main.cpp
 //
-//  This program implements the predicate function, isSentencePalindrome(str).
+// This program implements the predicate function, isSentencePalindrome(str).
 //
-//  For example:
+// For example:
 //
-//     isSentencePalindrome("Madam, I’m Adam.") would return true.
+//    isSentencePalindrome("Madam, I’m Adam.") would return true.
 //
-//  Notice that punctuation and whitespace are factored out.
+// Notice that punctuation and whitespace are factored out.
 //
-//  --------------------------------------------------------------------------
-//  Attribution: "Programming Abstractions in C++" by Eric Roberts
-//  Chapter 3, Exercise 11
-//  Stanford University, Autumn Quarter 2012
-//  http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
-//  --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
+// Attribution: "Programming Abstractions in C++" by Eric Roberts
+// Chapter 3, Exercise 11
+// Stanford University, Autumn Quarter 2012
+// http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
+// --------------------------------------------------------------------------
 //
-//  Created by Glenn Streiff on 10/5/15.
-//  Copyright © 2015 Glenn Streiff. All rights reserved.
+// Created by Glenn Streiff on 10/5/15.
+// Copyright © 2015 Glenn Streiff. All rights reserved.
+//
 
 #include <iostream>
 #include <iomanip>

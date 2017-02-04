@@ -1,21 +1,21 @@
 //
-//  combinatorics.h
+// combinatorics.h
 //
-//  This file exports some functions related to discrete mathematics,
-//  namely:
+// This file exports some functions related to discrete mathematics,
+// namely:
 //
-//     combinations(n, k)
-//     permutations(n, k)
+//    combinations(n, k)
+//    permutations(n, k)
 //
-//  --------------------------------------------------------------------------
-//  Attribution: "Programming Abstractions in C++" by Eric Roberts
-//  Chapter 2, Exercise 10
-//  Stanford University, Autumn Quarter 2012
-//  http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
-//  --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
+// Attribution: "Programming Abstractions in C++" by Eric Roberts
+// Chapter 2, Exercise 10
+// Stanford University, Autumn Quarter 2012
+// http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
+// --------------------------------------------------------------------------
 //
-//  Created by Glenn Streiff on 9/19/15.
-//  Copyright © 2015 Glenn Streiff. All rights reserved.
+// Created by Glenn Streiff on 9/19/15.
+// Copyright © 2015 Glenn Streiff. All rights reserved.
 //
 
 #ifndef _combinatorics_h

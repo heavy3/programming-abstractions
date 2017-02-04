@@ -1,22 +1,22 @@
 //
-//  main.cpp
+// main.cpp
 //
-//  This program implements the classic permutation function from
-//  statistics:
+// This program implements the classic permutation function from
+// statistics:
 //
-//     P(n, k) = n! / (n - k)!
+//    P(n, k) = n! / (n - k)!
 //
-//  in such a way as to avoid overflow for potentially large factorials.
+// in such a way as to avoid overflow for potentially large factorials.
 //
-//  --------------------------------------------------------------------------
-//  Attribution: "Programming Abstractions in C++" by Eric Roberts
-//  Chapter 2, Exercise 9
-//  Stanford University, Autumn Quarter 2012
-//  http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
-//  --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
+// Attribution: "Programming Abstractions in C++" by Eric Roberts
+// Chapter 2, Exercise 9
+// Stanford University, Autumn Quarter 2012
+// http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
+// --------------------------------------------------------------------------
 //
-//  Created by Glenn Streiff on 9/19/15.
-//  Copyright © 2015 Glenn Streiff. All rights reserved.
+// Created by Glenn Streiff on 9/19/15.
+// Copyright © 2015 Glenn Streiff. All rights reserved.
 //
 
 #include <iostream>

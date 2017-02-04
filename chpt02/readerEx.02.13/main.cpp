@@ -1,29 +1,29 @@
 //
-//  main.cpp
+// main.cpp
 //
-//  This program simulates radioactive decay of a sample of 10,000 atoms
-//  of material.  Each atom has a 50 percent chance of decaying in a year.
-//  The output shows the number of atoms remaining at the end of successive
-//  years.
+// This program simulates radioactive decay of a sample of 10,000 atoms
+// of material.  Each atom has a 50 percent chance of decaying in a year.
+// The output shows the number of atoms remaining at the end of successive
+// years.
 //
-//  For example:
+// For example:
 //
-//  There are 10000 atoms initially.
-//  There are 4957 atoms at the end of year 1.
-//  There are 2484 atoms at the end of year 2.
-//  ...
-//  There are 2 atoms at the end of year 11.
-//  There are 0 atoms at the end of year 12.
+//    There are 10000 atoms initially.
+//    There are 4957 atoms at the end of year 1.
+//    There are 2484 atoms at the end of year 2.
+//    ...
+//    There are 2 atoms at the end of year 11.
+//    There are 0 atoms at the end of year 12.
 //
-//  --------------------------------------------------------------------------
-//  Attribution: "Programming Abstractions in C++" by Eric Roberts
-//  Chapter 2, Exercise 13
-//  Stanford University, Autumn Quarter 2012
-//  http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
-//  --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
+// Attribution: "Programming Abstractions in C++" by Eric Roberts
+// Chapter 2, Exercise 13
+// Stanford University, Autumn Quarter 2012
+// http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
+// --------------------------------------------------------------------------
 //
-//  Created by Glenn Streiff on 9/22/15.
-//  Copyright © 2015 Glenn Streiff. All rights reserved.
+// Created by Glenn Streiff on 9/22/15.
+// Copyright © 2015 Glenn Streiff. All rights reserved.
 //
 
 #include <iostream>

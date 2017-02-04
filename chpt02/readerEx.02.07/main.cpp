@@ -1,29 +1,29 @@
 //
-//  main.cpp
+// main.cpp
 //
-//  This program implements the sqrt() function for taking the square root
-//  of a number using the following successive approximation technique:
+// This program implements the sqrt() function for taking the square root
+// of a number using the following successive approximation technique:
 //
-//  1. Begin by guessing that the square root is x / 2. Call that guess g.
+// 1. Begin by guessing that the square root is x / 2. Call that guess g.
 //
-//  2. The actual square root must lie between g and x / g.
-//     At each step in the successive approximation, generate a new guess 
-//     by averaging g and x / g.
+// 2. The actual square root must lie between g and x / g.
+//    At each step in the successive approximation, generate a new guess 
+//    by averaging g and x / g.
 //
-//  3. Repeat step 2 until the values g and x / g are as close together as the 
-//     machine precision allows. In C++, the best way to check for this 
-//     condition is to test whether the average is equal to either of the values 
-//     used to generate it.
+// 3. Repeat step 2 until the values g and x / g are as close together as the 
+//    machine precision allows. In C++, the best way to check for this 
+//    condition is to test whether the average is equal to either of the values 
+//    used to generate it.
 //
-//  --------------------------------------------------------------------------
-//  Attribution: "Programming Abstractions in C++" by Eric Roberts
-//  Chapter 2, Exercise 7
-//  Stanford University, Autumn Quarter 2012
-//  http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
-//  --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
+// Attribution: "Programming Abstractions in C++" by Eric Roberts
+// Chapter 2, Exercise 7
+// Stanford University, Autumn Quarter 2012
+// http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
+// --------------------------------------------------------------------------
 //
-//  Created by Glenn Streiff on 9/18/15.
-//  Copyright © 2015 Glenn Streiff. All rights reserved.
+// Created by Glenn Streiff on 9/18/15.
+// Copyright © 2015 Glenn Streiff. All rights reserved.
 //
 
 #include <iostream>

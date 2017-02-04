@@ -1,21 +1,23 @@
 //
-//  main.cpp
+// main.cpp
 //
-//  This program implements a function
+// This program implements a function
 //
-//      removeDoubledLetters(str)
+//     removeDoubledLetters(str)
 //
-//  that returns a new string in which any duplicated characters in str have
-//  been replaced by a single copy.
-//  --------------------------------------------------------------------------
-//  Attribution: "Programming Abstractions in C++" by Eric Roberts
-//  Chapter 3, Exercise 9
-//  Stanford University, Autumn Quarter 2012
-//  http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
-//  --------------------------------------------------------------------------
+// that returns a new string in which any duplicated characters in str have
+// been replaced by a single copy.
 //
-//  Created by Glenn Streiff on 10/4/15.
-//  Copyright © 2015 Glenn Streiff. All rights reserved.
+// --------------------------------------------------------------------------
+// Attribution: "Programming Abstractions in C++" by Eric Roberts
+// Chapter 3, Exercise 9
+// Stanford University, Autumn Quarter 2012
+// http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
+// --------------------------------------------------------------------------
+//
+// Created by Glenn Streiff on 10/4/15.
+// Copyright © 2015 Glenn Streiff. All rights reserved.
+//
 
 #include <iostream>
 using namespace std;

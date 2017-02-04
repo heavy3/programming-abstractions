@@ -1,25 +1,26 @@
 //
-//  main.cpp
+// main.cpp
 //
-//  This program implements the function
+// This program implements the function
 //
-//     string replaceAll(string str, char c1, char c2);
+//    string replaceAll(string str, char c1, char c2);
 //
-//  which returns a copy of str with every occurrence of c1 replaced by c2.
+// which returns a copy of str with every occurrence of c1 replaced by c2.
 //  
-//  For example:
+// For example:
 //
-//     replaceAll("nannies", 'n', 'd'); --> "daddies"
+//    replaceAll("nannies", 'n', 'd'); --> "daddies"
 //
-//  --------------------------------------------------------------------------
-//  Attribution: "Programming Abstractions in C++" by Eric Roberts
-//  Chapter 3, Exercise 10
-//  Stanford University, Autumn Quarter 2012
-//  http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
-//  --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
+// Attribution: "Programming Abstractions in C++" by Eric Roberts
+// Chapter 3, Exercise 10
+// Stanford University, Autumn Quarter 2012
+// http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
+// --------------------------------------------------------------------------
 //
-//  Created by Glenn Streiff on 10/5/15.
-//  Copyright © 2015 Glenn Streiff. All rights reserved.
+// Created by Glenn Streiff on 10/5/15.
+// Copyright © 2015 Glenn Streiff. All rights reserved.
+//
 
 #include <iostream>
 #include <iomanip>

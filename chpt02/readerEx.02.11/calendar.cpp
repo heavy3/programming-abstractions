@@ -1,33 +1,33 @@
 //
-//  calendar.cpp
+// calendar.cpp
 //
-//  This file implements several calendar-related functions. It exports a 
-//  monthToString function that returns the constant name for a value of 
-//  type Month.  A test driver is included that allows the user to enter 
-//  a year and then writes out the number of days in each month of that 
-//  year.
+// This file implements several calendar-related functions. It exports a 
+// monthToString function that returns the constant name for a value of 
+// type Month.  A test driver is included that allows the user to enter 
+// a year and then writes out the number of days in each month of that 
+// year.
 //
-//  For example:
+// For example:
 //
-//  Enter a year: 2012
-//  JANUARY has 31 days
-//  FEBRUARY has 29 days
-//  MARCH has 31 days
-//  ...
-//  NOVEMBER has 30 days
-//  DECEMBER has 31 days
+//    Enter a year: 2012
+//    JANUARY has 31 days
+//    FEBRUARY has 29 days
+//    MARCH has 31 days
+//    ...
+//    NOVEMBER has 30 days
+//    DECEMBER has 31 days
 //
-//  TODO: Split the test driver into its own main.cpp
+// TODO: Split the test driver into its own main.cpp
 //
-//  --------------------------------------------------------------------------
-//  Attribution: "Programming Abstractions in C++" by Eric Roberts
-//  Chapter 2, Exercise 11
-//  Stanford University, Autumn Quarter 2012
-//  http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
-//  --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
+// Attribution: "Programming Abstractions in C++" by Eric Roberts
+// Chapter 2, Exercise 11
+// Stanford University, Autumn Quarter 2012
+// http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
+// --------------------------------------------------------------------------
 //
-//  Created by Glenn Streiff on 9/21/15.
-//  Copyright © 2015 Glenn Streiff. All rights reserved.
+// Created by Glenn Streiff on 9/21/15.
+// Copyright © 2015 Glenn Streiff. All rights reserved.
 //
 
 #include <iostream>

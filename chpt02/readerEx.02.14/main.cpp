@@ -1,26 +1,25 @@
 //
-//  main.cpp
+// main.cpp
 //
-//  This program computes an approximate value of pi using a Monte Carlo
-//  integration technique.
+// This program computes an approximate value of pi using a Monte Carlo
+// integration technique.
 //
-//  Output is to the console stream and looks like this:
+// For example, typical output looks like this:
 //
-//  -------------------------------------------
-//  After 10000 trials, I estimate pi ~= 3.1352
-//  -------------------------------------------
+//    -------------------------------------------
+//    After 10000 trials, I estimate pi ~= 3.1352
 //
-//  For estimates that are accurate to 3 decimal places, try 1 million trials.
+// For estimates that are accurate to 3 decimal places, try 1 million trials.
 //
-//  --------------------------------------------------------------------------
-//  Attribution: "Programming Abstractions in C++" by Eric Roberts
-//  Chapter 2, Exercise 14
-//  Stanford University, Autumn Quarter 2012
-//  http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
-//  --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
+// Attribution: "Programming Abstractions in C++" by Eric Roberts
+// Chapter 2, Exercise 14
+// Stanford University, Autumn Quarter 2012
+// http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
+// --------------------------------------------------------------------------
 //
-//  Created by Glenn Streiff on 9/23/15.
-//  Copyright © 2015 Glenn Streiff. All rights reserved.
+// Created by Glenn Streiff on 9/23/15.
+// Copyright © 2015 Glenn Streiff. All rights reserved.
 //
 
 #include <iostream>

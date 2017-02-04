@@ -1,28 +1,28 @@
 //
-//  main.cpp
+// main.cpp
 //
-//  This program implements encryption using a letter-substitution cipher.
-//  It then computes an inverted key and decodes the encoded message to
-//  reveal the original, plain text message.
+// This program implements encryption using a letter-substitution cipher.
+// It then computes an inverted key and decodes the encoded message to
+// reveal the original, plain text message.
 //  
-//  For example:
+// For example:
 //
-//     Letter substitution cipher.
-//     Enter a 26-letter key:  QWERTYUIOPASDFGHJKLZXCVBNM
-//     Enter a message: WORKERS OF THE WORLD UNITE
-//     Encoded message: VGKATKL GY ZIT VGKSR XFOZT
-//     Inverted 26-letter key: KXVMCNOPHQRSZYIJADLEGWBUFT
-//     Decoded message: WORKERS OF THE WORLD UNITE
+//    Letter substitution cipher.
+//    Enter a 26-letter key:  QWERTYUIOPASDFGHJKLZXCVBNM
+//    Enter a message: WORKERS OF THE WORLD UNITE
+//    Encoded message: VGKATKL GY ZIT VGKSR XFOZT
+//    Inverted 26-letter key: KXVMCNOPHQRSZYIJADLEGWBUFT
+//    Decoded message: WORKERS OF THE WORLD UNITE
 //
-//  --------------------------------------------------------------------------
-//  Attribution: "Programming Abstractions in C++" by Eric Roberts
-//  Chapter 3, Exercise 19
-//  Stanford University, Autumn Quarter 2012
-//  http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
-//  --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
+// Attribution: "Programming Abstractions in C++" by Eric Roberts
+// Chapter 3, Exercise 19
+// Stanford University, Autumn Quarter 2012
+// http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
+// --------------------------------------------------------------------------
 //
-//  Created by Glenn Streiff on 10/12/15.
-//  Copyright © 2015 Glenn Streiff. All rights reserved.
+// Created by Glenn Streiff on 10/12/15.
+// Copyright © 2015 Glenn Streiff. All rights reserved.
 //
 
 #include <iostream>

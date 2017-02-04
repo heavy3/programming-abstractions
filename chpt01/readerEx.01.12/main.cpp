@@ -1,24 +1,24 @@
 //
-//  main.cpp
+// main.cpp
 //
-//  This program computes an approximation to the constant, pi,
-//  using the area of a quarter circle that has been approximated by
-//  subdivision into 10,000 rectangles which are summed.  The midpoint of 
-//  each rectangle intersects with the arc of the circle.  The 
-//  height of the rectangle for a given position x along the horizontal 
-//  axis is given by:
+// This program computes an approximation to the constant, pi,
+// using the area of a quarter circle that has been approximated by
+// subdivision into 10,000 rectangles which are summed.  The midpoint of 
+// each rectangle intersects with the arc of the circle.  The 
+// height of the rectangle for a given position x along the horizontal 
+// axis is given by:
 //
-//  h(x) = sqrt(r^2 - x^2), where r = radius of the circle.
+//    h(x) = sqrt(r^2 - x^2), where r = radius of the circle.
 //
-//  --------------------------------------------------------------------------
-//  Attribution: "Programming Abstractions in C++" by Eric Roberts
-//  Chapter 1, Exercise 12
-//  Stanford University, Autumn Quarter 2012
-//  http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
-//  --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
+// Attribution: "Programming Abstractions in C++" by Eric Roberts
+// Chapter 1, Exercise 12
+// Stanford University, Autumn Quarter 2012
+// http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
+// --------------------------------------------------------------------------
 //
-//  Created by Glenn Streiff on 9/14/15.
-//  Copyright © 2015 Glenn Streiff. All rights reserved.
+// Created by Glenn Streiff on 9/14/15.
+// Copyright © 2015 Glenn Streiff. All rights reserved.
 //
 
 #include <cmath>

@@ -1,22 +1,22 @@
 //
-//  calendar.h
+// calendar.h
 //
-//  This file defines a simple date-related interface.  Specifically,
-//  it exports a Month type along with the functions:
+// This file defines a simple date-related interface.  Specifically,
+// it exports a Month type along with the functions:
 //
-//     int daysInMonth(Month month, int year);
-//     bool isLeapYear(int year);
-//     std::string monthToString(Month month);
+//    int daysInMonth(Month month, int year);
+//    bool isLeapYear(int year);
+//    std::string monthToString(Month month);
 //
-//  --------------------------------------------------------------------------
-//  Attribution: "Programming Abstractions in C++" by Eric Roberts
-//  Chapter 2, Exercise 11
-//  Stanford University, Autumn Quarter 2012
-//  http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
-//  --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
+// Attribution: "Programming Abstractions in C++" by Eric Roberts
+// Chapter 2, Exercise 11
+// Stanford University, Autumn Quarter 2012
+// http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
+// --------------------------------------------------------------------------
 //
-//  Created by Glenn Streiff on 9/21/15.
-//  Copyright © 2015 Glenn Streiff. All rights reserved.
+// Created by Glenn Streiff on 9/21/15.
+// Copyright © 2015 Glenn Streiff. All rights reserved.
 //
 
 #ifndef _calendar_h

@@ -1,26 +1,26 @@
 //
-//  main.cpp
+// main.cpp
 //
-//  This program uses the Standford C++ Library (circa ~2013) to 
-//  draw a 6-color rainbow in a graphics window.
+// This program uses the Standford C++ Library (circa ~2013) to 
+// draw a 6-color rainbow in a graphics window.
 //
-//  Starting at the top, the six stripes in the rainbow are:
+// Starting at the top, the six stripes in the rainbow are:
 //
-//     red, orange, yellow, green, blue, magenta
+//    red, orange, yellow, green, blue, magenta
 //
-//  against a cyan background.
+// against a cyan background.
 //
-//  This requires a java runtime and spl.jar for rendering the graphics.
+// This requires a java runtime and spl.jar for rendering the graphics.
 //
-//  --------------------------------------------------------------------------
-//  Attribution: "Programming Abstractions in C++" by Eric Roberts
-//  Chapter 2, Exercise 16
-//  Stanford University, Autumn Quarter 2012
-//  http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
-//  --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
+// Attribution: "Programming Abstractions in C++" by Eric Roberts
+// Chapter 2, Exercise 16
+// Stanford University, Autumn Quarter 2012
+// http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
+// --------------------------------------------------------------------------
 //
-//  Created by Glenn Streiff on 9/24/15.
-//  Copyright © 2015 Glenn Streiff. All rights reserved.
+// Created by Glenn Streiff on 9/24/15.
+// Copyright © 2015 Glenn Streiff. All rights reserved.
 //
 
 #include <iostream>

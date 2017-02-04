@@ -1,24 +1,24 @@
 //
-//  main.cpp
+// main.cpp
 //
-//  This program implements a cyclic cipher (or 'Caesar cipher')
-//  for ASCII-encoded text.
+// This program implements a cyclic cipher (or 'Caesar cipher')
+// for ASCII-encoded text.
 //
-//  For example:
+// For example:
 //
-//  Enter a message: This is a secret message.
-//  Enter the number of character positions to shift: 13
-//  Encoded message: Guvf vf n frperg zrffntr.
+// Enter a message: This is a secret message.
+// Enter the number of character positions to shift: 13
+// Encoded message: Guvf vf n frperg zrffntr.
 //
-//  --------------------------------------------------------------------------
-//  Attribution: "Programming Abstractions in C++" by Eric Roberts
-//  Chapter 3, Exercise 17
-//  Stanford University, Autumn Quarter 2012
-//  http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
-//  --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
+// Attribution: "Programming Abstractions in C++" by Eric Roberts
+// Chapter 3, Exercise 17
+// Stanford University, Autumn Quarter 2012
+// http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
+// --------------------------------------------------------------------------
 //
-//  Created by Glenn Streiff on 10/12/15.
-//  Copyright © 2015 Glenn Streiff. All rights reserved.
+// Created by Glenn Streiff on 10/12/15.
+// Copyright © 2015 Glenn Streiff. All rights reserved.
 //
 
 #include <iostream>
@@ -27,11 +27,11 @@
 #include <cctype>
 using namespace std;
 
-//  Constants
+// Constants
 
 const int NUM_ALPHABET_CHARS = 26;
 
-//  Function prototypes
+// Function prototypes
 
 string encodeCaesarCipher(string str, int rotate);
 char encodeChar(char ch, int rotate);
@@ -39,7 +39,7 @@ bool promptAndEncode();
 bool testEncodeCaesarCipher(string plainText, int rotate, string expectedText);
 int regressionTest();
 
-//  Main program
+// Main program
 
 int main(int argc, const char * argv[]) {
     int count = 0;  // Failure count.
@@ -64,14 +64,14 @@ int main(int argc, const char * argv[]) {
     return count;
 }
 
-//  Function definitions
+// Function definitions
 
-//  Function: promptAndEncode
-//  Usage: while (promptAndEncode());
-//  ---------------------------------
-//  Prompts the user to enter text and a rotate value for encoding test.
-//  Returns false when 'Enter' is pressed by itself, causing control to return
-//  to caller.
+// Function: promptAndEncode
+// Usage: while (promptAndEncode());
+// ---------------------------------
+// Prompts the user to enter text and a rotate value for encoding test.
+// Returns false when 'Enter' is pressed by itself, causing control to return
+// to caller.
 
 bool promptAndEncode() {
     string plainText;
@@ -97,18 +97,18 @@ bool promptAndEncode() {
     return false;
 }
 
-//  Function: encodeCaesarCipher
-//  Usage: string encoded = encodeCaesarCipher("Et tu, Brute?", 3);
-//  ------------------------------------------------------------------
-//  Returns a new string formed by rotating every letter in str forward the
-//  number of letters indicated by rotate, cycling back to the beginning of the
-//  alphabet if necessary.  If the rotate parameter is negative, then rotation
-//  is in the opposite direction.
+// Function: encodeCaesarCipher
+// Usage: string encoded = encodeCaesarCipher("Et tu, Brute?", 3);
+// ------------------------------------------------------------------
+// Returns a new string formed by rotating every letter in str forward the
+// number of letters indicated by rotate, cycling back to the beginning of the
+// alphabet if necessary.  If the rotate parameter is negative, then rotation
+// is in the opposite direction.
 //
-//  The transformation applies only to letters; any other characters are copied
-//  unchanged to the output. Moreover, the case of letters is unaffected:
-//  lowercase letters come out as lowercase, and uppercase letters come out as
-//  uppercase.
+// The transformation applies only to letters; any other characters are copied
+// unchanged to the output. Moreover, the case of letters is unaffected:
+// lowercase letters come out as lowercase, and uppercase letters come out as
+// uppercase.
 
 string encodeCaesarCipher(string str, int rotate) {
     string result;
@@ -118,15 +118,15 @@ string encodeCaesarCipher(string str, int rotate) {
     return result;
 }
 
-//  Function: encodeChar
-//  Usage: char encodedCh = encodeChar('A', 3);   // returns 'D'
-//  --------------------------------------------------------------
-//  Returns encoded character based upon a cyclical ASCII cipher
-//  and a rotate parameter.  A letter is encoded by associating it
-//  with a letter rotateed n units to the right (or left, in the case
-//  of a negative rotate value).  Shifting wraps around to the beginning
-//  of the alphabet if the offset value is larger than the number of
-//  characters in the alphabet.
+// Function: encodeChar
+// Usage: char encodedCh = encodeChar('A', 3);   // returns 'D'
+// --------------------------------------------------------------
+// Returns encoded character based upon a cyclical ASCII cipher
+// and a rotate parameter.  A letter is encoded by associating it
+// with a letter rotateed n units to the right (or left, in the case
+// of a negative rotate value).  Shifting wraps around to the beginning
+// of the alphabet if the offset value is larger than the number of
+// characters in the alphabet.
 
 char encodeChar(char ch, int rotate) {
     if (!isalpha(ch)) {
@@ -150,10 +150,10 @@ char encodeChar(char ch, int rotate) {
     return char(baseCh + offset);
 }
 
-//  Function: regressionTest
-//  Usage: int failures = regressionTest();
-//  ---------------------------------------
-//  Run regression test on hardcoded plain text input.
+// Function: regressionTest
+// Usage: int failures = regressionTest();
+// ---------------------------------------
+// Run regression test on hardcoded plain text input.
 
 int regressionTest() {
     int failures = 0;
@@ -169,11 +169,11 @@ int regressionTest() {
     return failures;
 }
 
-//  Function: testEncodeCaesarCipher
-//  Usage: if (testEncodeCaesarCipher("encode me", 1, "fodpef nf")) { ... }
-//  -----------------------------------------------------------------------
-//  Returns true if the expected encoding matches the actual encoding for the
-//  provided message and rotate factor.
+// Function: testEncodeCaesarCipher
+// Usage: if (testEncodeCaesarCipher("encode me", 1, "fodpef nf")) { ... }
+// -----------------------------------------------------------------------
+// Returns true if the expected encoding matches the actual encoding for the
+// provided message and rotate factor.
 
 bool testEncodeCaesarCipher(string plainText, int rotate, string expectedText) {
     string p = "[PASS]: [";

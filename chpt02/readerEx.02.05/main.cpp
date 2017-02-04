@@ -1,33 +1,33 @@
 //
-//  main.cpp
+// main.cpp
 //
-//  The program implements a predicate function, isPerfect, that takes 
-//  an integer n and returns true if n is 'perfect' in the Greek sense, 
-//  and false otherwise.
+// The program implements a predicate function, isPerfect, that takes 
+// an integer n and returns true if n is 'perfect' in the Greek sense, 
+// and false otherwise.
 //
-//  Perfect numbers are equal to the sum of their proper divisors
+// Perfect numbers are equal to the sum of their proper divisors
 //
-//  For example,  6 is perfect because  6 = 1 + 2 + 3
-//               28 is perfect because 28 = 1 + 2 + 4 + 7 + 14
+// For example,  6 is perfect because  6 = 1 + 2 + 3
+//              28 is perfect because 28 = 1 + 2 + 4 + 7 + 14
 //
-//  The program will generate all the perfect numbers in the range 1 to 9999.
+// The program will generate all the perfect numbers in the range 1 to 9999.
 //
-//  For example:
+// For example:
 //
-//  6
-//  28
-//  496
-//  8128
+// 6
+// 28
+// 496
+// 8128
 //
-//  --------------------------------------------------------------------------
-//  Attribution: "Programming Abstractions in C++" by Eric Roberts
-//  Chapter 2, Exercise 5
-//  Stanford University, Autumn Quarter 2012
-//  http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
-//  --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
+// Attribution: "Programming Abstractions in C++" by Eric Roberts
+// Chapter 2, Exercise 5
+// Stanford University, Autumn Quarter 2012
+// http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
+// --------------------------------------------------------------------------
 //
-//  Created by Glenn Streiff on 9/18/15.
-//  Copyright © 2015 Glenn Streiff. All rights reserved.
+// Created by Glenn Streiff on 9/18/15.
+// Copyright © 2015 Glenn Streiff. All rights reserved.
 //
 
 #include <iostream>

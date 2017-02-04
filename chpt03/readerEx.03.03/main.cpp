@@ -1,14 +1,14 @@
 //
-//  main.cpp
+// main.cpp
 //
-//  This program implements a free function:
+// This program implements a free function:
 //
-//     substr(str, pos, n) 
+//     string substr(str, pos, n);
 //
-//  which returns the substring of str beginning at pos and containing at 
-//  most n characters.
+// which returns the substring of str beginning at pos and containing at 
+// most n characters.
 //
-//  The following edge cases are also handled:
+// The following edge cases are also handled:
 //
 //  • If n is missing or greater than the length of the string, the substring
 //    should extend through the end of the original string.
@@ -16,15 +16,15 @@
 //  • If pos is greater than the length of the string, substr should call 
 //    error with an appropriate message.
 //
-//  --------------------------------------------------------------------------
-//  Attribution: "Programming Abstractions in C++" by Eric Roberts
-//  Chapter 3, Exercise 3
-//  Stanford University, Autumn Quarter 2012
-//  http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
-//  --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
+// Attribution: "Programming Abstractions in C++" by Eric Roberts
+// Chapter 3, Exercise 3
+// Stanford University, Autumn Quarter 2012
+// http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
+// --------------------------------------------------------------------------
 //
-//  Created by Glenn Streiff on 10/02/15.
-//  Copyright © 2015 Glenn Streiff. All rights reserved.
+// Created by Glenn Streiff on 10/02/15.
+// Copyright © 2015 Glenn Streiff. All rights reserved.
 //
 
 #include <iostream>

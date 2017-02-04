@@ -1,18 +1,20 @@
 //
-//  main.cpp
+// main.cpp
 //
-//  This program converts degrees Celsius to degrees Fahrenheit
-//  according to the formula: F = (9/5)C + 32
+// This program converts degrees Celsius to degrees Fahrenheit
+// according to the formula: 
 //
-//  --------------------------------------------------------------------------
-//  Attribution: "Programming Abstractions in C++" by Eric Roberts
-//  Chapter 1, Exercise 1
-//  Stanford University, Autumn Quarter 2012
-//  http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
-//  --------------------------------------------------------------------------
+//    F = (9/5)C + 32
 //
-//  Created by Glenn Streiff on 9/12/15.
-//  Copyright © 2015 Glenn Streiff. All rights reserved.
+// --------------------------------------------------------------------------
+// Attribution: "Programming Abstractions in C++" by Eric Roberts
+// Chapter 1, Exercise 1
+// Stanford University, Autumn Quarter 2012
+// http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
+// --------------------------------------------------------------------------
+//
+// Created by Glenn Streiff on 9/12/15.
+// Copyright © 2015 Glenn Streiff. All rights reserved.
 //
 
 #include <iostream>

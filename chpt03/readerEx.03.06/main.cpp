@@ -1,22 +1,22 @@
 //
-//  main.cpp
+// main.cpp
 //
-//  The program implements the function
+// The program implements the function
 //
-//     acronym(str) 
+//     string acronym(str);
 //
-//  which takes a string and returns the acronym formed from that string.
-//  Hyphenated words are also supported (e.g., 'self-contained' -> 'SC').
+// which takes a string and returns the acronym formed from that string.
+// Hyphenated words are also supported (e.g., 'self-contained' -> 'SC').
 //
-//  --------------------------------------------------------------------------
-//  Attribution: "Programming Abstractions in C++" by Eric Roberts
-//  Chapter 3, Exercise 6
-//  Stanford University, Autumn Quarter 2012
-//  http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
-//  --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
+// Attribution: "Programming Abstractions in C++" by Eric Roberts
+// Chapter 3, Exercise 6
+// Stanford University, Autumn Quarter 2012
+// http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
+// --------------------------------------------------------------------------
 //
-//  Created by Glenn Streiff on 10/2/15.
-//  Copyright © 2015 Glenn Streiff. All rights reserved.
+// Created by Glenn Streiff on 10/2/15.
+// Copyright © 2015 Glenn Streiff. All rights reserved.
 //
 
 #include <iostream>

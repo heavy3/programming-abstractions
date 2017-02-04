@@ -1,10 +1,10 @@
 //
-//  main.cpp
+// main.cpp
 //
-//  This program that reads in words and prints out their Scrabble score
-//  according to the following point system:
+// This program that reads in words and prints out their Scrabble score
+// according to the following point system:
 //
-//  Points Letters
+// Points Letters
 //   1      A, E, I, L, N, O, R, S, T, U
 //   2      D, G
 //   3      B, C, M, P
@@ -13,17 +13,17 @@
 //   8      J, X
 //   10     Q, Z
 //
-//  The problem spec says to ignore any lowercase letters.
+// The problem spec says to ignore any lowercase letters.
 //
-//  --------------------------------------------------------------------------
-//  Attribution: "Programming Abstractions in C++" by Eric Roberts
-//  Chapter 3, Exercise 5
-//  Stanford University, Autumn Quarter 2012
-//  http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
-//  --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
+// Attribution: "Programming Abstractions in C++" by Eric Roberts
+// Chapter 3, Exercise 5
+// Stanford University, Autumn Quarter 2012
+// http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
+// --------------------------------------------------------------------------
 //
-//  Created by Glenn Streiff on 10/2/15.
-//  Copyright © 2015 Glenn Streiff. All rights reserved.
+// Created by Glenn Streiff on 10/2/15.
+// Copyright © 2015 Glenn Streiff. All rights reserved.
 //
 
 #include <iostream>

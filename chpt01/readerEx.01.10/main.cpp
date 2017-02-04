@@ -1,38 +1,38 @@
 //
-//  main.cpp
+// main.cpp
 //
-//  Write a program that reads in a positive number and uses that to generate
-//  a so called 'hailstone sequence' according to the following rules:
+// Write a program that reads in a positive number and uses that to generate
+// a so called 'hailstone sequence' according to the following rules:
 // 
-//  • If n is equal to 1, you’ve reached the end of the sequence and can stop.
-//  • If n is even, divide it by two.
-//  • If n is odd, multiply it by three and add one.
+// • If n is equal to 1, you’ve reached the end of the sequence and can stop.
+// • If n is even, divide it by two.
+// • If n is odd, multiply it by three and add one.
 //
-//  It's called the hailstone sequence because the values tend to go up and 
-//  and down before eventually converging to 1, similar to the dynamic behavior
-//  of hailstones in the clouds as they form.
+// It's called the hailstone sequence because the values tend to go up and 
+// and down before eventually converging to 1, similar to the dynamic behavior
+// of hailstones in the clouds as they form.
 // 
-//  For example:
+// For example:
 //
-//  Enter a number: 15
-//  15 is odd, so I multiply by 3 and add 1 to get 46
-//  46 is even, so I divide it by 2 and get 23
-//  23 is odd, so I multiply by 3 and add 1 to get 70
-//  70 is even, so I divide it by 2 and get 35
-//  35 is odd, so I multiply by 3 and add 1 to get 106
-//  ...
-//  4 is even, so I divide it by 2 to get 2
-//  2 is even, so I divide it by 2 to get 1
+//    Enter a number: 15
+//    15 is odd, so I multiply by 3 and add 1 to get 46
+//    46 is even, so I divide it by 2 and get 23
+//    23 is odd, so I multiply by 3 and add 1 to get 70
+//    70 is even, so I divide it by 2 and get 35
+//    35 is odd, so I multiply by 3 and add 1 to get 106
+//    ...
+//    4 is even, so I divide it by 2 to get 2
+//    2 is even, so I divide it by 2 to get 1
 //
-//  --------------------------------------------------------------------------
-//  Attribution: "Programming Abstractions in C++" by Eric Roberts
-//  Chapter 1, Exercise 10
-//  Stanford University, Autumn Quarter 2012
-//  http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
-//  --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
+// Attribution: "Programming Abstractions in C++" by Eric Roberts
+// Chapter 1, Exercise 10
+// Stanford University, Autumn Quarter 2012
+// http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
+// --------------------------------------------------------------------------
 //
-//  Created by Glenn Streiff on 9/14/15.
-//  Copyright © 2015 Glenn Streiff. All rights reserved.
+// Created by Glenn Streiff on 9/14/15.
+// Copyright © 2015 Glenn Streiff. All rights reserved.
 //
 
 #include <iostream>

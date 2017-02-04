@@ -1,28 +1,28 @@
 //
-//  main.cpp
+// main.cpp
 //
-//  This program implements a function:
+// This program implements a function:
 // 
 //     int findDNAMatch(string s1, string s2, int start = 0);
 // 
-//  that returns the first position at which the DNA strand s1 can attach to 
-//  the strand s2. As in the find method for the string class, the optional 
-//  start parameter indicates the index position at which the search should 
-//  start. If there is no match, findDNAMatch returns –1.
+// that returns the first position at which the DNA strand s1 can attach to 
+// the strand s2. As in the find method for the string class, the optional 
+// start parameter indicates the index position at which the search should 
+// start. If there is no match, findDNAMatch returns –1.
 //
-//  I am adapting the character substitution cipher from the previous 
-//  problem to invert the short DNA strand.  The problem reduces to a 
-//  sub-string find of the inverted DNA snippet within the longer strand.
+// I am adapting the character substitution cipher from the previous 
+// problem to invert the short DNA strand.  The problem reduces to a 
+// sub-string find of the inverted DNA snippet within the longer strand.
 //
-//  --------------------------------------------------------------------------
-//  Attribution: "Programming Abstractions in C++" by Eric Roberts
-//  Chapter 3, Exercise 20
-//  Stanford University, Autumn Quarter 2012
-//  http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
-//  --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
+// Attribution: "Programming Abstractions in C++" by Eric Roberts
+// Chapter 3, Exercise 20
+// Stanford University, Autumn Quarter 2012
+// http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
+// --------------------------------------------------------------------------
 //
-//  Created by Glenn Streiff on 10/12/15.
-//  Copyright © 2015 Glenn Streiff. All rights reserved.
+// Created by Glenn Streiff on 10/12/15.
+// Copyright © 2015 Glenn Streiff. All rights reserved.
 //
 
 #include <iostream>
