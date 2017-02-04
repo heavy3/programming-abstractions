@@ -1,7 +1,7 @@
 //
 // main.cpp
 //
-// This program exercises the TokenScanner class, including a scanNumbers()
+// This program exercises the EzTokenScanner class, including a scanNumbers()
 // method which I've implemented according to Figure 6-15 in the course
 // reader.
 //

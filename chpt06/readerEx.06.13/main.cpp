@@ -1,7 +1,7 @@
 //
 // main.cpp
 //
-// This program exercises the TokenScanner class, including a saveToken()
+// This program exercises the EzTokenScanner class, including a saveToken()
 // method which I've implemented.
 //
 // The saveToken method essentially pushes a scanned token, back into the

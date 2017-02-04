@@ -1,7 +1,7 @@
 //
 // main.cpp
 //
-// This program exercises the TokenScanner class, including a scanStrings()
+// This program exercises the EzTokenScanner class, including a scanStrings()
 // method which I've implemented.
 //
 // The scanStrings method returns double or singly quoted strings as a
