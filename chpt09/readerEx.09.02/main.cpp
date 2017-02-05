@@ -80,22 +80,23 @@ int main(int argc, char * argv[]) {
 // Usage: solveMaze(maze, start, numCalls);
 //        solveMaze(maze, start, numCalls, unmarkVisited);
 // ----------------------------------------------------------------
-// Traverses a maze from a starting location to an exit by
-// recursively exploring the space along orthogonal lines.
-// The efficiency of the traversal is captured by the numCalls
-// variable.  An optional 4th parameter controls the backtracking
-// behavior of the algorithm when a given path that doesn't work out
-// and we rollback to an earlier state to try a different
-// direction.
+// Traverses a maze from a starting location to an exit by recursively 
+// exploring the space along orthogonal lines. The efficiency of the 
+// traversal is captured by the numCalls variable.  An optional 4th 
+// parameter controls the backtracking behavior of the algorithm when 
+// a given path that doesn't work out and we rollback to an earlier 
+// state to try a different direction.
 //
 
 bool solveMaze(Maze & maze, Point start, int & numCalls, bool unmark) {
     
-    // base case
+    // Base case
+
     if (maze.isOutside(start)) return true;
     if (maze.isMarked(start)) return false;
     
-    // recursive case
+    // Recursive case
+
     maze.markSquare(start);
     for (Direction dir = NORTH; dir <= WEST; dir++) {
         if (!maze.wallExists(start, dir)) {
@@ -104,6 +105,9 @@ bool solveMaze(Maze & maze, Point start, int & numCalls, bool unmark) {
             }
         }
     }
+
+    // Backtrack
+
     if (unmark) maze.unmarkSquare(start);
     return false;
 }

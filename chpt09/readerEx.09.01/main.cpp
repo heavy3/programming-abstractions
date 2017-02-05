@@ -14,6 +14,8 @@
 // Chapter 9, Exercise 1
 // Stanford University, Autumn Quarter 2012
 // http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
+//
+// The code for adjacentPoint comes from Figure 9-3.
 // --------------------------------------------------------------------------
 //
 // Created by Glenn Streiff on 3/17/16.
@@ -94,11 +96,13 @@ int shortestPathLength(Maze & maze, Point start) {
 bool findSolutionLengths(Maze & maze, Point start, int & length,
                          Set<int> & 0lveLengths) {
 
-    // base case
+    // Base case
+
     if (maze.isOutside(start)) return true;
     if (maze.isMarked(start)) return false;
     
-    // recursive case
+    // Recursive case
+
     length++;
     maze.markSquare(start);
     for (Direction dir = NORTH; dir <= WEST; dir++) {
@@ -110,6 +114,9 @@ bool findSolutionLengths(Maze & maze, Point start, int & length,
             }
         }
     }
+
+    // Backtracking
+    
     maze.unmarkSquare(start);
     length--;
     return false;
