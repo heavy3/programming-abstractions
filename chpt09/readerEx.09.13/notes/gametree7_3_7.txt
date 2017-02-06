@@ -1,0 +1,213 @@
+Initial condition:
+
+Computer has 3, human player has 7.  Remaining coins  = 7.  It's
+computer's turn and needs to evaluate the '7-remaining-coins' position.
+
+*** = computer's best move
++++ = human's best move
+[ ] = computer's turn
+( ) = computer's  move results in this state
+#/# = c/h (computer coins / human coins)
+
+cmv = computer move
+hmv = human move
+
+cmv(1, 5/8) = Computer takes one coin resulting in c/h = 5/8.
+
+Losing  Position [L] = -1
+Winning Position [W] = +1
+
+--------------------------------------------
+7 coins remaining, 10 collected, c's turn
+
+Ways to collect 11 coins:
+0/10 not possible
+1/9 not possible
+
+10 can only be collected with e + e and o + o:
+
+2/8 e/e
+3/7 o/o
+4/6 e/e
+5/5 o/o
+
+10 = e/e (2/8, 4/6) o/o (3/7, 5/5) since e = e + e || e = o + o
+
+analysis: rating = (computerCoins % 2 == 0) WINNING_POSITION : LOSING_POSITION  (with 5 coins remaining)
+===>hmm. what about an /even/ number of coins remaining?
+
+6 remaining mean 11 collected (5/6), 11 is odd, since o = e + o someone has even someone has odd
+r = (urCoins % 2 == 0) WINNING_POSITION : LOSING_POSITION
+o/e o always loses
+e/o e always wins
+
+5 remaining mean 12 collected, 12 is even since e = e + e || e = o + o we have two cases
+r = (urCoins % 2 == 0) WINNING_POSITION : LOSING_POSITION  (with 5 coins remaining)
+e/e next e wins (with all-but-1 strategy)
+o/o next o loses (inherently bad position for first o)
+
+4 remaining means 13 collected, 13 is odd since o = e + o someone has even number someone as odd number
+r = WINNING_POSITION
+e/o e wins by taking all
+o/e o wins with all-but-1
+
+3 remaining means 14 collected, 14 is even number e = e + e || e = o + o
+r = WINNING_POSITION
+e/e e wins by all-but-1  (e + (odd-1)) = e
+o/o o wins by taking all (o + o = e)
+
+2 remaining means 15 collected, 15 is odd.  o = e + o
+r = WINNING_POSITION
+e/o e wins by taking all
+o/e o wins by taking all-but-1
+
+1 remaining means 16 collected, 16 is even number e = e + e || e = o + o
+r = (urCoins % 2 == 0) LOSING_POSITION: WINNING_POSITION 
+e/e next e always loses
+o/o next o always wins
+------------------------------------------------------------------------
+
+0/0     17 
+	| hmv(3, 0/3)
+      [ 14 ]
+	| cmv(2, 2/3)
+      ( 12 )
+	| hmv(4, 2/7) 
+      [ 8 ]
+	| cmv(1, 3/7)
+	|
+      ( 7 )
+	|
+	| hmv(1, 5/6 : o/e, even # of coins left)
+	|
+5/6   [ 6 ]------------------[ 6A below ] human wins
+	|                                        
+	|                                       
+	| cmv(1, 6/6)                          
+      ( 5 )++++++++++++++++++( 5B below, human wins (W2) )
+	|
+	| hmv(1, 6/7)
+	|                                          
+6/7   [ 4 ]******************[ 4C below, computer wins( W1) ] 
+	|
+	| cmv(1, 7/7)
+	|                                                human wins (W1)
+      ( 3 )++++++++++++++++++++++++++++++++++++( 3 )+++++++++++++++++++++++++++( 3 )
+	|				         |                               +
+	| hmv(1, 7/8)                            | hmv(2, 7/9)       hmv(3, 7/10)+
+	|				         |                               +
+7/8   [ 2 ] ---------------- [ 2 ]             [ 1 ]                       7/10[ L ]
+	+                      |                 *
+	+ cmv(1, 8/8)          | cmv(2, 9/8)     * cmv(1, 8/9)
+	+                      |	         *
+8/8   [ 1 ] pos         9/8  [ L ]             [ W ]  8/9
+	|                                
+	| hmv(1, 8/9)
+	| 
+8/9   ( W )
+
+
+       5/6           5/6                                     5/6
+[6A]--[ 6 ]---------[ 6 ]-----------------------------------[ 6 ]
+        |             |                                       |          
+        |             | cmv(3, 8/6) (c loses)                 |cmv(4, 9/6) (c loses)
+       	|             |                                       |         
+        |           ( 3 ) ++++++++ ( 3 ) --------( 3 )      ( 2 )+++++++++++++++( 2 )      
+        |             |              +	           |          |                   +
+        |             |    hmv(2,8/8)+   hmv(3,8/9)|          |        hmv(2, 9/8)+
+        |             |              +             |          |                   +
+        |  hmv(1, 8/7)|              +	           |          | hmv(1,9/7)        +
+        |           [ 2 ]---[ 2 ]  [ 1 ]         [ W ]      [ 1 ]               [ L ]
+        |             |       *      |                        |                  9/8
+        |  cmv(1, 9/7)|   c(2)*  c(1)|                        | cmv(1,10/7)
+        |             |       *      |                        |
+        |           ( 1 )   ( W )  ( L )                    ( W )
+        |             |     10/7    9/8                     10/7
+        |  hmv(1, 9/8)|                    
+        |             |                    
+        |           [ L ] 9/8               
+        |cmv(2,7/6)                         
+	|   human wins (W1)   7/6                    7/6                        7/6
+      ( 4 )++++++++++++++++++( 4 )++++++++++++++++++( 4 )++++++++++++++++++++++( 4 )
+        |                      |                      |                          +
+        |                      | hmv(2, 7/8)          |hmv(3, 7/9)   hmv(4, 7/10)+
+       	|                      |                      |                          +
+        |                    [ 2 ] -------- [ 2 ]   [ 1 ]                      [ L ]
+        |                      |              |	      |                       
+        |                      |    cmv(2,9/8)|       |cmv(1, 8/9)
+        |                      |              |       |
+        |                      |cmv(1,8/8)    |	      |                   
+        |                    ( 1 )          ( L )   ( W ) 8/9 
+        |                      |             9/8      
+        |                      | 
+        |                      |hmv(1, 8/9)        
+        |                    [ W ] c-wins
+	|hmv(1, 7/7)
+	|    computer wins (W1)
+7/7   [ 3 ] ********************************** [ 3 ] ************************* [ 3 ]
+	|				         |                               *
+	| cmv(1, 8/7)                            | cmv(2, 9/7)       cmv(3, 10/7)*
+	|                                        |                               *
+      ( 2 ) ---------------- ( 2 )             ( 1 )                      10/7 ( W )
+	|                      |                 |                            
+	| hmv(1, 8/8)          | hmv(2, 8/9)     | hmv(1, 9/8)
+	|                      |	         |
+8/8   [ 1 ]                  [ W ] 8/9         [ L ]  9/8
+	|                      
+	| cmv(1, 9/8)
+	| 
+8/9   ( L )
+
+       6/6    human wins (W2)
+(5B)--( 5 ) +++++++++++++++++++++++++++++++++++( 5 )+++++++++++++++++++++++++++( 5 )
+	|                                        |                               +
+	|                                        |                               +
+	|                            hmv(3, 6/9) |                  hmv(4, 6/10) +
+        |                                      [ 2 ]------[ 2 ]                [ 1 ]
+	|                                        |          *                    |
+	|                            cmv(1, 7/9) |          *        cmv(1, 7/10)|
+	|                                        |          *cmv(2, 8/9)         |
+	|                                      ( 1 )      ( W )                ( L )
+	|                                        |                             7/10
+	|                                        | hmv(1, 7/10)
+	|                                        |
+	| hmv(2, 6/8)                          [ L ] 7/10
+	|        computer wins (W2)
+6/8   [ 3 ] ********************************** [ 3 ] ------------------------- [ 3 ]
+	|				         *                               |
+	| cmv(1, 7/8)                            * cmv(2, 8/8)       cmv(3, 9/8) |
+	|                                        *                               |
+      ( 2 ) ---------------- ( 2 )             ( 1 )                       9/8 ( L )
+	|                      +                 |                            c-loss
+	| hmv(1, 7/9)          + hmv(2, 7/10)    | hmv(1, 8/9)
+	|                      +	         |
+7/9   [ 1 ]                  [ L ] 7/10        [ W ]  8/9
+	|                      c-loss            c-wins
+	| cmv(1, 8/9)
+	| 
+8/9   ( W ) c-wins
+
+
+	6/7    computer wins (W1)
+[4C]--[ 4 ] ********************************** [ 4 ] ************************* [ 4 ]
+	|                                        |                               *
+	| cmv(2, 8/7)                            | cmv(3, 9/7)      cmv(4, 10/7) *
+	|                                        |                               *
+8/7   ( 2 ) ---------------- ( 2 )             ( 1 )                     10/7  ( W )
+	|                      |	         |                            c-wins
+	| hmv(1, 8/8)          | hmv(2, 8/9)     | hmv(1, 9/8)                
+	|                      |	         |                   
+      [ 1 ]                  [ W ] 8/9         [ L ] 9/8 
+	|                      c-wins            c-loss
+	| cmv(1, 9/8)        
+	|                    
+9/8   ( L ) c-loss
+
+Two ways to win:
+	1. take remaining coins to victory
+	2. take all-but-one coin, forcing failure on opponent
+
+Ways to lose:
+	1. stupidity; take remaining pieces to loss
+	              leave 1 piece for oppoent's victory
+        2. forced into loss by opponent

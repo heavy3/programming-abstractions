@@ -1,0 +1,169 @@
+Initial condition:
+
+Computer has 4, human player has 8.  Remaining coins  = 5.  It's
+computer's turn and needs to evaluate the '5-remaining-coins' position.
+
+*** = computer's best move
++++ = human's best move
+[ ] = computer's turn
+( ) = computer's  move results in this state
+#/# = c/h (computer coins / human coins)
+
+cmv = computer move
+hmv = human move
+
+cmv(1, 5/8) = Computer takes one coin resulting in c/h = 5/8.
+
+Losing  Position [L] = -1
+Winning Position [W] = +1
+
+case 1 [ 5 ] 4/8 even/even, odd # of coins left, computer wins
+case 2 [ 5 ] 3/9 odd/odd, odd # of conis left, human wins
+
+Goal collect 12
+
+0/0     17  (c/h) 
+	| hmv(1, 0/1)
+      [ 16 ]
+	| cmv(1, 1/1)
+      ( 15 )
+	| hmv(4, 1/5)
+      [ 11 ]
+	| cmv(2, 3/5)
+      ( 9 )
+	| hmv(4, 3/9)
+      [ 5 ]
+
+--------------------------------------------
+5 coins remaining, 12 collected, c's turn
+
+Ways to collect 12 coins:
+0/12 not possible
+1/11 not possible
+2/10 not possible
+
+3/9 human wins 
+5/7 human wins
+7/5 human wins
+9/3 human wins
+
+4/8 computer wins
+6/6 computer wins
+8/4 computer wins
+
+10/2 not possible
+11/1 not possible
+12/0 not possible
+
+12 = o/o(3/9, 5/7)  e/e(4/8, 6/6)  e = e + e | e = o + o
+
+analysis: rating = (computerCoins % 2 == 0) WINNING_POSITION : LOSING_POSITION  (with 5 coins remaining)
+hmm. what about an /even/ number of coins remaining?
+
+5 remaining mean 12 collected, 12 is even since e = e + e || e = o + o we have two cases
+e/e next e wins (with all-but-1 strategy)
+o/o next o loses (inherently bad position for first o)
+
+4 remaining means 13 collected, 13 is odd since o = e + o someone has even number someone as odd number
+
+if the person with even number takes a turn, they win; just take all of the coins
+if the person with odd number takes a turn, /they/ win; just take all-but-1 of the coins to get even, forcing opp to take last 1
+
+e/o e takes all to win
+o/e o takes all but 1 to win
+
+3 remaining means 14 collected, 14 is even number e = e + e || e = o + o
+e/e e takes all but 1 to win
+o/o o takes all to win
+
+2 remaining means 15 collected, 15 is odd.  o = e + o
+e/o e takes all to win
+o/e o takes all but 1
+
+1 remaining means 16 collected, 16 is even number e = e + e || e = o + o
+e/e next e always loses
+o/o next o always wins
+------------------------------------------------------------------------
+
+0/0     17 
+	| hmv(4, 0/4)
+      [ 13 ]
+	| cmv(4, 4/4)
+      ( 9 )
+	| hmv(4, 4/8 : even/even, odd # of coins left)
+4/8   [ 5 ] ********************************[ 5A below, computer wins (W2) ]
+	|                                        
+	|                                       
+	| cmv(1, 5/8)                          
+      ( 4 ) ++++++++++++++++ ( 4B below, human wins (W1) ) 
+	|
+	| hmv(1, 5/9)
+	|                                              computer wins (W1)
+5/9   [ 3 ] ********************************** [ 3 ] ************************* [ 3 ]
+	|				         |                               *
+	| cmv(1, 6/9)                            | cmv(2,7/9)         cmv(3, 8/9)*
+	|				         |                               *
+      ( 2 ) ---------------- ( 2 )             ( 1 )                      8/9  ( W )
+	+                      |                 +
+	+ hmv(1, 6/10)         | hmv(2,6/11)     + hmv(1,7/10)
+	+                      |	         +
+6/10  [ 1 ] pos         6/11 [ W ]             [ L ]  7/10
+	|                                
+	| cmv(1, 7/10)
+	| 
+7/10  ( L )
+
+	
+       4/8    computer wins (W2)
+[5A]--[ 5 ] ********************************** [ 5 ] ************************* [ 5 ]
+	|                                        |                               *
+	|                                        |                               *
+	|                            cmv(3, 7/8) |                    cmv(4, 8/8)*
+        |                                      ( 2 )------( 2 )                ( 1 )
+	|                                        |          +                    |
+	|                            hmv(1, 7/9) |          +         hmv(1, 8/9)|
+	|                                        |          +hmv(2, 7/10)        |
+	|                                      [ 1 ]      [ L ]                [ W ]
+	|                                        |
+	|                                        | cmv(1, 6/11)
+	|                                        |
+	| cmv(2, 6/8)                          ( W ) 
+	|     human wins (W2)
+6/8   ( 3 ) ++++++++++++++++++++++++++++++++++ ( 3 ) ------------------------- ( 3 )
+	|				         +                               |
+	| hmv(1, 6/9)                            + hmv(2, 6/10)      hmv(3, 6/11)|
+	|     computer wins (W2)                 +                               |
+      [ 2 ] **************** [ 2 ]             [ 1 ]                      6/11 [ W ]
+	|                      *                 |                            c-wins
+	| cmv(1, 7/9)          * cmv(2, 8/9)     | cmv(1, 7/10)
+	|                      *	         |
+7/9   ( 1 )                  ( W ) 6/11        ( L )  7/10
+	|                      c-wins            c-loss
+	| hmv(1, 7/10)
+	| 
+7/10  [ L ] c-loss
+
+
+	5/8  human wins (W1)
+(4B)--( 4 ) ++++++++++++++++++++++++++++++++++ ( 4 ) +++++++++++++++++++++++++ ( 4 )
+	|                                        |                               +
+	| hmv(2, 5/10)                           | hmv(3, 5/11)     hmv(4, 5/12) +
+	|        cwins(W2)                       |                               +
+5/10  [ 2 ] pos ------------ [ 2 ]             [ 1 ]                      5/12 [ L ]
+	*                      |	         *                            c-loss
+	* cmv(1, 6/10)         | cmv(2, 7/10)    * cmv(1, 6/11)                (L2)
+	*                      |	         *                   
+      ( 1 )                  ( L ) 7/10        ( W ) 6/11
+	|                      c-loss (L1)       c-wins (W1)
+	| hmv(1, 6/11)        
+	|                    
+6/11  [ W ] c-wins (W2)
+
+Two ways to win:
+	1. take remaining coins to victory
+	2. take all-but-one coin, forcing failure on opponent
+
+Ways to lose:
+	1. stupidity; take remaining pieces to loss
+	              leave 1 piece for oppoent's victory
+        2. forced into loss by opponent

@@ -1,0 +1,117 @@
+Initial condition:
+
+Computer has 5, human player has 7.  Remaining coins  = 5.  It's
+computer's turn and needs to evaluate the '5-remaining-coins' position.
+
+*** = computer's best move
++++ = human's best move
+[ ] = computer's turn
+( ) = computer's  move results in this state
+#/# = c/h (computer coins / human coins)
+
+cmv = computer move
+hmv = human move
+
+cmv(1, 6/7) = Computer takes one coin resulting in c/h = 6/7.
+
+Losing  Position [L] = -1
+Winning Position [W] = +1
+
+case 1 [ 5 ] 4/8 even/even, odd # of coins left, computer wins
+case 2 [ 5 ] 3/9 odd/odd, odd # of coins left,   human wins
+case 3 [ 5 ] 5/7 odd/odd, odd # of coins left,   human wins
+
+Goal collect 12 leaving 3/9 odd/odd split
+
+--------------------------------------------
+12 = o/o(3/9, 5/7)  e/e(4/8, 6/6)  e = e + e | e = o + o
+
+NB: 3/9 vs 5/7 plays out the same.  The key is the number of /remaining/ coins.
+    (and the largest number you can take in a swipe) because that limits the number of subsequent turns.
+    The the e/e o/o e/o o/e relationship affects the outcome across those
+    limited turns.
+--------------------------------------------
+
+0/0     17  (c/h) 
+	| hmv(1, 0/1)
+      [ 16 ]
+	| cmv(1, 1/1)
+      ( 15 )
+	| hmv(4, 1/5)
+      [ 11 ]
+	| cmv(4, 5/5)
+      ( 9 )
+	|
+	| hmv(2, 5/7 : odd/odd, odd # of coins left)
+	|
+5/7   [ 5 ] --------------------------------[ 5A below, human wins ]
+	|                                        
+	|                                       
+	| cmv(1, 6/7)
+      ( 4 ) ---------------- ( 4B below, ??human wins (W2) ) 
+	|
+	| hmv(1, 6/8)
+	|           computer wins (W2)              
+6/8   [ 3 ] ---------------------------------- [ 3 ] ------------------------- [ 3 ]
+	|				         |                               |
+	| cmv(1, 7/8)                            | cmv(2, 8/8)       cmv(3, 9/8) |
+	|				         |                               |
+      ( 2 ) ---------------- ( 2 )             ( 1 )                      9/8  ( L )
+	|                      +                 |
+	| hmv(1, 7/9)          + hmv(2, 7/10)    | hmv(1, 8/9)
+	|                      +	         |
+7/9   [ 1 ]             7/10 [ L ]             [ W ]  8/9
+	|                                
+	| cmv(1, 8/9)
+	| 
+8/9   ( W )
+
+	
+       5/7   human wins (but why? :-) Because all moves c takes lead to loss.
+[5A]--[ 5 ] ---------------------------------- [ 5 ] ------------------------- [ 5 ]
+	|                                        |                               |
+	|                                        |                               |
+	|                            cmv(3, 8/7) |                    cmv(4, 9/7)|
+        |                                      ( 2 )------( 2 )                ( 1 )
+	|                                        +          |                    |
+	|                           hmv(1, 8/8)  +          |         hmv(1, 9/8)|
+	|                                        +          |hmv(2, 8/9)         |
+	|                                      [ 1 ]      [ W ]                [ L ]
+	|                                        |          c-wins            c-loss
+	|                                        | cmv(1, 9/8)
+	|                                        |
+	| cmv(2, 7/7)                          ( L ) c-loss
+	|                                                    human wins (W1)
+7/7   ( 3 )+++++++++++++++++++++++++++++++++++ ( 3 ) +++++++++++++++++++++++++ ( 3 )
+	|				         |                               +
+	| hmv(1, 7/8)                            | hmv(2, 7/9)       hmv(3, 7/10)+
+	|				         |                               +
+      [ 2 ] ---------------- [ 2 ]             [ 1 ]                      7/10 [ L ]
+	*                      |                 |                            c-loss
+	* cmv(1, 8/8)          | cmv(2, 9/8)     | cmv(1, 8/9)
+	*                      |	         |
+8/8   ( 1 )                  ( L ) 9/8         ( W )  8/9
+	|                      c-loss            c-wins
+	| hmv(1, 8/9)
+	| 
+8/9   [ W ] c-wins
+
+
+	6/7  human wins (W2)
+(4B)--( 4 ) ++++++++++++++++++++++++++++++++++ ( 4 ) ------------------------- ( 4 )
+	|                                        +                               |
+	| hmv(2, 6/9)                            + hmv(3, 6/10)     hmv(4, 6/11) |
+	|                                        +                               |
+6/9   [ 2 ] **************** [ 2 ]             [ 1 ]                      6/11 [ W ]
+	|                      *	         |                            c-wins
+	| cmv(1, 7/9)          * cmv(2, 8/9)     | cmv(1, 7/10)
+	|                      *	         |                   
+      ( 1 )                  ( W ) 8/9         ( L ) 7/10
+	|                      c-wins            c-loss
+	| hmv(1, 7/10)        
+	|                    
+7/10  [ L ] c-loss
+
+Two ways to win:
+	1. take remaining coins to victory
+	2. take all-but-one coin, forcing failure on opponent
