@@ -1,7 +1,8 @@
 //
 // Domino.h
 //
-// This file exports an interface the models a domino.
+// This file exports an interface that models a domino.
+//
 // It introduces the notion of rank and provides a full set of
 // comparison operators.  This opens up the possibility of modeling
 // a collection of dominos with a set.
