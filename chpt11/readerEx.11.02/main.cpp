@@ -30,7 +30,7 @@
 // --------------------------------------------------------------------------
 //
 // Created by Glenn Streiff on 6/15/16.
-// Copyright © 2016 Glenn Streiff. All rights reserved. (derivative work)
+// Copyright © 2016 Glenn Streiff. All rights reserved.
 //
 
 #include <iostream>
@@ -134,5 +134,5 @@ void generateGrayCodeRec(const int nBits, Vector<string> codes) {
         newCodes += string("1") + codes[i];
     }
     generateGrayCodeRec(nBits - 1, newCodes);
-    
+
 }
