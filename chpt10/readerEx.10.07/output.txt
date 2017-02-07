@@ -1,0 +1,83 @@
+CS106B Programming Abstractions in C++: Ex 10.07
+Hybrid: SelectionSort w/ crossover to Quicksort
+
+Input data are in ascending order.
+Random trials per N-sized dataset: 100
+Hybrid sort crosses over from Selection Sort to QuickSort at N >= 5
+
+           |    Sort Time (msec)      
+-----------+--------------------------
+ Data Size |  Hybrid   | QuickSort w/ 
+     N     |   Sort    | median pivot 
+-----------+-----------+--------------
+       3   |   0.0001  |    0.0009
+       4   |   0.0002  |    0.0002
+       5   |   0.0003  |    0.0003
+      10   |   0.0006  |    0.0006
+      50   |   0.0041  |    0.0040
+     100   |   0.0088  |    0.0080
+     500   |   0.0483  |    0.0473
+    1000   |   0.1035  |    0.1084
+    5000   |   0.6346  |    0.6088
+   10000   |   1.2736  |    1.2863
+
+Input data are in mostly ascending order.
+Random trials per N-sized dataset: 100
+Hybrid sort crosses over from Selection Sort to QuickSort at N >= 5
+
+           |    Sort Time (msec)      
+-----------+--------------------------
+ Data Size |  Hybrid   | QuickSort w/ 
+     N     |   Sort    | median pivot 
+-----------+-----------+--------------
+       3   |   0.0002  |    0.0004
+       4   |   0.0004  |    0.0002
+       5   |   0.0002  |    0.0003
+      10   |   0.0005  |    0.0006
+      50   |   0.0049  |    0.0050
+     100   |   0.0171  |    0.0138
+     500   |   0.1403  |    0.1346
+    1000   |   0.3780  |    0.4162
+    5000   |   2.4184  |    2.4228
+   10000   |   6.0179  |    6.0817
+
+Input data are in random order.
+Random trials per N-sized dataset: 100
+Hybrid sort crosses over from Selection Sort to QuickSort at N >= 5
+
+           |    Sort Time (msec)      
+-----------+--------------------------
+ Data Size |  Hybrid   | QuickSort w/ 
+     N     |   Sort    | median pivot 
+-----------+-----------+--------------
+       3   |   0.0001  |    0.0011
+       4   |   0.0003  |    0.0004
+       5   |   0.0004  |    0.0004
+      10   |   0.0010  |    0.0011
+      50   |   0.0081  |    0.0079
+     100   |   0.0180  |    0.0172
+     500   |   0.1024  |    0.1007
+    1000   |   0.2634  |    0.2327
+    5000   |   1.3962  |    1.4251
+   10000   |   3.0514  |    3.1477
+   50000   |  17.7693  |   18.3913
+
+Input data are in descending order.
+Random trials per N-sized dataset: 100
+Hybrid sort crosses over from Selection Sort to QuickSort at N >= 5
+
+           |    Sort Time (msec)      
+-----------+--------------------------
+ Data Size |  Hybrid   | QuickSort w/ 
+     N     |   Sort    | median pivot 
+-----------+-----------+--------------
+       3   |   0.0010  |    0.0002
+       4   |   0.0002  |    0.0003
+       5   |   0.0003  |    0.0000
+      10   |   0.0008  |    0.0008
+      50   |   0.0069  |    0.0063
+     100   |   0.0180  |    0.0162
+     500   |   0.2633  |    0.2832
+    1000   |   0.9717  |    0.9548
+    5000   |  22.2088  |   22.3029
+   10000   |  89.6110  |   95.9326
