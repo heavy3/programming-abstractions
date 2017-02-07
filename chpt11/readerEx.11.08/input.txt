@@ -1,0 +1,2 @@
+This is an input file of tokens
+and     blank spaces.
