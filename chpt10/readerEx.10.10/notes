@@ -1,0 +1,32 @@
+//
+// notes
+//
+// --------------------------------------------------------------------------
+// Attribution: "Programming Abstractions in C++" by Eric Roberts
+// Chapter 10, Exercise 10
+// Stanford University, Autumn Quarter 2012
+// http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
+//
+// The problem statement below comes form the course reader.
+// --------------------------------------------------------------------------
+//
+
+Use the formal definition of big-O to prove that N^2 is O(2^N).
+
+Big-O says that t(N) is O(f(N)) iff there are positive constants 
+C and value N0 such that
+
+	t(N) <= C*f(N) for all N >= N0
+
+Can we pick C and N0 such that
+
+
+	N^2 <= C*2^N for all N >= N0?
+
+Pick N0 = 2 and C = 1, then we have:
+
+	N^2 <= 2^N for N0 = 2
+
+Therefore, by definition, 
+
+	N^2 is O(2^N)

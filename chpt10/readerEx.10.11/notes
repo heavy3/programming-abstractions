@@ -1,0 +1,227 @@
+//
+// notes
+//
+// --------------------------------------------------------------------------
+// Attribution: "Programming Abstractions in C++" by Eric Roberts
+// Chapter 10, Exercise 11
+// Stanford University, Autumn Quarter 2012
+// http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
+//
+// The problem statement below comes from the course reader.
+// --------------------------------------------------------------------------
+//
+
+Mathematical induction applies when you want to show that a proposition is 
+true for all values of an integer N beginning at some initial starting point. 
+
+This starting point is called the: 
+
+	basis of the induction and is typically 0 or 1. 
+
+The process consists of the following steps:
+
+• Prove the base case. The first step is to establish that the proposition 
+  holds true when N has the basis value. In most cases, this step is a simple 
+  matter of plugging the basis value into a formula and showing that the 
+  desired relationship holds.
+
+• Prove the inductive case. The second step is to demonstrate that, if you 
+  assume the proposition to be true for N, it must also be true for N+1.
+
+11.a) 
+
+   1 + 3 + 5 + 7 + ... + 2N-1 = N^2
+
+   1. This relationship holds for the base case of N=1, since:
+
+ 	  2N - 1 = 2(1) - 1 = 1 which == (1)^2
+
+   2. Assume this also holds for N, then for N+1 does it hold that?
+
+	   1 + 3 + 5 + 7 + ... + 2N-1 + 2(N+1)-1 = (N+1)^2
+
+   All the terms up to 2N-1 can be replaced by N^2 b/c of our assertion.
+
+	   N^2 + 2(N+1) - 1 = (N+1)^2
+   
+   Simplifying we get:
+
+	   N^2 + 2N + 2 - 1
+
+	   N^2 + 2N + 1
+
+   Which factors to:
+
+	   (N + 1)^2  which is the same as the righthand side.
+
+   Therefore, the original relationship holds.
+
+11. b) 1^2 + 2^2 + 3^2 + 4^2 + .. + N^2 = N x (N+1) x (2N +1)
+                                          -------------------
+                                                  6
+
+   1. This relationship holds for the base case of N=1, since:
+
+      (1)^2 = 1 and
+
+      ((1) x (1+1) x (2*1 + 1))/6 = (2 x 3)/6 = 1
+
+   2. Assert that this relationship holds for N.  Does it hold for N+1?
+
+      1^2 + 2^2 + 3^2 + N^2 + (N+1)^2 =? ((N+1)(N+1 +1)(2(N+1) +1))/6 ??
+
+      We can replace all but the last term on the left with the original
+      rhs since we're asserting this to be true.  Then we have:
+
+On the lefthand side we get ...
+-------------------------------
+
+N x (N+1) x (2N +1)   + (N+1)^2
+-------------------
+        6
+
+(N^2 + N) x (2N + 1)  + (N+1)^2
+--------------------
+        6
+     
+2N^3 + 3N^2 + N  + 6(N^2 + 2N + 1)
+---------------    --------------
+       6                 6
+
+2N^3 + 9N^2 + 13N + 6
+---------------------
+        6
+
+Does this equal the righthand side?
+(N+1)(N+1 +1)(2(N+1) +1)/6 ??
+
+(N+1)(N+2)(2N + 3)/6
+(N^2 +3N +2)(2N +3)/6
+(2N^3 + 6N^2 + 4N + 3N^2 + 9N + 6)/6
+
+2N^3 + 9N^2 + 13N + 6
+---------------------
+        6
+
+which indeed is the same as the lhs.
+
+Therefore the relationship holds by induction.
+
+11. c) 1^3 + 2^3 + 3^3 + 4^3 + .. N^3 = (1 + 2 + 3 + 4 + . . . + N)^2
+
+Does this hold for the base case of N = 1?
+
+(1)^3 =? (1)^2  yes
+
+Does the (N+1) case hold if we assert the above is true for N?
+In other words ...
+
+1^3 + 2^3 + 3^3 + .. N^3 + (N+1)^3 =? (1 + 2 + ... + N + (N+1))^2
+
+Simplify for N terms on LHS
+
+(1+2+...+N)^2 + (N+1)^3
+
+(N*(N+1)/2)^2 + (N+1)^3
+
+(N^2+N)^2     (N+1)^3
+---------  +  -------
+    4             1
+
+(N^2 + N)
+(N^2 + N)
+---------
+N^4 + N^3
+    + N^3 + N^2
+---------------
+N^4 + 2N^3 + N^2
+  
+N^4 + 2N^3 + N^2 + (N+1)(N^2 + 2N + 1)
+----------------   ------------------
+    4                      1
+
+N^2 + 2N + 1
+       N + 1
+------------
+N^3 + 2N^2 +  N 
+    +  N^2 + 2N + 1
+-------------------
+N^3 + 3N^2 + 3N + 1
+
+N^4 + 2N^3 + N^2   N^3 + 3N^2 + 3N + 1
+---------------- + -------------------
+       4                      1
+
+N^4 + 2N^3 + N^2   4N^3 + 12N^2 + 12N + 4
+---------------- + -------------------
+       4                      4
+
+N^4 + 6N^3 + 13N^2 + 12N + 4
+----------------------------
+         4
+
+Does this equal the RHS?
+
+(1 + 2 + ... + N + (N+1))^2
+
+((N * (N+1) / 2) + (N+1))^2
+
+((N^2 + N)/2 + (2N + 2)/2)^2
+
+(N^2 + 3N + 2)^2
+----------------
+       4
+
+(N^2 + 3N + 2)
+(N^2 + 3N + 2)
+--------------
+N^4 + 3N^3 +  2N^2
+    + 3N^3 +  9N^2 + 6N
+           +  2N^2 + 6N + 4
+----------------------------
+
+N^4 + 6N^3 + 13N^2 + 12N + 4
+-----------------------------
+          4
+
+But this is just the same as the LHS.
+
+So by induction, the original relationship holds.
+
+11.d)
+
+2^0 + 2^1 + 2^2 + 2^3 + .. + 2^N = 2^(N+1) - 1
+
+Does this hold for the base case of N = 1? yes (see below)
+
+2^0 + 2^1 = 1 + 2 = 3  and 2^(1+1) - 1 = 4 - 1 = 3
+
+If we assert that the above holds for N then does it hold for N+1?
+
+2^0 + 2^1 + 2^2 + 2^3 + .. + 2^N = 2^(N+1) - 1
+
+In other words ...
+
+2^0 + 2^1 + .. + 2^N + 2^(N+1) ?= 2^((N+1)+1) - 1 
+
+
+Replace the first N+1 terms on the left with the original rhs since
+we're asserting that to be true initially.
+
+2^(N+1) - 1 + 2^(N+1) ?= 2^(N+2) - 1
+
+Rearranging terms on left ...
+
+2^(N+1) + 2^(N+1) - 1
+
+2*2^(N+1) - 1
+
+2^(N+1 + 1) - 1
+2^(N+2) - 1
+
+But this is just the same has the rhs
+
+Since the relationship holds for the base case and if we assert it hold
+for the Nth case, we see it then holds for the N+1 case.
+
+Therefore, by induction, the original relationship holds for all N > 0

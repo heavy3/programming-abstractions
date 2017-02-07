@@ -1,0 +1,51 @@
+//
+// notes
+//
+// --------------------------------------------------------------------------
+// Attribution: "Programming Abstractions in C++" by Eric Roberts
+// Chapter 10, Exercise 9
+// Stanford University, Autumn Quarter 2012
+// http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
+//
+// The problem statement below comes from the course reader.
+// --------------------------------------------------------------------------
+//
+
+Suppose you have two functions, ƒ and g, for which 
+
+    ƒ(N) < g(N) for all values of N 
+
+Use the formal definition of big-O to prove that:
+
+    15ƒ(N) + 6g(N) is O(g(N)).
+
+Ans
+---
+Big-O says for some function t(n), there is another function, f(n) and two 
+constants C and N0 such that:
+
+    t(N) <= C*f(N) for N >= N0
+
+In this case:
+
+    t(N) = 15f(N) + 6g(N)
+
+We assert there are constants C and N0 such that:
+
+    15f(N) + 6g(N) <= C * g(N), or N >= N0
+
+Dividing through by 15 we have:
+
+    f(N) + (6/15)*g(N) <= (C/15)*g(N)
+
+Since g(N) > f(N) for all N, it is also true that:
+
+    f(N) + (6/15)g(N) <= g(N) + (6/15)g(N) = (1 + 6/15)g(N) = 21/15g(N)
+
+By picking C >= 21/15, we satisfy:
+
+    15f(N) + 6g(N) <= C*g(N) for all N,
+
+Thus:
+
+    15ƒ(N) + 6g(N) is O(g(N))
