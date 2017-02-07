@@ -18,7 +18,7 @@
 // --------------------------------------------------------------------------
 //
 // Created by Glenn Streiff on 10/6/15.
-// Copyright © 2015 Glenn Streiff. All rights reserved.
+// Copyright © 2015 Glenn Streiff. All rights reserved. (derivative work)
 //
 
 #include <iostream>
