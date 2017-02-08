@@ -14,7 +14,7 @@
 //
 // --------------------------------------------------------------------------
 // Attribution: "Programming Abstractions in C++" by Eric Roberts
-// Chapter 13, Exercise 8 (array-based)
+// Chapter 13, Exercise 8 (list-based)
 // Stanford University, Autumn Quarter 2012
 // http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
 //
