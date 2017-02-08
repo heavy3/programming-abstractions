@@ -7,7 +7,7 @@
 // after the cursor is in the 'after stack'.
 //
 // It has been augmented to support operations (movement and deletion) on 
-// word-boundaries.
+// word-boundaries along with copy and paste.
 //
 // For example, if the text consisted simply of the word "HELLO" and the
 // cursor was between the L's, the stacks would look like this:
