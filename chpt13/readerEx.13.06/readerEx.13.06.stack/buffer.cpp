@@ -2,8 +2,8 @@
 // buffer.cpp
 //
 // This file implements the EditorBuffer class using the abstraction
-// of a pair of character stacks.  Everything thing before the current
-// cursor position in considered to be in the 'before stack'.  Everything
+// of a pair of character stacks.  Everything before the current
+// cursor position is considered to be in the 'before stack'.  Everything
 // after the cursor is in the 'after stack'.
 //
 // It has been augmented to support operations (movement and deletion) on 

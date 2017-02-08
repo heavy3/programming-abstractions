@@ -1,7 +1,7 @@
 //
 // tangostacks.h
 //
-// This file describes the class for  stacks that occupy opposing ends of
+// This file describes the class for stacks that occupy opposing ends of
 // a character array and advance toward (or retreat from) the middle as items
 // are pushed on or popped off the stacks.
 //
