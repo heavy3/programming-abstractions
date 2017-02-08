@@ -10,7 +10,7 @@
 // Stanford University, Autumn Quarter 2012
 // http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
 //
-// This code comes from Figures 13-3 and 13-8.
+// This code comes from Figure 13-9.
 // --------------------------------------------------------------------------
 //
 
