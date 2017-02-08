@@ -41,7 +41,7 @@ void printHelpText();
 // Main program
 
 int main() {
-    cout << BANNER << endl << endl;;
+    cout << BANNER << endl << endl;
     
     EditorBuffer buffer;
     while (true) {

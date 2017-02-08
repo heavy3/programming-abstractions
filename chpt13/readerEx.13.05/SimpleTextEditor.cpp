@@ -57,7 +57,7 @@ int stringToInteger(string str);
 // Main program
 
 int main() {
-    cout << BANNER << endl << endl;;
+    cout << BANNER << endl << endl;
     
     EditorBuffer buffer;
     TokenScanner scanner;

@@ -65,7 +65,7 @@ void typeBuffer(EditorBuffer & buffer);
 // Main program
 
 int main() {
-    cout << BANNER << endl << endl;;
+    cout << BANNER << endl << endl;
     
     EditorBuffer buffer;
     TokenScanner scanner;
