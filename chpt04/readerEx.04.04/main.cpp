@@ -68,9 +68,20 @@ int main(int argc, char * argv[]) {
 	}
 	istream.close();
     
-    cout << "Chars:" << right << setw(4) << charCount << endl;
-    cout << "Words:" << right << setw(4) << wordCount << endl;
-    cout << "Lines:" << right << setw(4) << lineCount << endl;
+    // Exercise wants us to float the second column right
+    // but minimally distant from the first.
+    //
+    // Assume max field width is the number of digits in the
+    // character count.  Strignify that count to compute the
+    // widest display field.
+    
+    ostringstream ostream;
+    ostream << charCount;
+    int width = ostream.str().length();
+    
+    cout << "Chars: " << right << setw(width) << charCount << endl;
+    cout << "Words: " << right << setw(width) << wordCount << endl;
+    cout << "Lines: " << right << setw(width) << lineCount << endl;
 	return 0;
 }
 
