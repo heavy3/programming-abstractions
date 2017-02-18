@@ -26,7 +26,6 @@ using namespace std;
 const string HEADER = "CS106B Programming Abstractions in C++: Ex 4.06\n";
 const string DETAIL = "filelib function: defaultExtension()";
 const string BANNER = HEADER + DETAIL;
-const string PROMPT = "Input file: ";
 const char PERIOD = '.';
 
 // Function prototypes
