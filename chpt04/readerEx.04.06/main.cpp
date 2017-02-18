@@ -32,6 +32,7 @@ const char PERIOD = '.';
 // Function prototypes
 
 string getExtension(string filename);
+string getRoot(string filename);
 string defaultExtension(string filename, string ext);
 int getLastDotPos(string filename);
 
@@ -42,6 +43,7 @@ int main(int argc, char * argv[]) {
     
     assert(defaultExtension("Shakespeare", ".txt") == "Shakespeare.txt");
     assert(defaultExtension("library.h", ".cpp") == "library.h");
+    assert(defaultExtension("library.h", "*.cpp") == "library.cpp");
     
     cout << "Unit tests passed." << endl;
     return 0;
@@ -51,17 +53,28 @@ int main(int argc, char * argv[]) {
 
 // Function: defaultExtension
 // Usage: string filename = defaultExtension("Shakespeare", ".txt");
-// -----------------------------------------------------------------
-// Returns a filename with an extension appended if the first argument
-// appears to be missing an extension.
+//        string filename = defaultExtension("Shakespeare.exe", "*.txt");
+// ----------------------------------------------------------------------
+// Returns a filename with the second string appended as an extension if
+// either of these conditions hold:
+//
+//    * the first string is missing an extension
+//    * the first character of the extension is a wildcard '*'
+//
 
 string defaultExtension(string filename, string ext) {
     string result = filename;
-    string fileExt = getExtension(filename);
-    if (fileExt == "") {
-        return filename + ext;
+    
+    if (ext[0] == '*') {
+        string root = getRoot(filename);
+        result = root + ext.substr(1);
+    } else {
+        string fileExt = getExtension(filename);
+        if (fileExt == "") {
+            result = filename + ext;
+        }
     }
-    return filename;
+    return result;
 }
 
 // Function: getExtension
@@ -73,6 +86,17 @@ string getExtension(string filename) {
     string result;
     int dotPos = getLastDotPos(filename);
     return (dotPos == string::npos) ? result : filename.substr(dotPos);
+}
+
+// Function: getRoot
+// Usage: string base = getRoot("myfile.txt");
+// -------------------------------------------
+// Returns the basename of the file (with any extension truncated).
+
+string getRoot(string filename) {
+    string result = filename;
+    int dotPos = getLastDotPos(filename);
+    return (dotPos == string::npos) ? result : filename.substr(0, dotPos);
 }
 
 // Function: getLastDotPos
