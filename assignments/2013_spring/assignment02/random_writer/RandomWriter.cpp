@@ -14,7 +14,7 @@
 // Building such a model allows us to start with a seed string and then
 // rely upon the model to supply the next most frequently occuring character
 // to append to the output sequence.  The new output is then fed back into
-// somethe model to generate subsequent output until some specified length of
+// the model to generate subsequent output until some specified length of
 // desired content is reached.
 //
 // Also at play is the notion of Markov 'order' which specifies how much
