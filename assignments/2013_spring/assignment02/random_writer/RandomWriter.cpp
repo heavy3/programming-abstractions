@@ -1,6 +1,9 @@
 //
 // RandomWriter.cpp
 //
+// This program builds a Markov model to generate random text based upon
+// a frequency analysis of an input text.
+//
 // For a given language, certain character sequences are more likely than
 // others.  In english, for example, the letter 'q' is often followed by 'u'
 // as in the word, quick.
@@ -11,7 +14,7 @@
 // Building such a model allows us to start with a seed string and then
 // rely upon the model to supply the next most frequently occuring character
 // to append to the output sequence.  The new output is then fed back into
-// the model to generate subsequent output until some specified length of
+// somethe model to generate subsequent output until some specified length of
 // desired content is reached.
 //
 // Also at play is the notion of Markov 'order' which specifies how much
@@ -37,7 +40,7 @@
 // Provider: Stanford University (SCPD)
 // Instructor: Keith Schwarz
 // Date: Spring 2013
-// http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/handouts/050%20Assignment%202.pdf
+// http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/handouts/090%20Assignment%202.pdf
 // --------------------------------------------------------------------------
 //
 // Created by Glenn Streiff on 11/23/2015.

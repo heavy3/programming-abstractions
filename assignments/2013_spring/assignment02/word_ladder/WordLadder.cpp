@@ -23,7 +23,7 @@
 // Provider: Stanford University (SCPD)
 // Instructor: Keith Schwarz
 // Date: Spring 2013
-// http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/handouts/050%20Assignment%202.pdf
+// http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/handouts/090%20Assignment%202.pdf
 // --------------------------------------------------------------------------
 //
 // Created by Glenn Streiff on 11/23/2015.
