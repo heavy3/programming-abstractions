@@ -123,9 +123,11 @@ void Grid<ValueType>::deepCopy(const Grid<ValueType> & g) {
     rows = g.rows;
     cols = g.cols;
     pv = new Vector<ValueType>(n);
-    for (int r = 0; r < g.rows; r++) {
-        for (int c = 0; c < g.cols; c++) {
-            this->set(r, c, g.get(r, c));
-        }
-    }
+    *pv = *(g.pv);  // Leverage deep copy inherent to Vector data type.
+    
+    //for (int r = 0; r < g.rows; r++) {
+    //   for (int c = 0; c < g.cols; c++) {
+    //       this->set(r, c, g.get(r, c));
+    //   }
+    //}
 }
