@@ -4,6 +4,7 @@
 // This file implements an extended-precision integer class called
 // BigInt that relies upon a linked-list representation.
 //
+// TODO: Add support for negative operands.
 // --------------------------------------------------------------------------
 // Attribution: "Programming Abstractions in C++" by Eric Roberts
 // Chapter 14, Exercise 13
