@@ -2,7 +2,8 @@
 // BigInt.h
 //
 // This exports an interface for an extended-precision integer class
-// called BigInt.
+// called BigInt that uses linked lists for a very scalable representation
+// of large, non-negative integers.
 //
 // TODO: Needs more testing.  (Very minimal implementation.)
 //
@@ -29,8 +30,12 @@ public:
     BigInt();
     BigInt(int num);
     BigInt(std::string str);
+    
+    // copy constructor and assignment operator (that perform deep copies)
+    
     BigInt(const BigInt & src);
     BigInt & operator=(const BigInt & src);
+    
     ~BigInt();
     
     std::string toString() const;

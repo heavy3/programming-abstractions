@@ -4,7 +4,9 @@
 // This file implements an extended-precision integer class called
 // BigInt that relies upon a linked-list representation.
 //
-// TODO: Add support for negative operands.
+// TODO: Add support for negative numbers and additional operators beyond
+//       + and *.
+//
 // --------------------------------------------------------------------------
 // Attribution: "Programming Abstractions in C++" by Eric Roberts
 // Chapter 14, Exercise 13
@@ -22,11 +24,27 @@
 
 static const int BIG_INT_RADIX = 10;
 
+// Constructor: BigInt
+// Usage: BigInt bi = new BigInt;
+// ------------------------------
+// Create a null big integer with no digits and no value.
+
 BigInt::BigInt() {
     nDigits = 0;
     pd = NULL;
     sign = POS;
 }
+
+// Constructor: BigInt
+// Usage: BigInt bi = new BigInt(42);
+// ----------------------------------
+// Create a big integer initialized from an integer value.
+//
+// For example, 42 becomes:
+//
+//    bi.pd -> 2 -> 4
+//
+// where the least significant digit (lsd) appears at the head of the list.
 
 BigInt::BigInt(int num) {
     nDigits = integerToString(abs(num)).length();
@@ -34,30 +52,57 @@ BigInt::BigInt(int num) {
     sign = (num < 0) ? NEG : POS;
 }
 
+// Constructor: BigInt
+// Usage: BigInt bi = new BigInt("42");
+// ------------------------------------
+// Create a big integer initialized from a string of decimal digits.
+//
+// For example, "42" becomes:
+//
+//    bi.pd -> 2 -> 4
+//
+// where the least significant digit (lsd) appears at the head of the list.
+
 BigInt::BigInt(std::string numStr) {
-    // TODO: Add defensive string trim and data validation.
+
+    // TODO: Add defensive string trim and data validation.  Are all the
+    //       string digits valid for the radix?
+    
     switch(numStr[0]) {
         case '-':
             sign = NEG;
-            numStr.erase(0, 1);
+            numStr.erase(0, 1); // strip off the negative sign
             break;
             
         case '+':
             sign = POS;
-            numStr.erase(0, 1);
+            numStr.erase(0, 1); // strip off the plus sign
             break;
             
         default:
-            sign = POS;
+            sign = POS;         // assume no sign implies positive value
             break;
     }
-    pd = strToList(numStr);
+    pd = strToList(numStr);     // represent the string as a linked list
     nDigits = numStr.length();
 }
+
+// Copy Constructor: BigInt
+// Usage: BigInt bi = new BigInt(myBigInt);
+// ----------------------------------------
+// Allows you to bootstrap another big integer from an existing big integer.
 
 BigInt::BigInt(const BigInt & biSrc) {
     deepCopy(biSrc);
 }
+
+// Assignment Operator: =
+// Usage: BigInt newNum = someBigInt;
+// ----------------------------------
+// Overrides the assignment operator to work with extended precision integers.
+// Assigns one big integer to another.  The left-hand side is the implied
+// receiver and is implicitly passed in as the 'this' parameter.  The right-
+// hand side is passed as a formal parameter.
 
 BigInt & BigInt::operator=(const BigInt & rhs) {
     if (this != &rhs) {
@@ -67,9 +112,20 @@ BigInt & BigInt::operator=(const BigInt & rhs) {
     return *this;
 }
 
+// Destructor
+// Usage: (typically implied)
+// --------------------------
+// When a big integer goes out of scope, the destructor is invoked to reclaim
+// any associated heap memory that has been dynamically allocated.
+
 BigInt::~BigInt() {
     delDigits(pd);
 }
+
+// Method: toString
+// Usage: cout << bigInt.toString() << endl;
+// -----------------------------------------
+// Returns the a string representation of the underlying big integer.
 
 std::string BigInt::toString() const {
     BigInt::Digit *pDigit = this->pd;
@@ -86,6 +142,14 @@ std::string BigInt::toString() const {
     }
     return result;
 }
+
+// Operator: +
+// Usage: BigInt sum = bigInt1 + bigInt2;
+// --------------------------------------
+// Allows two big integers to be added together and sum returned to the caller.
+// Returns the sum as a new big integer without mutating the input operands.
+//
+// TODO: Add support for negative operands.
 
 BigInt BigInt::operator+(const BigInt & bi2) const {
     BigInt bi1 = *this;
@@ -108,6 +172,9 @@ BigInt BigInt::operator+(const BigInt & bi2) const {
     Digit *psml = smlNum.pd;
     int carry = 0;
     
+    // The operands can have varying lengths.  Sum up those digits
+    // for which both numbers have values.
+    
     for (int i = 0; i < smlNum.nDigits; i++) {
         int sum = pbig->i + psml->i + carry;
         psum->i = sum % BIG_INT_RADIX;
@@ -121,6 +188,10 @@ BigInt BigInt::operator+(const BigInt & bi2) const {
         psum->next = new Digit;
         psum = psum->next;
     }
+    
+    // Continue with the summation (possibly including a carry-in from
+    // the previous operation) for the remaining digits associated only
+    // with the longer of the two operands.
     
     for (int i = smlNum.nDigits; i < bigNum.nDigits; i++) {
         psum->next = new Digit;
@@ -137,6 +208,9 @@ BigInt BigInt::operator+(const BigInt & bi2) const {
         psum->next = new Digit;
     }
     
+    // Account for any final carry operation that might result
+    // in another digit added to the representation.
+    
     if (carry > 0) {
         psum->next = new Digit;
         psum = psum->next;
@@ -147,10 +221,38 @@ BigInt BigInt::operator+(const BigInt & bi2) const {
     return biSum;
 }
 
+// Operator: *
+// Usage: BigInt product = bigInt1 * bigInt2;
+// ------------------------------------------
+// Uses a recursive strategy to return the product of two big integers.
+//
+// TODO: Add support for negative operands.
+
 BigInt BigInt::operator*(const BigInt & bi2) const {
     BigInt bi1(*this);
     return recursiveProd(bi1, bi2);
 }
+
+// Method: recursiveProd
+// Usage: BigInt product = recursiveProd(bigN1, bigN2)
+// -------------------------------------------------------
+// Returns the product of two extended precision integers according to the
+// following recursive strategy:
+//
+// result = N1_least_significant_digit * bigN2
+//        + N1_remaining_most_significant_digits * bigN2 * 10;
+//
+// where the first operand may be computed as the recursive base case through
+// a simple for loop that simulates multiplication through repeated addition
+// of the n2 term.
+//
+// The second operand takes the remaining (most significant digits) which have
+// been reduced by 1 digit and recursively computes the resulting product.
+//
+// Finally, the two terms are added using the extended precision '+' operator
+// to yield a big integer return value.
+//
+// TODO: Add support for negative operands.
 
 BigInt BigInt::recursiveProd(BigInt n1, const BigInt & n2) const {
     BigInt result(0);
@@ -182,6 +284,12 @@ BigInt BigInt::recursiveProd(BigInt n1, const BigInt & n2) const {
     return result;
 }
 
+// Method: deepCopy
+// Usage: this->deepCopy(fromThisBigInt);
+// --------------------------------------
+// Performs a deep copy of one big integer to another.
+// The target integer is implied to be the one pointed to by 'this'.
+
 void BigInt::deepCopy(const BigInt & biSrc) {
     nDigits = biSrc.nDigits;
     sign = biSrc.sign;
@@ -206,6 +314,12 @@ void BigInt::deepCopy(const BigInt & biSrc) {
     }
 }
 
+// Method: delDigits
+// Usage: this->delDigits(pDigits);
+// --------------------------------
+// Frees the memory allocated to the linked list of extended precision digits
+// headed by pDigits.
+
 void BigInt::delDigits(Digit *pDigits) {
     Digit *pNext = pDigits;
     
@@ -215,6 +329,13 @@ void BigInt::delDigits(Digit *pDigits) {
         pNext = pSave;
     }
 }
+
+// Method: intToList
+// Usage: this->intToList(42)
+// --------------------------
+// Primitive which returns a pointer to a list-ized integer.
+//
+// For example, 42 becomes p -> 2 -> 4
 
 BigInt::Digit * BigInt::intToList(int num) const {
     BigInt::Digit * pTail = new BigInt::Digit;
@@ -234,6 +355,13 @@ BigInt::Digit * BigInt::intToList(int num) const {
     return pTail;
 }
 
+// Method: strToList
+// Usage: this->strToList("42")
+// --------------------------
+// Primitive which returns a pointer to a list-ized integer.
+//
+// For example, "42" becomes p -> 2 -> 4
+
 BigInt::Digit * BigInt::strToList(std::string numStr) const {
     BigInt::Digit * pTail = new BigInt::Digit;
     pTail->next = NULL;
@@ -252,6 +380,12 @@ BigInt::Digit * BigInt::strToList(std::string numStr) const {
     pTail->next = strToList(numStr.erase(lastPos, 1));
     return pTail;
 }
+
+// Insertion Operator: <<
+// Usage: cout << myBigInt << endl;
+// --------------------------------
+// Overloads the insertion stream operator (<<) to support the
+// output of extended precision integers.
 
 std::ostream & operator<<(std::ostream & os, BigInt & bi) {
     os << bi.toString();
