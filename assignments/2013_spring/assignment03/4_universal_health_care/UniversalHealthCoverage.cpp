@@ -1,6 +1,10 @@
 //
 // UniversalHealthCare.cpp
 //
+// What combination of proposed hospital sites will provide coverage for
+// a set of cities given the total number of hospitals actually built
+// may be constrained due to budget limitations?
+//
 // Example output:
 //
 //     CS106B Programming Abstractions: Assignment 3.4
@@ -93,9 +97,6 @@ int main(int argc, char * argv[]) {
 // possible to provide coverage to all cities with the given number of
 // hospitals.  If so, one specific way to do this is handed back in the
 // result parameter.
-//
-// What combination of proposed hospital sites will provide coverage for
-// all cities given that the number of
 //
 
 bool canOfferUniversalCoverage(Set<string> & cities,
