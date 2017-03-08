@@ -47,50 +47,76 @@ const string BANNER = HEADER + DETAIL;
 
 // Prototypes
 
-bool allCitiesCovered(Set<string> & citiesSoFar,
-                      Set<string> & citiesToCover,
-                      Vector<Set<string> > & pickedLocs,
-                      Vector<Set<string> > & locs,
-                      int numHospitals);
+bool allCitiesCovered(Set<string> & coveredCities,
+                      Set<string> & uncoveredCities,
+                      Vector<Set<string> > & pickedHospLocs,
+                      Vector<Set<string> > & potentialHospLocs,
+                      int maxNumHospitals);
 
-bool canOfferUniversalCoverage(Set<string> & cities,
-                               Vector<Set<string> > & locations,
-                               int numHospitals,
+bool canOfferUniversalCoverage(const Set<string> & cities,
+                               const Vector<Set<string> > & potentialHospLocs,
+                               int maxNumHospitals,
                                Vector<Set<string> > & result);
 
-void initSets(Set<string> & cities, Vector<Set<string> > & locs);
+void initSets(Set<string> & cities, Vector<Set<string> > & potentialHospLocs);
+
+void testCoverageAlgorithm();
+
+void pickHospLoc(Set<string> & hospCities,
+                 Vector<Set<string> > & potentialHospLocs,
+                 Vector<Set<string> > & pickedHospLocs,
+                 Set<string> & coveredCities,
+                 Set<string> & uncoveredCities,
+                 int choice);
+
+void unpickHospLoc(const Set<string> & hospCities,
+                   Vector<Set<string> > & potentialHospLocs,
+                   Vector<Set<string> > & pickedHospLocs,
+                   Set<string> & coveredCities,
+                   Set<string> & uncoveredCities,
+                   int choice);
 
 // Main program
 
 int main(int argc, char * argv[]) {
     cout << BANNER << endl << endl;
-    
+    testCoverageAlgorithm();
+    return 0;
+}
+
+// Function: testCoverageAlgorithm
+// Usage: testCoverageAlgorithm();
+// -------------------------------
+// Runs some test data through the coverage engine with varying numbers
+// of hospitals.
+//
+// Results are written to the console.
+
+void testCoverageAlgorithm() {
     Set<string> cities;
-    Vector<Set<string> > locations;
-    initSets(cities, locations);
+    Vector<Set<string> > potentialHospLocs;
     
-    for (int i = 2; i < 4; i++) {
+    initSets(cities, potentialHospLocs);
+    for (int i = 3; i < 5; i++) {
         cout << "Can " << i << " hospitals provide health care for all" << endl;
         cout << cities.size() << " cities? " << boolalpha;
         
         Vector<Set<string> > oneSolution;
         bool result = canOfferUniversalCoverage(cities,
-                                                locations,
+                                                potentialHospLocs,
                                                 i,
                                                 oneSolution);
         cout << result << endl << endl;
         if (result) {
             cout << "Here's one viable set of hospital locations:" << endl;
-            cout << oneSolution << endl;
+            cout << oneSolution << endl << endl;;
         }
     }
-
-    return 0;
 }
 
 //
 // Function: canOfferUniversalCoverage
-// Usage: if (canOfferUniversalCoverage(cities, locations, 4, result);
+// Usage: if (canOfferUniversalCoverage(cities, potentialHospLocs, 4, result);
 // -------------------------------------------------------------------
 // Given a set of cities, a list of what cities various hospitals can
 // cover, and a number of hospitals, returns whether or not it's
@@ -99,111 +125,176 @@ int main(int argc, char * argv[]) {
 // result parameter.
 //
 
-bool canOfferUniversalCoverage(Set<string> & cities,
-                               Vector<Set<string> > & locations,
-                               int numHospitals,
+bool canOfferUniversalCoverage(const Set<string> & cities,
+                               const Vector<Set<string> > & potentialHospLocs,
+                               int maxNumHospitals,
                                Vector<Set<string> > & soln) {
     
-    Set<string> citiesToCover = cities;
-    Set<string> citiesSoFar;
+    Set<string> uncoveredCities = cities;
+    Vector<Set<string> > mutableHospLocs = potentialHospLocs;
+    Set<string> coveredCities;
     
-    bool result = allCitiesCovered(citiesSoFar,
-                                   citiesToCover,
+    bool result = allCitiesCovered(coveredCities,
+                                   uncoveredCities,
                                    soln,
-                                   locations,
-                                   numHospitals);
+                                   mutableHospLocs,
+                                   maxNumHospitals);
     return result;
 }
 
 //
 // Function: allCitiesCovered
-// Usage: result = allCitiesCovered(citiesSoFar,
-//                                  citiesToCover,
+// Usage: result = allCitiesCovered(coveredCities,
+//                                  uncoveredCities,
 //                                  soln,
-//                                  locations,
-//                                  numHospitals);
+//                                  potentialHospLocs,
+//                                  maxNumHospitals);
 // -----------------------------------------------
 // Uses recursion with backtracking to discern what combination of
 // hospital locations would provide coverage for a set of cities
 // proximate to those locations.  The number of potential hospitals
-// is constrained by a 'numHosp' parameter to reflects budgetary
+// is constrained by a 'maxNumHospitals' parameter to reflects budgetary
 // limits to the number of hospitals that may be built.
 //
 // If a solution is found, true is returned and the solution set
-// is passed back to the caller in a 'pickedLocs' paramter.
+// is passed back to the caller in a 'pickedHospLocs' paramter.
 //
 
-bool allCitiesCovered(Set<string> & citiesSoFar,
-                      Set<string> & citiesToCover,
-                      Vector<Set<string> > & pickedLocs,
-                      Vector<Set<string> > & locs,
-                      int numHosp) {
+bool allCitiesCovered(Set<string> & coveredCities,
+                      Set<string> & uncoveredCities,
+                      Vector<Set<string> > & pickedHospLocs,
+                      Vector<Set<string> > & potentialHospLocs,
+                      int maxNumHospitals) {
     // base case
     
-    int n = locs.size();                    // num hospitals to pick from
-    int k = numHosp - pickedLocs.size();    // num hospitals still to pick
+    int k = maxNumHospitals - pickedHospLocs.size(); // num hosp still to pick
     
-    // We need to pick k more hospitals but only k hospitals are left to pick
-    // so we should stop now (n == k).
-    //
-    // We've picked the max allowed number of hospitals (k == 0).
+    // Have we picked the max number of hospitals (k == 0) allowed by our
+    // budget? ... or have all the cities of interest already been covered
+    // by a lesser number of hospitals?
     
-    if ((n == k || k == 0)) {
-        return (citiesToCover.size() == 0);
+    if (k == 0 || uncoveredCities.size() == 0) {
+        return (uncoveredCities.size() == 0);
     }
     
-    // recursive case
+    // recursive case (backtracking pattern)
     
-    for (int i = locs.size() - 1; i >= 0; i--) {
+    for (int choice = potentialHospLocs.size() - 1; choice >= 0; choice--) {
     
-        // Start by selecting hospitals to consider from
-        // the -end- of the vector of locations.
+        // Select a hospital location and see if that (recursively)
+        // converges to the goal state of hospital coverage for all cities.
         //
-        // This makes it easier on the for-loop if we later regret the
-        // choice and have to add it back to the list.
-        //
-        // TODO: Wrapper the selection logic in a helper function.
+        // Selecting from the end of the list is designed to avoid confusing
+        // the iterator if we regret the choice and want to unmake it by
+        // adding it back to the collection.  The iterator should benignly
+        // allow this but not revisit that location for the current level of
+        // recursion.  (We may add a location back in situations where we want
+        // deeper levels of recursion to consider it for inclusion in the
+        // solution set.)
         
-        Set<string> hospCities = locs[i];
-        pickedLocs.add(hospCities);
-        locs.remove(i);
-        for (string city: hospCities) {
-            citiesSoFar.add(city);
-            citiesToCover.remove(city);
-        }
+        Set<string> hospCities; // cities covered by this location
+        pickHospLoc(hospCities,
+                    potentialHospLocs,
+                    pickedHospLocs,
+                    coveredCities,
+                    uncoveredCities,
+                    choice);
         
-        if (allCitiesCovered(citiesSoFar,
-                             citiesToCover,
-                             pickedLocs,
-                             locs,
-                             numHosp)) {
+        if (allCitiesCovered(coveredCities,
+                             uncoveredCities,
+                             pickedHospLocs,
+                             potentialHospLocs,
+                             maxNumHospitals)) {
             return true;
         }
         
         // Undo this choice of hospital locations since it didn't
-        // result in a solve.
-        //
-        // TODO: Wrapper the de-selection logic in a helper function.
+        // result in coverage for all cities.
         
-        locs.insert(i, hospCities);
-        pickedLocs.remove(pickedLocs.size() - 1);
-        for (string city: hospCities) {
-            citiesSoFar.remove(city);
-            citiesToCover.add(city);
-        }
+        unpickHospLoc(hospCities,
+                      potentialHospLocs,
+                      pickedHospLocs,
+                      coveredCities,
+                      uncoveredCities,
+                      choice);
     }
     
-    return false;   // Trigger recursive backtracking.
+    return false;   // Trigger recursive backtracking.  The current set of
+                    // hospital location choices did not pan out.  So undo
+                    // one or more of those choices and try again considering
+                    // different locations.
+}
+
+//
+// Function: pickHospLoc
+// Usage: pickHospLoc(hospCities,
+//                    potentialHospLocs,
+//                    pickedHospLocs,
+//                    coveredCities,
+//                    uncoveredCities,
+//                    locIndex);
+// -------------------------------------------------------------------
+// Updates the recursion configuration when tentatively selecting a given
+// hospital location.  (This may get undone by a subsequent call to
+// unpickHospLoc if recursive traversal of the solution space
+// doesn't yield universal coverage for all cities.)
+//
+
+void pickHospLoc(Set<string> & hospCities,
+                 Vector<Set<string> > & potentialHospLocs,
+                 Vector<Set<string> > & pickedHospLocs,
+                 Set<string> & coveredCities,
+                 Set<string> & uncoveredCities,
+                 int choice) {
+    
+    hospCities = potentialHospLocs[choice];
+    
+    pickedHospLocs.add(hospCities);
+    potentialHospLocs.remove(choice);
+    
+    for (string city: hospCities) {
+        coveredCities.add(city);
+        uncoveredCities.remove(city);
+    }
+}
+
+//
+// Function: unpickHospLoc
+// Usage: unpickHospLoc(hospCities,
+//                      potentialHospLocs,
+//                      pickedHospLocs,
+//                      coveredCities,
+//                      uncoveredCities,
+//                      locIndex);
+// -------------------------------------------------------------------
+// Updates the recursion configuration when we're unhappy with the
+// selection of a given hospital location and want to undo that.
+//
+
+void unpickHospLoc(const Set<string> & hospCities,
+                   Vector<Set<string> > & potentialHospLocs,
+                   Vector<Set<string> > & pickedHospLocs,
+                   Set<string> & coveredCities,
+                   Set<string> & uncoveredCities,
+                   int choice) {
+    
+    potentialHospLocs.insert(choice, hospCities);
+    pickedHospLocs.remove(pickedHospLocs.size() - 1);
+    
+    for (string city: hospCities) {
+        uncoveredCities.add(city);
+        coveredCities.remove(city);
+    }
 }
 
 //
 // Function: initSets
-// Usage: initSets(cities, locations);
+// Usage: initSets(cities, potentialHospLocs);
 // -----------------------------------
 // Loads test data from the problem set into two pass-by-reference sets.
 //
 
-void initSets(Set<string> & cities, Vector<Set<string> > & locations) {
+void initSets(Set<string> & cities, Vector<Set<string> > & potentialHospLocs) {
     string strCities = "ABCDEF";
     for (char ch : strCities) {
         cities.add(string(1, ch));
@@ -220,6 +311,6 @@ void initSets(Set<string> & cities, Vector<Set<string> > & locations) {
         for (char ch: vLoc[i]) {
             loc.add(string(1, ch));
         }
-        locations += loc;
+        potentialHospLocs += loc;
     }
 }
