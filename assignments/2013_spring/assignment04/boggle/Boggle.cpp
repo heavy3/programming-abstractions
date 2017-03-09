@@ -5,6 +5,8 @@
 // recursive backtracking algorithm to find English words.  Supports
 // 4x4 and 5x5 boards.
 //
+// TODO: Fix bug with cube shake.  Right now cube position is fixed
+//       across games. :-/
 // TODO: LENGTH should just be part of the instance data of the object,
 //       not passed around as some global constant.
 // --------------------------------------------------------------------------
