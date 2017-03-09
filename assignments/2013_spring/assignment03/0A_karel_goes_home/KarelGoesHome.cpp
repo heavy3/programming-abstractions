@@ -57,7 +57,8 @@
 //    D1 D2 D3 L L  ==  D2 D1 D3 L L
 //    -- --             -- --
 //
-// Employing a set could de-duplicate the collection of paths home.
+// Employing a set could help avoid busy work from duplicate directions
+// already tried at a given point in the path.
 //
 // Thankfully, the constraint of movement to leftward and downward directions 
 // avoids the complication of cyclic paths, so we need not track
@@ -225,30 +226,49 @@ int numPathsHome(Set<string> & pathsHome,
 // or leftward steps.
 //
 // The number of paths collected is returned back to the caller along with
-// the actual set of unique paths, through a pass-by-reference parameter.
+// the actual set of unique paths, through a pass-by-reference set.
 
 int uniquePermutes(Set<string> & pathsHome, string thisPath, string wayHome) {
-    
+
     // base case: no more letters in wayHome to permute
     
     if (wayHome == "") {
-        bool isNewPath = !pathsHome.contains(thisPath);
-        if (isNewPath) {
-            pathsHome.add(thisPath);
-        }
+        pathsHome.add(thisPath);
         return pathsHome.size();
     }
     
-    // recursive case: select a direction letter and permute the remaining.
-    //                 remove the letter from the wayHome path so we make
-    //                 progress against a diminishing reference path.
+    // recursive case:
+    //
+    // Select a direction letter to append to our emerging path home.
+    // Recursively permute against remaining moves to get home.
+    // Remove the letter from wayHome reference solution to bound the recursion.
     
+    Set<char> beenThere;
     for (int i = 0; i < wayHome.length(); i++) {
-        string next = thisPath + wayHome[i];
-        string remaining = wayHome.substr(0, i) + wayHome.substr(i + 1);
-        uniquePermutes(pathsHome, next, remaining);
+        if (beenThere.contains(wayHome[i])) {
+            
+            // We've already tried that direction at this level of recursion.
+            // Skip that direction to avoid work we've already done.
+            //
+            // Ex: Don't count D-D'-L and D'-D-L as different paths.
+            //
+            // This -dramatically- improves efficiency.  When the distance
+            // home is 8 units (DDDDLLLL), the number of invocations of
+            // uniquePermutes drops from 109,601 to 251, 3 orders of magnitude
+            // better!
+            //
+            // It pays to avoid the pain of O(N!) where possible.  The cost
+            // is O(1) memory use for the set; constant order since we have
+            // only 2 possible directions no matter the distance N from home.
+            
+            continue;
+        } else {
+            beenThere.add(wayHome[i]);
+            string next = thisPath + wayHome[i];
+            string remaining = wayHome.substr(0, i) + wayHome.substr(i + 1);
+            uniquePermutes(pathsHome, next, remaining);
+        }
     }
-    
     return pathsHome.size();
 }
 
