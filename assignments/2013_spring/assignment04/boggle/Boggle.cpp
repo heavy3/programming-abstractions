@@ -1,6 +1,12 @@
 //
 // Boggle.cpp
 //
+// Plays a game of Boggle.  Uses 100K word Scrabble lexicon along with
+// recursive backtracking algorithm to find English words.  Supports
+// 4x4 and 5x5 boards.
+//
+// TODO: LENGTH should just be part of the instance data of the object,
+//       not passed around as some global constant.
 // --------------------------------------------------------------------------
 // Assignment: 4, Boggle
 // Course: CS106B "Programming Abstractions in C++"
@@ -264,43 +270,35 @@ private:
     // Usage: fillGridRandomly()
     // -------------------------
     // Populates the boggle grid with randomly selected vowels and consonants.
-    // TODO: This could be more Boggle-like by modeling the letter frequencies
-    //       according to actual Boggle dice.
     //
     
     void fillGridRandomly() {
         
+        const string* cubeArray;
+        
         switch (LENGTH) {
             case 5:
-                for (int r = 0; r < LENGTH; r++) {
-                    for (int c = 0; c < LENGTH; c++) {
-                        int index = r * LENGTH + c;
-                        string cubeStr = BIG_BOGGLE_CUBES[index];
-                        int ri = randomInteger(0, cubeStr.length()-1);
-                        char rch = cubeStr[ri];
-                        grid.set(r, c, tolower(rch));
-                        
-                        // Integrate with provided UI
-                        labelCube(r, c, rch);
-                    }
-                }
+                cubeArray = BIG_BOGGLE_CUBES;
                 break;
             case 4:
             default:
-                for (int r = 0; r < LENGTH; r++) {
-                    for (int c = 0; c < LENGTH; c++) {
-                        int index = r * LENGTH + c;
-                        string cubeStr = STANDARD_CUBES[index];
-                        int ri = randomInteger(0, cubeStr.length()-1);
-                        char rch = cubeStr[ri];
-                        grid.set(r, c, tolower(rch));
-                        
-                        // Integrate with provided UI
-                        labelCube(r, c, rch);
-                    }
-                }
+                cubeArray = STANDARD_CUBES;
                 break;
         }
+        
+        for (int r = 0; r < LENGTH; r++) {
+            for (int c = 0; c < LENGTH; c++) {
+                int index = r * LENGTH + c;
+                string cubeStr = cubeArray[index];
+                int ri = randomInteger(0, cubeStr.length()-1);
+                char rch = cubeStr[ri];
+                grid.set(r, c, tolower(rch));
+                
+                // Integrate with provided UI
+                labelCube(r, c, rch);
+            }
+        }
+        
     }
     
     //
