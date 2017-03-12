@@ -21,9 +21,21 @@
 #include "pqueue-heap.h"
 #include "error.h"
 
+static const int INIT_INDEX = 1;  // First useful index for 1-based indices.
 
-const int INIT_INDEX = 1;  // First useful index for 1-based indices.
-
+// Constructor: HeapPriorityQueue
+// Usage: HeapPriorityQueue queue = new HeapPriorityQueue;
+// -------------------------------------------------------
+// Allocates space for the dynamic array of strings managed by the queue from
+// the heap.  The size of the array is initially fixed based upon the
+// value of the constant INIT_CAPACITY, though enquing will trigger
+// migration to a larger arry if the existing capacity is reached.
+//
+// Generally items in the array are accessed through a 1-based index
+// scheme which simplifies the calculation of algorithmically important
+// child and parent node indices.  An INIT_INDEX constant provides
+// the offset from a dummy node occupying slot 0.
+//
 HeapPriorityQueue::HeapPriorityQueue() {
     rawCapacity = INIT_CAPACITY;
     heapArray = new NodeT[rawCapacity];
@@ -38,17 +50,51 @@ HeapPriorityQueue::HeapPriorityQueue() {
     rawCount = INIT_INDEX;  // Bias past the dummy entry to first usable slot.
 }
 
+// Constructor: ~HeapPriorityQueue
+// Usage: Usually implicity
+// -------------------------------
+// Frees any dynamically allocated memory once the priority queue goes
+// out of scope.
+
 HeapPriorityQueue::~HeapPriorityQueue() {
     delete[] heapArray;
 }
+
+// Method: size
+// Usage: q.size();
+// ----------------
+// Returns the number of strings stored in the array.  It ignores the
+// dummy string in slot 0.
 
 int HeapPriorityQueue::size() const {
     return rawCount - INIT_INDEX;  // Return effective size.
 }
 
+// Method: isEmpty
+// Usage: if (q.isEmpty()) . . .
+// -----------------------------
+// Returns true the queue is functionally empty.
+
 bool HeapPriorityQueue::isEmpty() const {
     return (size() == 0);
 }
+
+// Method: enqueue
+// Usage: q.enqueue("some string");
+// --------------------------------
+// Adds a new value to the queue such that it resides within the binary
+// heap in sorted order relative to some parent node.
+//
+// Initially the value is stored at the end of the array, but then
+// is compared against parent nodes and repositioned upward in the
+// tree until it is just below a parent node with a higher priority
+// string (i.e., lexigraphically smaller).
+//
+// The overall count of items in the array is incremented.
+// Should the array fill up, a new array is allocated to accommodate
+// double the existing capacity.
+//
+// An error is thrown if an attempt is made to dequeue an empty queue.
 
 void HeapPriorityQueue::enqueue(string value) {
     if (rawCount >= rawCapacity) expandCapacity();
@@ -58,10 +104,29 @@ void HeapPriorityQueue::enqueue(string value) {
     heapSortNodeUp(nextNode);
 }
 
+// Method: peek
+// Usage: q.peek();
+// ----------------
+// Returns the value of the highest priority string, but does not remove
+// it from the queue itself.  In this scheme, the highest priority string
+// always occupies the first effective slot in the array using a 1-based
+// index.
+//
+// An error is thrown if an attempt is made to peek at an empty queue.
+
 string HeapPriorityQueue::peek() const {
     if (isEmpty()) error("HeapPriorityQueue: Unable to peek an empty queue");
     return heapArray[INIT_INDEX];
 }
+
+// Method: dequeueMin
+// Usage: string str = q.dequeueMin();
+// -----------------------------------
+// Returns the value of the highest priority string while also removing it from
+// the queue itself.  In this scheme, the highest priority string always
+// occupies the first effective slot in the array using a 1-based index.
+//
+// An error is thrown if an attempt is made to dequeue an empty queue.
 
 string HeapPriorityQueue::dequeueMin() {
     if (isEmpty()) error("HeapPriorityQueue: Unable to dequeue an empty queue");
@@ -86,11 +151,16 @@ string HeapPriorityQueue::dequeueMin() {
     
     heapSortNodeDn(INIT_INDEX);
     
-    // Give the client the tasty value it was wanting from the node
-    // we just dequeued.
+    // Return string from dequeued node.
     
     return result;
 }
+
+// Method: toString
+// Usage: q.toString();
+// --------------------
+// Returns a string representation of the queue in heap-order (as opposed
+// to strict priority order).
 
 string HeapPriorityQueue::toString() const {
     ostringstream os;
@@ -102,12 +172,26 @@ string HeapPriorityQueue::toString() const {
     return os.str();
 }
 
+// Method: clearHeap
+// Usage: clearHeap()
+// ------------------
+// Nulls out the contants of dynamic heap memory.
+
 void HeapPriorityQueue::clearHeap(const int numNodes, const int startNode) {
     int normNodes = min(numNodes, rawCapacity - startNode);
     for (int i = startNode; i < normNodes; i++) {
         heapArray[i] = "";
     }
 }
+
+// Method: expandCapacity
+// Usage: q.expandCapacity();
+// --------------------------
+// Effectively doubles the size of heap memory allocated to the dynamic
+// array of strings should that array ever fill.
+//
+// A space twice the size is allocated and the contents copied
+// therein before the old space is reclaimed.
 
 void HeapPriorityQueue::expandCapacity() {
     if (rawCount > MAX_PARENT_INDEX) {
@@ -128,6 +212,13 @@ void HeapPriorityQueue::expandCapacity() {
     rawCapacity = biggerCapacity;
 }
 
+// Method: heapSortNodeUp
+// Usage: heapSortNodeUp(childIndex);
+// ----------------------------------
+// Causes a child node at some lower position in the binary tree to bubble
+// up to it's sorted position such that it is smaller in value that
+// all it's child nodes.
+
 void HeapPriorityQueue::heapSortNodeUp(int childIndex) {
     int parentIndex = pFc(childIndex);
     
@@ -138,6 +229,13 @@ void HeapPriorityQueue::heapSortNodeUp(int childIndex) {
     swapNodes(childIndex, parentIndex);
     heapSortNodeUp(parentIndex);
 }
+
+// Method: heapSortNodeDn
+// Usage: heapSortNodeDn(parentIndex);
+// ----------------------------------
+// Causes a parent node at some higher position in the binary tree to bubble
+// down to it's sorted position such that it lower in value than all it's
+// child nodes.
 
 void HeapPriorityQueue::heapSortNodeDn(int parentIndex) {
     
@@ -161,17 +259,10 @@ void HeapPriorityQueue::heapSortNodeDn(int parentIndex) {
     heapSortNodeDn(smallestChildIndex);
 }
 
-int HeapPriorityQueue::pFc(const int childIndex) const {
-    if (childIndex <= INIT_INDEX) return INIT_INDEX; // avoid underflow
-    return childIndex >> SHIFT_NUM;  // parentIndex = childIndex/2
-}
-
-int HeapPriorityQueue::cFp(const int parentIndex) const {
-    if (parentIndex > MAX_PARENT_INDEX) {
-        error("HeapPriorityQueue: index overflow caught.");
-    }
-    return parentIndex << SHIFT_NUM; // childIndex = 2*parentIndex
-}
+// Method: swapNodes
+// Usage: swapNodes(n1, n2);
+// -------------------------
+// Swaps the contents of the two nodes indexed by n1 and n2.
 
 void HeapPriorityQueue::swapNodes(const int node1, const int node2) {
     NodeT tmp;
@@ -180,15 +271,46 @@ void HeapPriorityQueue::swapNodes(const int node1, const int node2) {
     heapArray[node2] = tmp;
 }
 
-int HeapPriorityQueue::ordinalRow(const int index) const {
-    int ordRow = floor(log2(max(1, index))) + 1; // parent has 2 children max
-    return ordRow;
+// Method: pFc
+// Usage: int parentIndex = pFc(childIndex);
+// -----------------------------------------
+// Calculates the index of a parent node relative to a child node according
+// to the following forumula:
+//
+//     parentIndex = childIndex / 2;
+
+int HeapPriorityQueue::pFc(const int childIndex) const {
+    if (childIndex <= INIT_INDEX) return INIT_INDEX; // avoid underflow
+    return childIndex >> SHIFT_NUM;  // parentIndex = childIndex/2
 }
+
+// Method: cFp
+// Usage: int childIndex = pFc(parentIndex);
+// -----------------------------------------
+// Calculates the index of a child node relative to a parent node according
+// to the following forumula:
+//
+//     childIndex = parentIndex * 2;
+
+int HeapPriorityQueue::cFp(const int parentIndex) const {
+    if (parentIndex > MAX_PARENT_INDEX) {
+        error("HeapPriorityQueue: index overflow caught.");
+    }
+    return parentIndex << SHIFT_NUM; // childIndex = 2*parentIndex
+}
+
+// Method: smallestChild
+// Usage: int index = smallestChild(someIndex);
+// --------------------------------------------
+// Returns the index of the lexigraphically smallest child string relative
+// to some parent node string.  If neither child is smaller, then the index
+// of the parent is itself returned as an indication to the client that the
+// parent has no children.
 
 int HeapPriorityQueue::smallestChild(const int parentIndex) const {
     
-    int child1Index = cFp(parentIndex);
-    int child2Index = child1Index + 1;
+    int child1Index = cFp(parentIndex); // index = parentIndex * 2
+    int child2Index = child1Index + 1;  // adjacent children of the same parent
     
     if (child1Index > size()) {
         // no children
@@ -219,6 +341,45 @@ int HeapPriorityQueue::smallestChild(const int parentIndex) const {
         }
     }
 }
+
+// Method: ordinalRow
+// Usage: int row = ordinalRow(nodeIndex);
+// ---------------------------------------
+// Returns the 1-based row that a given node occupies in the tree
+// from it's index in the heap array.
+//
+// For example, given the following binary heap:
+//
+//                       [a]             row 1
+//               +--------+-------+
+//              [c]              [g]     row 2
+//         +-----+-----+
+//        [e]         [m]                row 3
+//
+//
+// stored as an array of contiguous string references:
+//
+//                heapArray[1] -> "a"
+//                heapArray[2] -> "c"
+//                heapArray[3] -> "g"
+//                heapArray[4] -> "e"
+//                heapArray[5] -> "m"
+//
+// ordinalRow(4) returns 3 since the reference to the "e" string
+// resides on the 3rd row of the binary tree.
+//
+
+int HeapPriorityQueue::ordinalRow(const int index) const {
+    int ordRow = floor(log2(max(1, index))) + 1; // parent has 2 children max
+    return ordRow;
+}
+
+// Operator: <<
+// Usage: cout << queue << endl;
+// -----------------------------
+// Overloads the insertion operator to support display of priority queueus.
+// Returns a reference to an output stream so the operator can be chained
+// as input to another downstream insertion.
 
 ostream & operator<<(ostream & os, const HeapPriorityQueue& q) {
     return os << q.toString();
