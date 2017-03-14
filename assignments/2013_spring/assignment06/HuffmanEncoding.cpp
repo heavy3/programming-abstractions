@@ -20,6 +20,7 @@
 //
 
 #include "HuffmanEncoding.h"
+#include "pqueue.h"
 
 // Function: getFrequencyTable
 // Usage: Map<ext_char, int> freq = getFrequencyTable(file);
@@ -58,9 +59,76 @@ Map<ext_char, int> getFrequencyTable(istream& file) {
 // be present.
 
 Node* buildEncodingTree(Map<ext_char, int>& frequencies) {
-	// TODO: Implement this!
-	
-	return NULL;
+    Node* pTree = NULL;
+    PriorityQueue<Node*> pq;
+    
+    // Add all the singleton nodes to the priority queue.
+    // Each unique char from the input file will reside in
+    // its own node with a frequency count.
+    
+    for (ext_char key: frequencies) {
+        Node* pNode = new Node;
+        
+        pNode->character = key;
+        pNode->weight = frequencies[key];
+        
+        pNode->zero = NULL;
+        pNode->one  = NULL;
+        
+        // We desire least frequently occuring chars to be at
+        // the head of the priority queue so they will be dequeued
+        // first after this loop and thus land at the bottom of the
+        // encoding tree.
+        
+        pq.enqueue(pNode, pNode->weight);
+    }
+    
+    // Gradually assemble an optimal binary encoding tree (from the
+    // bottom up) that associates a variable-length bit sequence for
+    // each unique char encountered on the input based upon frequency
+    // of occurence.
+    //
+    // The branching structure of the tree itself (and especially
+    // the depth at which a char resides within the tree) determines
+    // the specific binary encoding for that char.
+    
+    while (!pq.isEmpty()) {
+        pTree = new Node;
+        pTree->character = NOT_A_CHAR;
+        
+        Node* pChild0;
+        Node* pChild1;
+        
+        switch (pq.size()) {
+            case 1: {
+                pChild0 = pq.dequeue();
+                
+                pTree->weight = pChild0->weight;
+                pTree->zero = pChild0;
+                pTree->one = NULL;
+            }
+            break;
+                
+            case 2:
+            default: {
+                pChild0 = pq.dequeue();
+                pChild1 = pq.dequeue();
+                
+                pTree->weight = pChild0->weight + pChild1->weight;
+                pTree->zero = pChild0;
+                pTree->one = pChild1;
+            }
+            break;
+        }
+        if (pq.isEmpty()) break;
+        
+        // Add this sub-tree back into the queue to be joined to others
+        // until we're down to one big tree and no subtrees or individual
+        // child nodes to attach.
+        
+        pq.enqueue(pTree, pTree->weight);
+    }
+    return pTree;
 }
 
 // Function: freeTree
@@ -70,7 +138,13 @@ Node* buildEncodingTree(Map<ext_char, int>& frequencies) {
 // tree.
 
 void freeTree(Node* root) {
-	// TODO: Implement this!
+    if (root == NULL) {
+        return;
+    }
+    freeTree(root->one);
+    freeTree(root->zero);
+    delete root;
+    
 }
 
 // Function: encodeFile
