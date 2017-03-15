@@ -61,6 +61,26 @@ Node* buildEncodingTree(Map<ext_char, int>& frequencies);
 
 void freeTree(Node* root);
 
+// Function: buildEncodingMap
+// Usage: buildEncodingMap(map, encodingTree);
+// -------------------------------------------
+// Builds a map between each character in the encoding tree to its
+// binary encoding sequence (represented in string form).
+//
+// This is a wrapper script that setups up a recursive primitive
+// that does the tree descent.
+
+void buildEncodingMap(Map<ext_char, string>& map, const Node* tree);
+
+// Function: recurseTree
+// Usage: recurseTree(map, "", encodingTree);
+// ------------------------------------------
+// Adds the binary encoding string pattern for a given character to a map
+// once the terminating node for that character is encountered in the
+// encoding tree.
+
+void recurseTree(Map<ext_char, string>& map, string soFar, const Node* tree);
+
 // Function: encodeFile
 // Usage: encodeFile(source, encodingTree, output);
 // --------------------------------------------------------

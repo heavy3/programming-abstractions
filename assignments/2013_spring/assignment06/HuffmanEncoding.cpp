@@ -36,10 +36,10 @@
 // the PSEUDO_EOF character.
 
 Map<ext_char, int> getFrequencyTable(istream& file) {
-    char ch;
+    ext_char ch;
     Map<ext_char, int> map;
     
-    while (file.get(ch)) {
+    while ((ch = file.get())!= EOF) {
         map[ch]++;
     }
     map[PSEUDO_EOF] = 1;
@@ -147,6 +147,37 @@ void freeTree(Node* root) {
     
 }
 
+// Function: buildEncodingMap
+// Usage: buildEncodingMap(map, encodingTree);
+// -------------------------------------------
+// Builds a map between each character in the encoding tree to its
+// binary encoding sequence (represented in string form).
+//
+// This is a wrapper script that setups up a recursive primitive
+// that does the tree descent.
+
+void buildEncodingMap(Map<ext_char, string>& map, const Node* tree) {
+    recurseTree(map, "", tree);
+}
+
+// Function: recurseTree
+// Usage: recurseTree(map, "", encodingTree);
+// ------------------------------------------
+// Adds the binary encoding string pattern for a given character to a map
+// once the terminating node for that character is encountered in the
+// encoding tree.
+
+void recurseTree(Map<ext_char, string>& map, string soFar, const Node* tree) {
+    if (tree == NULL) return;
+    
+    if (tree->character != NOT_A_CHAR) {
+        map[tree->character] = soFar;
+    }
+    
+    if (tree->zero != NULL) recurseTree(map, soFar + "0", tree->zero);
+    if (tree->one  != NULL) recurseTree(map, soFar + "1", tree->one);
+}
+
 // Function: encodeFile
 // Usage: encodeFile(source, encodingTree, output);
 // --------------------------------------------------------
@@ -166,7 +197,38 @@ void freeTree(Node* root) {
 //     without seeking the file anywhere.
 
 void encodeFile(istream& infile, Node* encodingTree, obstream& outfile) {
-	// TODO: Implement this!
+    bool emptyFile = true;
+    
+    // Simplify look ups of a given character's encoding sequence.
+    Map<ext_char, string> map;
+    buildEncodingMap(map, encodingTree);
+    
+    ext_char ch;
+    ext_char prevCh;
+    while ((ch = infile.get()) != EOF) {
+        emptyFile = false;
+        if (map.containsKey(ch)) {
+            string binStr = map[ch];
+            for (int i = 0; i < binStr.length(); i++) {
+                outfile.writeBit(binStr[i] - '0');
+            }
+        } else {
+            error("encodeFile: No encoding for: " + string(1, ch));
+        }
+        prevCh = ch;
+    }
+    
+    // Use a psuedo end-of-file character to mark the logical end
+    // of the file.  Some filesystems may add padding bytes to the
+    // file (which would otherwise confuse the decode logic).
+    
+    if (!emptyFile && ext_char(prevCh) != PSEUDO_EOF) {
+        string eofStr = map[PSEUDO_EOF];
+        for (int i = 0; i < eofStr.length(); i++) {
+            outfile.writeBit(eofStr[i] - '0');
+        }
+    }
+
 }
 
 // Function: decodeFile
@@ -182,7 +244,33 @@ void encodeFile(istream& infile, Node* encodingTree, obstream& outfile) {
 //   - The output file is open and ready for writing.
 
 void decodeFile(ibstream& infile, Node* encodingTree, ostream& file) {
-	// TODO: Implement this!
+    Node *pNode = encodingTree;
+    
+    if (encodingTree == NULL) return;
+    
+    int bit;
+    ext_char ch;
+    
+    while ((bit = infile.readBit()) != EOF) {
+        if (pNode == NULL) error("decodeFile: Unexpected null node.");
+        
+        // The bit tells us which branch of the parent node
+        // to descend (i.e., the 'zero' or 'one' branch).
+        
+        Node *pChild = (bit == 0) ? pNode->zero : pNode->one;
+        
+        // Can't descend if the branch is null.
+        if (pChild == NULL) error("decodeFile: Unexpected null child.");
+        
+        ch = pChild->character;
+        if (ch == NOT_A_CHAR) {
+            pNode = pChild;        // Not a leaf node so keep descending.
+        } else {
+            if (ch == PSEUDO_EOF) break;  // Don't emit our pseudo eof.
+            file.put(char(ch));
+            pNode = encodingTree;  // Reset for next decoding sequence.
+        }
+    }
 }
 
 // Function: writeFileHeader
