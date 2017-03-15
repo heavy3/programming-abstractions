@@ -15,7 +15,7 @@
 // assignment package.
 // --------------------------------------------------------------------------
 //
-// Extended by Glenn Streiff on 3/13/2017.
+// Implemented by Glenn Streiff on 3/15/2017.
 // Copyright © 2017 Glenn Streiff. All rights reserved. (derivative work)
 //
 
@@ -123,7 +123,7 @@ Node* buildEncodingTree(Map<ext_char, int>& frequencies) {
         if (pq.isEmpty()) break;
         
         // Add this sub-tree back into the queue to be joined to others
-        // until we're down to one big tree and no subtrees or individual
+        // until we're down to one big tree and no sub-trees or individual
         // child nodes to attach.
         
         pq.enqueue(pTree, pTree->weight);
@@ -382,7 +382,37 @@ Map<ext_char, int> readFileHeader(ibstream& infile) {
 // primarily be glue code.
 
 void compress(ibstream& infile, obstream& outfile) {
-	// TODO: Implement this!
+    
+    if (!infile.is_open() || !outfile.is_open()) {
+        error("compress: input and output streams must both be open");
+    }
+    
+    // Perform frequency analysis on individual characters
+    // from input file.  Capture that to a map.
+    
+    Map<ext_char, int> freqMap = getFrequencyTable(infile);
+    
+    // Record that map at the top of the output file
+    // (for use later when decompressing the file).
+    
+    writeFileHeader(outfile, freqMap);
+    
+    // Convert the map to a Huffman binary encoding tree
+    // that positionally associates a single, variable-length,
+    // prefix-unique, bit sequence with each input character.
+    
+    Node* encodingTree = buildEncodingTree(freqMap);
+    
+    // Re-parse the input file, this time encoding the
+    // characters to their compressed form and written to
+    // the output file.
+    
+    infile.rewind();
+    encodeFile(infile, encodingTree, outfile);
+    
+    // Release dynamically allocated memory needed for encoding tree.
+    
+    freeTree(encodingTree);
 }
 
 // Function: decompress
@@ -398,6 +428,24 @@ void compress(ibstream& infile, obstream& outfile) {
 // primarily be glue code.
 
 void decompress(ibstream& infile, ostream& outfile) {
-	// TODO: Implement this!
+    
+    if (!infile.is_open()) {
+        error("decompress: input stream must be open");
+    }
+    
+    // Recover frequency map from the head of the output file.
+    
+    Map<ext_char, int> freqMap = readFileHeader(infile);
+    
+    // Convert the map to a Huffman binary encoding tree
+    // that positionally associates a single, variable-length,
+    // prefix-unique, bit sequence with each input character.
+    
+    Node* encodingTree = buildEncodingTree(freqMap);
+    
+    decodeFile(infile, encodingTree, outfile);
+    
+    // Release dynamically allocated memory needed for encoding tree.
+    
+    freeTree(encodingTree);
 }
-
