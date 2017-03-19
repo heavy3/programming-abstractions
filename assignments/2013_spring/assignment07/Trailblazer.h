@@ -36,25 +36,28 @@ struct LocStateT {
 // Function prototypes
 
 // Function: shortestPath
-// Usage: shortestPath(start, end, world, costFn);
-// -----------------------------------------------
-// Uses Dijkstra's algorithm to find the least-cost path between two locations.
-// The cost of moving from one location to the next is specified by the given
-// cost function.
+// Usage: shortestPath(start, end, world, costFn, hFn);
+// ----------------------------------------------------
+// Uses Dijkstra's algorithm (or the A* variant) to find the least-cost path
+// between two locations.
+//
+// The cost of moving between adjacent locations is provided by costFn while
+// a heuristic function may be passed in as a 5th parameter
+// to effect the A* variant which focusses the search for optimal path
+// to a more channel-like or elliptical region (depending upon hFn) versus
+// the more radial pattern that would otherwise sweep out from the start
+// location as Dijkstra's algorithm proceeds.  If hFn always returns 0, then
+// shortestPath reduces to employing Dijkstra's algorithm without optimization.
 //
 // The resulting path is returned as a Vector<Loc> containing the sequence
-// of locations to visit from start to end.  If no path is found, this function
+// of locations to visit from start to end. If no path is found, this function
 // reports and error.
-
-// In Part Two of this assignment, you will need to add an additional parameter
-// to this function that represents the heuristic to use while performing the
-// search.  Make sure to update both this function prototype and the
-// implementation inside of Trailblazer.cpp.
 
 Vector<Loc> shortestPath(Loc start,
                          Loc end,
                          Grid<double>& world,
-                         double costFn(Loc from, Loc to, Grid<double>& world));
+                         double costFn(Loc from, Loc to, Grid<double>& world),
+                         double hFn(Loc from, Loc to, Grid<double>& world));
 Vector<Loc> getAdjLocs(const Loc& loc,
                        const Grid<double>& world,
                        Grid<LocStateT>& state);

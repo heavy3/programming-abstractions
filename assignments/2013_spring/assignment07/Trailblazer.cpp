@@ -26,20 +26,47 @@
 using namespace std;
 
 // Function: shortestPath
-// Usage: shortestPath(start, end, world, costFn);
-// -----------------------------------------------
-// Uses Dijkstra's algorithm to find the least-cost path between two locations.
-// The cost of moving from one location to the next is specified by the given
-// cost function.
+// Usage: shortestPath(start, end, world, costFn, hFn);
+// ----------------------------------------------------
+// If a path from start to end exists, this function returns a sequence
+// vector of locations that describe that path.  Otherwise an error is thrown.
 //
-// The resulting path is returned as a Vector<Loc> containing the sequence
-// of locations to visit from start to end.  If no path is found, this function
-// reports and error.
+// Approach
+//
+// Employs Dijkstra's algorithm (as well as the heuristic-optimized variant
+// known as A* Search) to find the least-cost path between two locations.
+//
+// The big idea is minimizing the cost between two locations by considering a
+// (possibly cheaper) route through an intermediary location proximate to both,
+// a kind of transitive adjacency.  For example, it may be cheaper to fly from
+// Austin to Seattle by way of Denver.
+//
+// Algorithmically, we start with an initial position and only consider the
+// cost of travelling to directly adjacent locations, easily calculated with the
+// costFn function.  This puts us in a position to evaluate -transitive-
+// adjacencies on subsequent iterations.  A priority queue is used to carefully
+// manage the order in which we evaluate proximate locations for least cost
+// from the path's origin.
+//
+// This ensures we've minimized those costs before evaluating paths that radiate
+// out from the intermediary positions in an expanding region that will grow
+// to encompass the destination.  Once the search region and destination
+// intersect, we backtrack from end to start, picking up 'cookie crumbs'
+// we've left prior that describe how we arrived at a given location (described
+// as the parent location for a given position).
+//
+// Dijkstra versus A* Search
+//
+// The cost of moving from one location to the next is specified by the given
+// cost function, costFn.  The optional heuristic function, hFn, can improve
+// performance by giving preference in the priority queue to intermediate
+// locations which are more proximate to the end location.
 
 Vector<Loc> shortestPath(Loc start,
                          Loc end,
                          Grid<double>& world,
-                         double costFn(Loc from, Loc to, Grid<double>& world)) {
+                         double costFn(Loc from, Loc to, Grid<double>& world),
+                         double hFn(Loc from, Loc to, Grid<double>& world)) {
     
     Vector<Loc> path;           // Sequetial path from start to end.
     
@@ -53,14 +80,16 @@ Vector<Loc> shortestPath(Loc start,
     // to avoid O(n²) memory usage :-| but set was fighting me :-/).
     
     Grid<LocStateT> state(world.nRows, world.nCols);
+    double hCost = hFn(start, end, world);
     initLocState(state, start);
     
     TrailblazerPQueue<Loc> pq;  // Priority queue; cost from start is priority.
-    pq.enqueue(start, 0);       // Cost of going from start to start is 0.
-    Loc n = start;              // Least cost loc (so far) to consider on path.
+    pq.enqueue(start, hCost);   // Seed priority from heuristic function which
+                                // favors more direct path from start to end.
+    Loc n = start;              // Least cost loc so far from start.
     
     while (!pq.isEmpty()) {
-        n = pq.dequeueMin();    // Dequeue least cost loc (so far) from start.
+        n = pq.dequeueMin();    // Dequeue least cost loc so far from start.
         
         setLocEnqueued(state, n, false);
         setLocBlackListed(state, n, true);
@@ -77,7 +106,9 @@ Vector<Loc> shortestPath(Loc start,
             Loc adj = adjLocs[i];
             double nCost = getLocCostSoFar(state, n);   // node cost
             double eCost = costFn(n, adj, world);       // n-to-adj edge cost
+            double hCost = hFn(adj, end, world);        // heuristic cost
             double costToAdjViaN = nCost + eCost;
+            double costToAdjViaNwithHeuristic = costToAdjViaN + hCost;
             
             // Is this node already in the priority queue?
             // If so, it will have cost info we may want to update.
@@ -92,7 +123,7 @@ Vector<Loc> shortestPath(Loc start,
                     // Make it more likely we'll dequeue this node on a future
                     // iteration.
                     
-                    pq.decreaseKey(adj, costToAdjViaN);
+                    pq.decreaseKey(adj, costToAdjViaNwithHeuristic);
                     setLocCostSoFar(state, adj, costToAdjViaN);
                     setLocParent(state, adj, n);    // Drop cookie crumb.
                 }
@@ -103,7 +134,7 @@ Vector<Loc> shortestPath(Loc start,
                 // Its associated cost from the start is just n's plus the edge
                 // cost to get from n to the adjacent location.
                 
-                pq.enqueue(adj, costToAdjViaN);
+                pq.enqueue(adj, costToAdjViaNwithHeuristic);
                 setLocEnqueued(state, adj, true);
                 setLocCostSoFar(state, adj, costToAdjViaN);
                 setLocParent(state, adj, n);
