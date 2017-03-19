@@ -146,7 +146,7 @@ Vector<Loc> shortestPath(Loc start,
     if (n == end) {
         
         // Backtrack from end to start positions, following the parent
-        // locations that demarque the path.
+        // locations that delineate the path.
         
         for (Loc n = end; n != start; n = state[n.row][n.col].parent) {
             path.insert(0, n);
