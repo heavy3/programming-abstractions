@@ -33,6 +33,11 @@ struct LocStateT {
     Loc parent;
 };
 
+typedef Set<Loc> Cluster;
+
+const int MIN_EDGE_WT = 1;
+const int MAX_EDGE_WT = 8;
+
 // Function prototypes
 
 // Function: shortestPath
@@ -70,14 +75,19 @@ void setLocCostSoFar(Grid<LocStateT>& state, const Loc& l, double c);
 void setLocParent(Grid<LocStateT>& state, const Loc& l, const Loc& parent);
 
 // Function: createMaze
-//
-// Creates a maze of the specified dimensions using a randomized version of
-// Kruskal's algorithm, then returns a set of all of the edges in the maze.
-//
-// As specified in the assignment handout, the edges you should return here
-// represent the connections between locations in the graph that are passable.
-// Our provided starter code will then use these edges to build up a Grid
-// representation of the maze.
+// Usage: Set<Edge> maze = createMaze(numRows, numCols);
+// -----------------------------------------------------
+// Uses Kruskal's algorithm to generate a randomized rectangular maze
+// of specified size.  The maze is provided in the form of a collection of
+// graph edges that constitute a minimal spanning set and correspond
+// to the passage ways through the maze.
 
 Set<Edge> createMaze(int numRows, int numCols);
+
+Loc getClusterKey(const Map<Loc, Set<Loc> >& clusters, Loc loc);
+void mergeLocClusters(Map<Loc, Set<Loc> >& clusters, Loc key1, Loc key2);
+void makeEdges(Set<Edge>& edges, int numRows, int numCols);
+void makeClusters(Map<Loc, Set<Loc> >& clusters, int numRows, int numCols);
+ostream& operator<<(ostream& os, Loc l);
+
 #endif
