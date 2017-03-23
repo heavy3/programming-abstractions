@@ -6,7 +6,7 @@
 //
 // --------------------------------------------------------------------------
 // Attribution: "Programming Abstractions in C++" by Eric Roberts
-// Chapter 19, Exercise 1
+// Chapter 19, Exercise 2
 // Stanford University, Autumn Quarter 2012
 // http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
 // --------------------------------------------------------------------------
