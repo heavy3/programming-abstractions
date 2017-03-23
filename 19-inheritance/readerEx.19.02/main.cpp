@@ -1,7 +1,7 @@
 //
 // main.cpp
 //
-// This program exercises the Shape, newly extended with a Square
+// This program exercises the Shape class, newly extended with a Square
 // subclass.
 //
 // --------------------------------------------------------------------------
