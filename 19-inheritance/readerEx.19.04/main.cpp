@@ -1,7 +1,7 @@
 //
 // main.cpp
 //
-// This program exercise the ShapeList class.
+// This program exercises the ShapeList class.
 //
 // --------------------------------------------------------------------------
 // Attribution: "Programming Abstractions in C++" by Eric Roberts
@@ -9,7 +9,7 @@
 // Stanford University, Autumn Quarter 2012
 // http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
 //
-// This content comes from Figure 19-8 in the text.
+// This is largely derived from Figure 19-8 in the text.
 // --------------------------------------------------------------------------
 //
 
