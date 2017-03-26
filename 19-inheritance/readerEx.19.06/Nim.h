@@ -25,16 +25,18 @@
 // Type: NimMove
 // -------------
 // Moves in Nim are the number of coins to remove during a turn.
-// This can me modified for game other than Nim.
+// This can me modified for games other than Nim.
 //
 
 struct NimMove {
     int nTaken;
 };
 
-class Nim: public TwoPlayerGame<NimMove> {
+// Class: Nim
+// ----------
+// Implements the coin-game, Nim
 
-//class Nim {
+class Nim: public TwoPlayerGame<NimMove> {
     
 public:
     
@@ -44,17 +46,6 @@ public:
     
 private:
     
-    void initGame();
-    void displayGame() const;
-    void displayMove(NimMove move) const;
-    void makeMove(NimMove move);
-    int evaluateStaticPosition() const;
-    void retractMove(NimMove move);
-    void generateMoveList(Vector<NimMove> & moveList) const;
-    bool gameIsOver() const;
-    NimMove getUserMove();
-    void announceResult();
-    
     // Constants
     
     static const int N_COINS = 13;         // Initial number of coins
@@ -62,7 +53,18 @@ private:
     
     // Instance variables
     
-    int nCoins;                             // Number of coins left on the table
+    int nCoins;                            // Number of coins left on the table
+    
+    void initGame();
+    void displayGame() const;
+    void displayMove(NimMove move) const;
+    void makeMove(NimMove move);
+    int evaluateStaticPosition();
+    void retractMove(NimMove move);
+    void generateMoveList(Vector<NimMove> & moveList) const;
+    bool gameIsOver();
+    NimMove getUserMove();
+    void announceResult() const;
 };
 
 #endif // Nim_h

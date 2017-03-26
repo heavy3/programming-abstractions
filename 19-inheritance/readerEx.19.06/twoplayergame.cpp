@@ -19,11 +19,18 @@
 
 #include "twoplayergame.h"
 
+// Constructors: TwoPlayerGame
+// Usage: class MyGame: TwoPlayerGame<MyMove> { ... };
+// ---------------------------------------------------
+// Abstract class that implements a two-player game engine
+// with recursive 'minimax' algorithm that seeks to minimize an opponent's
+// maximum opportunity.  Allows for recursive depth to be limited for
+// large solution spaces that would become intractable otherwise.
+
 template <typename MoveType>
 TwoPlayerGame<MoveType>::TwoPlayerGame() {
     recursiveDepth = DFLT_MAX_DEPTH;
 }
-
 template <typename MoveType>
 TwoPlayerGame<MoveType>::TwoPlayerGame(int recursiveDepth) {
     this->recursiveDepth = recursiveDepth;
@@ -54,17 +61,39 @@ void TwoPlayerGame<MoveType>::play() {
     initGame();
     while (!gameIsOver()) {
         displayGame();
+        MoveType move;
         if (getCurrentPlayer() == HUMAN) {
-            makeMove(getUserMove());
+            move = getUserMove();
         } else {
-            MoveType move = getComputerMove();
-            displayMove(move);
-            makeMove(move);
+            move = getComputerMove();
         }
+        makeMove(move);
+        displayMove(move);
         switchTurn();
     }
     announceResult();
 }
+
+//
+// Method: getRecursiveDepth
+// Usage: int depth = game.getRecursiveDepth();
+// ---------------------------------------------
+// Returns the player currently selected to take a turn.
+//
+
+template <typename MoveType>
+int TwoPlayerGame<MoveType>::getRecursiveDepth() const {
+    return this->recursiveDepth;
+}
+
+//
+// Method: setRecursiveDepth
+// Usage: game.setRecursiveDepth(3);
+// ---------------------------------
+// Sets the recursive depth limit (beyond which static position evaluation
+// is used to assess an optimal move).  This limits backtracking in more
+// complicated games (exploring the solution space becomes intractable).
+//
 
 template <typename MoveType>
 void TwoPlayerGame<MoveType>::setRecursiveDepth(int recursiveDepth) {
@@ -73,8 +102,8 @@ void TwoPlayerGame<MoveType>::setRecursiveDepth(int recursiveDepth) {
 
 //
 // Method: getCurrentPlayer
-// Usage: if (getCurrentPlayer() == HUMAN) . . .
-// ---------------------------------------------
+// Usage: if (game.getCurrentPlayer() == HUMAN) . . .
+// --------------------------------------------------
 // Returns the player currently selected to take a turn.
 //
 
@@ -85,8 +114,8 @@ Player TwoPlayerGame<MoveType>::getCurrentPlayer() const {
 
 //
 // Method: switchTurn
-// Usage: switchTurn();
-// --------------------
+// Usage: game.switchTurn();
+// -------------------------
 // Selects the next player to take a turn.
 //
 
@@ -97,8 +126,8 @@ void TwoPlayerGame<MoveType>::switchTurn() {
     
 //
 // Method: getComputerMove
-// Usage: int nTaken = getComputerMove();
-// --------------------------------------
+// Usage: int nTaken = game.getComputerMove();
+// -------------------------------------------
 // Figures out what move is best for the computer player and returns that.
 //
 
@@ -109,9 +138,9 @@ MoveType TwoPlayerGame<MoveType>::getComputerMove() {
     
 //
 // Method: findBestMove
-// Usage: MoveType move = findBestMove();
-//        MoveType move = findBestMove(depth, rating);
-// -----------------------------------------------
+// Usage: MoveType move = game.findBestMove();
+//        MoveType move = game.findBestMove(depth, rating);
+// --------------------------------------------------------
 // Finds the best move for the current player and returns that move as the
 // value of the function.  The second form is used for later recursive calls
 // and includes two parameters.  The depth parameter is used to limit the
@@ -148,8 +177,8 @@ MoveType TwoPlayerGame<MoveType>::findBestMove(int depth, int & rating) {
     
 //
 // Method: evaluatePosition
-// Usage: int rating = evaluatePosition(depth);
-// --------------------------------------------
+// Usage: int rating = game.evaluatePosition(depth);
+// -------------------------------------------------
 // Evaluates a position by finding the rating of the best move starting at
 // that point.  The depth parameter is used to limit the search depth.
 //

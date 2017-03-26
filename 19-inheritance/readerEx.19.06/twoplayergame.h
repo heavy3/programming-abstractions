@@ -36,6 +36,7 @@ using namespace std;
 //
 
 enum Player { HUMAN, COMPUTER };
+enum Outcome { HUMAN_WINS, COMPUTER_WINS, TIE_GAME };
 
 template <typename MoveType>
 class TwoPlayerGame {
@@ -60,14 +61,17 @@ public:
     
     virtual void printInstructions() = 0;
     
-    // Method: setRecursiveDepth
-    // Usage: game.setRecursiveDepth(3);
+    // Method: [get|set]RecursiveDepth
+    // Usage: int depth = game.getRecursiveDepth();
+    //        game.setRecursiveDepth(3);
     // ---------------------------------
-    // Limits the recursive evaluation of the game board by the minimax
-    // algorithm at the heart of the game engine.  This is a practical
-    // requirement given that some games may quickly devolve into intractability
-    // otherwise.
+    // Getter/setter for recursive depth limiting.
+    //
+    // Limits the recursive evaluation of the minimax algorithm at the heart
+    // of the game engine.  This is a practical requirement given that some
+    // games may quickly devolve into intractability otherwise.
     
+    int getRecursiveDepth() const;
     void setRecursiveDepth(int recursiveDepth);
     
 protected:
@@ -75,14 +79,29 @@ protected:
     // Protected instance data
     
     static const Player STARTING_PLAYER = HUMAN;
-    static const int DFLT_MAX_DEPTH = 100;// Max recursive move-evaluation depth
+    static const int DFLT_MAX_DEPTH = 100;    // Max recursive move-evaluation
+                                              // depth.
     static const int WINNING_POSITION = 1000; // Upper limit on position rating
+    static const int NEUTRAL_POSITION = 0;    // For tie games.
     static const int LOSING_POSITION = -WINNING_POSITION; // Lower limit.
     
-    Player whoseTurn;   // Identifies which player moves next
+    Player startPlayer;             // Identifies player who starts the game.
+    Player whoseTurn;               // Identifies which player moves next
+    Outcome outcome;                // Results announced at end of game.
+    int recursiveDepth;             // Limits recursive evaluation of game tree.
+    
+    // TwoPlayerGame is an abstract class.  Limiting the accessibility
+    // of the constructor to subclasses protects against naive instantiation
+    // by (hierarchically) unrelated clients.
     
     TwoPlayerGame();
     TwoPlayerGame(int recursiveDepth);
+    
+    // Specify destructor as virtual so subclass destructors may be invoked
+    // ahead of the superclass destructor (especially when referenced by
+    // superclass pointer).
+    
+    virtual ~TwoPlayerGame() {};
     
     //
     // Method: initGame
@@ -128,7 +147,7 @@ protected:
     // recursive calls.
     //
     
-    virtual int evaluateStaticPosition() const = 0;
+    virtual int evaluateStaticPosition() = 0;
     
     //
     // Method: retractMove
@@ -156,7 +175,7 @@ protected:
     // Returns true if the game is over.
     //
     
-    virtual bool gameIsOver() const = 0;
+    virtual bool gameIsOver() = 0;
     
     //
     // Method: getUserMove
@@ -175,9 +194,16 @@ protected:
     // This method announces the final result of the game.
     //
     
-    virtual void announceResult() = 0;
+    virtual void announceResult() const = 0;
     
-private:
+    //
+    // Method: getCurrentPlayer
+    // Usage: if (getCurrentPlayer() == HUMAN) . . .
+    // ---------------------------------------------
+    // Returns the player currently selected to take a turn.
+    //
+    
+    Player getCurrentPlayer() const;
     
     //
     // Function: opponent
@@ -189,14 +215,7 @@ private:
     
     Player opponent(Player player) const;
     
-    //
-    // Method: getCurrentPlayer
-    // Usage: if (getCurrentPlayer() == HUMAN) . . .
-    // ---------------------------------------------
-    // Returns the player currently selected to take a turn.
-    //
-    
-    Player getCurrentPlayer() const;
+private:
     
     //
     // Method: switchTurn
@@ -240,10 +259,6 @@ private:
     //
     
     int evaluatePosition(int depth);
-    
-    // Instance variables
-
-    int recursiveDepth; // Limits recursive evaluation of game tree.
 };
 
 #include "twoplayergame.cpp"

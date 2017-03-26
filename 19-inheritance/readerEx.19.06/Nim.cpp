@@ -4,7 +4,7 @@
 // This file implements the game-specific methods required to play a game
 // of nim.
 //
-// Most of the code here amount to elaborations of abstract methods in the
+// Most of the code here amounts to elaborations of abstract methods in the
 // game engine superclass.
 //
 // --------------------------------------------------------------------------
@@ -94,7 +94,9 @@ void Nim::displayGame() const {
 //
 
 void Nim::displayMove(NimMove move) const {
-    cout << "I'll take " << move.nTaken << "." << endl;
+    if (getCurrentPlayer() == COMPUTER) {
+        cout << "I'll take " << move.nTaken << "." << endl;
+    }
 }
 
 //
@@ -128,7 +130,7 @@ void Nim::makeMove(NimMove move) {
 // to maintain the the 1-plus-a-multiple-of-4 condition to win.
 //
 
-int Nim::evaluateStaticPosition() const {
+int Nim::evaluateStaticPosition() {
     int r; // rating
 
     r = (nCoins % (MAX_MOVE + 1) == 1) ? LOSING_POSITION : WINNING_POSITION;
@@ -169,7 +171,7 @@ void Nim::generateMoveList(Vector<NimMove> & moveList) const {
 // ------------------------------
 // Returns true if the game is over.
 
-bool Nim::gameIsOver() const {
+bool Nim::gameIsOver() {
     return (nCoins <= 1);
 }
 
@@ -198,7 +200,7 @@ NimMove Nim::getUserMove() {
 // ------------------------
 // This method announces the final result of the game.
 
-void Nim::announceResult() {
+void Nim::announceResult() const {
     if (nCoins == 0) {
         cout << "You took the last coin.  You lose." << endl;
     } else {
