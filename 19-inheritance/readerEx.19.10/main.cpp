@@ -93,7 +93,7 @@ void testExpression() {
 // an input expression tree but with all variables of a given name
 // updated with a new name.
 //
-// Recursively walk the expression tree, allocation new
+// Recursively walk the expression tree, allocating new
 // nodes of the appropriate type as we proceed.  If we hit an identifier
 // node, we check if its name should be changed.  Compound nodes imply
 // the need to recursively handoff the left and right subexpressions
