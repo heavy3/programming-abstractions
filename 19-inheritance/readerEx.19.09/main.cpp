@@ -3,6 +3,13 @@
 //
 // List the variables in an expression in alphabetical order on the console.
 //
+// I came up with two ways to solve this.  The first approach recursively
+// walks the unevaluated expression tree, in search of IdentifierExp nodes.
+//
+// The second approach iterates over the symbol table in the context object,
+// but requires that the expression first be evaluated so the symbol table is
+// fully populated before iteration.
+//
 // --------------------------------------------------------------------------
 // Attribution: "Programming Abstractions in C++" by Eric Roberts
 // Chapter 19, Exercise 09
@@ -10,7 +17,7 @@
 // http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136/materials/CS106BX-Reader.pdf
 // --------------------------------------------------------------------------
 //
-// Created by Glenn Streiff on 3/29/17
+// Created by Glenn Streiff on 3/29/17 and 4/01/17
 // Copyright © 2017 Glenn Streiff. All rights reserved.
 //
 
@@ -28,18 +35,104 @@ const std::string BANNER = HEADER + DETAIL;
 const std::string PROMPT = "=> ";
 
 template <typename NumType>
-void testExpression();
+void testListVariablesFunctor();
+
+template <typename NumType>
+void testListVariablesFunction(std::string expStr);
+
+template <typename NumType>
+void getVariables(Set<std::string>& varNames, Expression<NumType>* exp);
 
 template <typename NumType>
 void listVariables(Expression<NumType>* exp);
 
+template <typename NumType>
+void getVariables(Set<std::string>& varNames, Expression<NumType>* exp);
+
 // Main program
 
 int main() {
-    cout << BANNER << endl << endl;
+    cout << BANNER << endl;
     
-    testExpression<double>();
+    testListVariablesFunction<double>("z = 3 * x * x - 4 * x - 2 * a + y");
+    testListVariablesFunctor<double>();
+    
     return 0;
+}
+
+// Function: testListVariablesFunction
+// Usage: testListVariablesFunction("3 * x * x - 4 * x - 2 * a + y");
+// -----------------------------------------------------------------
+// Lists the variables in the expression string to the console in alpahbetical
+// order.
+//
+// This is accomplished by parsing the expression string to create
+// an expression tree that is walked by listVariables() in search
+// of unique variable names (wrappered in IdentifierExp leaf nodes).
+
+template <typename NumType>
+void testListVariablesFunction(std::string expStr) {
+    cout << endl;
+    cout << "Solve approach: Walk unevaulated expression tree." << endl;
+    cout << string(60, '-') << endl;
+    cout << "Given the expression: " << expStr << endl << endl;
+    cout << "The variables in the final expression are:" << endl;
+
+    try {
+        TokenScanner scanner;
+        scanner.ignoreWhitespace();
+        scanner.scanNumbers();
+        scanner.setInput(expStr);
+        
+        Parser<NumType> parser;
+        Expression<NumType>* exp = parser.parseExp(scanner);
+
+        listVariables(exp);
+    } catch (ErrorException& ex) {
+        cerr << "Error: " << ex.getMessage() << endl;
+    }
+}
+
+// Function: listVariables
+// Usage: listVariables(expPtr);
+// -----------------------------
+// Lists the variable names within an expression tree to the console
+// in lexigraphical order.
+
+template <typename NumType>
+void listVariables(Expression<NumType>* exp) {
+    Set<std::string> varNames;
+    
+    getVariables(varNames, exp);
+    for (std::string varName: varNames) {
+        cout << varName << endl;
+    }
+}
+
+// Function: getVariables
+// Usage: getVariables(nameSet, expPtr);
+// -------------------------------------
+// Returns the variable names referenced in an expression as a
+// set of strings passed by reference back to the client.
+
+template <typename NumType>
+void getVariables(Set<std::string>& varNames, Expression<NumType>* exp) {
+    if (exp == NULL) return;
+    
+    ExpressionType et = exp->getType();
+    switch (et) {
+        case CONSTANT:
+            break;
+        case IDENTIFIER:
+            varNames.add(exp->getIdentifierName());
+            break;
+        case COMPOUND:
+            getVariables(varNames, exp->getLHS());
+            getVariables(varNames, exp->getRHS());
+            break;
+        default:
+            error("getVariables: Unknown expression type");
+    }
 }
 
 // Function Object: ListVariables
@@ -64,11 +157,6 @@ int main() {
 // pre-requisite context, yielding a fully populated symbol table which can
 // then be harvested for variable names through a getter and then displayed
 // to the console.
-//
-// There's probably a more direct approach that probably doesn't involve
-// evaluating the expression first, but function objects and closures
-// have been on my mind lately and that symbol table looked juicey and
-// sweet.
 
 template <typename NumType>
 class ListVariables {
@@ -102,20 +190,22 @@ private:
     EvaluationContext<NumType> context;
 };
 
-// Function: testExpression
-// Usage: testExpression<double>();
+// Function: testListVariablesFunctor
+// Usage: testListVariablesFunctor<double>();
 // --------------------------------
 // This test harness drives a function object instantiated as listVariables().
-//
+
 template <typename NumType>
-void testExpression() {
+void testListVariablesFunctor() {
+    cout << endl;
+    cout << "Solve approach: Iterate symbol table of eval'd expression." ;
+    cout << endl;
+    cout << string(60, '-') << endl;
+    cout << "Given the expressions: " << endl;
+    
+    Parser<NumType> parser;
     EvaluationContext<NumType> context;
     TokenScanner scanner;
-    Parser<NumType> parser;
-    
-    cout << "Given the expressions: " << endl;
-    cout << endl;
-    
     scanner.ignoreWhitespace();
     scanner.scanNumbers();
     
