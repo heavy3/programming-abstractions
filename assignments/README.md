@@ -56,4 +56,4 @@ Then we apply these two algorithms to finding our way through a maze, after usin
 
 ![alt tag](2013_spring/07-graph-algorithms/screen_shots/kruskal.png)
 
-![alt tag](07-graph-algorithms/screen_shots/maze-runner-hires.png)
+![alt tag](2013_spring/07-graph-algorithms/screen_shots/maze-runner-hires.png)
