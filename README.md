@@ -256,7 +256,7 @@ recursion: start with general and reduce to base case.
 
 [Growth curves](20-iterators/readerEx.20.02/main.cpp)
 
-![alt tag](20-iterators/readerEx.20.02/screen_shots/growth-cruves.png)
+![alt tag](20-iterators/readerEx.20.02/screen_shots/growth-curves.png)
 
 [Parse and plot](20-iterators/readerEx.20.06/main.cpp)
 
