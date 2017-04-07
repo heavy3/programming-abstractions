@@ -34,8 +34,9 @@ Solutions for about 80% of the problems from the text are included in the reposi
 
 The course included 7 assignments detailed [here](https://github.com/zenglenn42/programming-abstractions/tree/master/assignments/README.md).
 
-[code](assignments/2013_spring)
-[bling](assignments/README.md)
+[[overview]](assignments/README.md)
+
+[[code]](assignments/2013_spring)
 
 ![alt tag](assignments/images/DemoDay.png)
 
