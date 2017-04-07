@@ -32,7 +32,7 @@ Solutions for about 80% of the problems from the text are included in the reposi
 
 ## Assignments (Demo Day!)
 
-The course included 7 assignments detailed [here](https://github.com/zenglenn42/programming-abstractions/tree/master/assignments/README.md).
+The course included 7 assignments.
 
 [[overview]](assignments/README.md) [[code]](assignments/2013_spring)
 
