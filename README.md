@@ -46,6 +46,9 @@ Design of a random number generator (normalization, scaling, translation, covers
 
 ![alt tag](02-functions-and-libs/readerEx.02.14/screen_shots/pi-est-1.png)
 ![alt tag](02-functions-and-libs/readerEx.02.16/screen_shots/rb2.png)
+
+[Yin-Yang](02-functions-and-libs/readerEx.02.18/main.cpp)
+
 ![alt tag](02-functions-and-libs/readerEx.02.18/screen_shots/yin-yang-des.jpg)
 ![alt tag](02-functions-and-libs/readerEx.02.18/screen_shots/yin-yang-2.png)
 
@@ -194,3 +197,34 @@ Limiting recursive depth.
 [Boggle](09-recursion-backtracking/readerEx.09.16/Boggle.cpp)
 
 ### Chapter 10 Algorithmic Analysis
+
+selection sort, computational complexity, Big-O notation
+```
+t(N) = O(f(N))
+t(N) <= C x f(N) for large enough N and positive constant C.
+```
+divide and conquer
+merge sort
+complexity classes: constant, logarithmic, linear, linearithmic, quadratic, cubic, exponential
+quick sort
+mathematical induction: start with base and generalize
+recursion: start with general and reduce to base case.
+
+[Insertion Sort](10-algorithmic-analysis/readerEx.10.02/main.cpp)
+![alt tag](10-algorithmic-analysis/readerEx.10.02/screen_shots/insertion-sort-histo.png)
+![alt tag](10-algorithmic-analysis/readerEx.10.03/screen_shots/insertion-sort-times-fancy.png)
+
+[O(N) Sort for range-bounded array of integers](10-algorithmic-analysis/readerEx.10.04/main.cpp)
+![alt tag](10-algorithmic-analysis/readerEx.10.04/screen_shots/bounded-data-range-sort.png)
+
+[Linear vs Binary search](10-algorithmic-analysis/readerEx.10.05/main.cpp)
+![alt tag](10-algorithmic-analysis/readerEx.10.05/screen_shots/linear-versus-binary-search.png)
+
+[QuickSort w/median pivot](10-algorithmic-analysis/readerEx.10.06/main.cpp)
+![alt tag](10-algorithmic-analysis/readerEx.10.06/screen_shots/quicksort-median-pivot.png)
+
+[Hybrid QuickSort/Insertion Sort](10-algorithmic-analysis/readerEx.10.08/main.cpp)
+![alt tag](10-algorithmic-analysis/readerEx.10.08/screen_shots/qs-dropthru-to-inssort.png)
+
+[Recursive O(logN) Fibonacci](10-algorithmic-analysis/readerEx.10.12/main.cpp)
+
