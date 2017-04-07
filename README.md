@@ -180,12 +180,15 @@ Limiting recursive depth.
 ![alt tag](09-recursion-backtracking/readerEx.09.02/screen_shots/bread-crumb-efficiency.png)
 
 [Instant Insanity](09-recursion-backtracking/readerEx.09.07/main.cpp)
+
 ![alt tag](09-recursion-backtracking/readerEx.09.07/screen_shots/insanity-1.jpg)
 
 [Domino Chain](09-recursion-backtracking/readerEx.09.09/main.cpp)
+
 ![alt tag](09-recursion-backtracking/readerEx.09.09/screen_shots/domino-chain.png)
 
 [Nim Game](09-recursion-backtracking/readerEx.09.13/Nim.cpp)
+
 ![alt tag](09-recursion-backtracking/readerEx.09.13/screen_shots/nim-play.png)
 
 [Boggle](09-recursion-backtracking/readerEx.09.16/Boggle.cpp)
