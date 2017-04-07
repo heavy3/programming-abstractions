@@ -211,20 +211,29 @@ mathematical induction: start with base and generalize
 recursion: start with general and reduce to base case.
 
 [Insertion Sort](10-algorithmic-analysis/readerEx.10.02/main.cpp)
+
 ![alt tag](10-algorithmic-analysis/readerEx.10.02/screen_shots/insertion-sort-histo.png)
+
 ![alt tag](10-algorithmic-analysis/readerEx.10.03/screen_shots/insertion-sort-times-fancy.png)
 
+
 [O(N) Sort for range-bounded array of integers](10-algorithmic-analysis/readerEx.10.04/main.cpp)
+
 ![alt tag](10-algorithmic-analysis/readerEx.10.04/screen_shots/bounded-data-range-sort.png)
 
+
 [Linear vs Binary search](10-algorithmic-analysis/readerEx.10.05/main.cpp)
+
 ![alt tag](10-algorithmic-analysis/readerEx.10.05/screen_shots/linear-versus-binary-search.png)
 
+
 [QuickSort w/median pivot](10-algorithmic-analysis/readerEx.10.06/main.cpp)
+
 ![alt tag](10-algorithmic-analysis/readerEx.10.06/screen_shots/quicksort-median-pivot.png)
 
+
 [Hybrid QuickSort/Insertion Sort](10-algorithmic-analysis/readerEx.10.08/main.cpp)
+
 ![alt tag](10-algorithmic-analysis/readerEx.10.08/screen_shots/qs-dropthru-to-inssort.png)
 
 [Recursive O(logN) Fibonacci](10-algorithmic-analysis/readerEx.10.12/main.cpp)
-
