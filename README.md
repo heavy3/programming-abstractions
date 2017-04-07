@@ -163,6 +163,19 @@ Sierpinksi Triangle
 
 ### Chapter 9 Backtracking Algorithms
 
+```
+if you are already at a solution, report success.
+for (every possilbe choice in current config) {
+	make choice and take step along that direction
+	use recursion to solve prob from new position
+	if recursion succeeds, report success to higher level
+	back out of current position to restore state at beginning of loop
+}
+report failure
+```
+Generalized two-player game with minimax algorithm.
+Limiting recursive depth.
+
 [Leaving the maze ... with and without breadcrumbs](09-recursion-backtracking/readerEx.09.02/main.cpp)
 ![alt tag](09-recursion-backtracking/readerEx.09.02/screen_shots/screen_shots/bread-crumb-efficiency.png)
 
@@ -177,3 +190,4 @@ Sierpinksi Triangle
 
 [Boggle](09-recursion-backtracking/readerEx.09.16/Boggle.cpp)
 
+### Chapter 10 Algorithmic Analysis
