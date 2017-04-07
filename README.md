@@ -30,12 +30,14 @@ However, this material does position you to solve interesting problems, to think
 
 Solutions for about 80% of the problems from the text are included in the repository.  I'm self-assessing this to be beginner-level to intermediate-level C++.  I'm not always const-correct, I don't adhere to a strict test driven development scheme, and the code would benefit from some review.  (I'm sure there is a bug or two lurking in the almost 200K+ lines of code. :-) The STL is only leveraged in the final chapter, but this is more a consequence of Stanford's pedagodical decision to initially shield students from some language and library rigors that might stymie the uptake of general concepts around programming abstractions.  Stanford offers their own gentle onramp to collection classes and convenience utilities through the libStanfordCPPLib.a library which I leverage in my solutions.
 
-## Assignments 
+## Assignments (Demo Day!)
 
 The course included 7 assignments detailed [here](https://github.com/zenglenn42/programming-abstractions/tree/master/assignments/README.md).
 
-[Demo Day Code](assignments/2013_spring)
-![alt tag](https://github.com/zenglenn42/programming-abstractions/tree/master/assignments/images/DemoDay.png)
+[code](assignments/2013_spring)
+[bling](assignments/README.md)
+
+![alt tag](assignments/images/DemoDay.png)
 
 ## Chapter Highlights
 
