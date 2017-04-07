@@ -56,25 +56,33 @@ Strings are mutable in C++!
 Character-level functions via <cctype> library.  isalpha(ch), toupper(ch), etc.
 Two-flavors running around: C-style and C++ style.
 You may need to cast string literals to get the C++ flavor:
+```
 string str = string("hello,") + "world";
+```
 Stanford "strlib.h" library
 
 [Obenglobish](03-strings/readerEx.03.16/main.cpp)
 
-[DNA Snippet Attachment](03-strings/readerEx.03.18/main.cpp)
+[DNA Snippet Attachment](03-strings/readerEx.03.20/main.cpp)
 
 ### Chapter 4 Streams
 
 Using <iostream> and <iomanip> to produce formatted output. setw(int), setprecision(digits).
-File streams <fstream> for ifstream and ofstream. stream.open(fname), stream.fail(), stream.clear(), stream.eof(), stream.get(), stream.put(ch), getline(stream, str).
+File streams <fstream> for ifstream and ofstream. 
+```
+stream.open(fname), stream.fail(), stream.clear(), stream.eof(), stream.get(), stream.put(ch), getline(stream, str).
 while ((ch = infile.get()) != EOF)
+```
 Stanford "simpio.h" and "filelib.h" libraries.
 
 ### Chapter 5 Collections
 
 Intro to vectors, grids, stacks, queues, maps, sets.
 Waiting line simulation using queues.
-Bootstrap a set. const Set<char> DIGIT_SET = setFromString("012345");
+Bootstrap a set. 
+```
+const Set<char> DIGIT_SET = setFromString("012345");
+```
 Lexicon!
 
 [Checkout line simulation](05-collections/readerEx.05.16/main.cpp)
@@ -89,7 +97,9 @@ Lexicon!
 
 Point class. Operator overloading.  Insertion operator.  Equality operator.
 Member function versus free function
+```
 bool Point::operator==(Point rhs) versus friend bool operator==(Point p1, Point p2);
+```
 Case study: rational numbers.
 1. Think generally about how clients are likely to use the class.
 2. Determine what info belongs in the private state of each object.
@@ -133,6 +143,7 @@ Towers of Hanoi. subset-sum, inclusion/exclusion, permutations.
 Graphical recursion: mondrian, fractals.
 
 Mondrian
+
 ![alt tag](08-recursion-strategies/readerEx.08.13/screen_shots/mondrian.png)
 
 Fractal Coast
