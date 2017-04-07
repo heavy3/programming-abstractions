@@ -109,7 +109,7 @@ Case study: rational numbers.
 Case study: token scanner class.
 Encapsulating programs as classes.
 
-[Yarn-art](06-class-design/readerEx.06.04/screen-shots/yarn-art.png)
+![alt tag](06-class-design/readerEx.06.04/screen-shots/yarn-art.png)
 
 ### Chapter 7 Intro to Recursion
 ```
