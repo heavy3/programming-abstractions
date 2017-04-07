@@ -1,7 +1,5 @@
 # Programming Abstractions in C++  (CS106B)
 
-![alt tag](02-functions-and-libs/readerEx.02.18/screen_shots/yin-yang.png)
-
 Welcome.  This repository captures my exploration of course work offered through the Stanford Center for Professional Development.
 
 The resources I studied included:
@@ -48,7 +46,6 @@ Design of a random number generator (normalization, scaling, translation, covers
 
 ![alt tag](02-functions-and-libs/readerEx.02.14/screen_shots/pi-est-1.png)
 ![alt tag](02-functions-and-libs/readerEx.02.16/screen_shots/rb2.png)
-![alt tag](02-functions-and-libs/readerEx.02.17/screen_shots/cb1.png)
 ![alt tag](02-functions-and-libs/readerEx.02.18/screen_shots/yin-yang-des.jpg)
 ![alt tag](02-functions-and-libs/readerEx.02.18/screen_shots/yin-yang-2.png)
 
@@ -62,11 +59,9 @@ You may need to cast string literals to get the C++ flavor:
 string str = string("hello,") + "world";
 Stanford "strlib.h" library
 
-Obenglobish!
-![alt tag](03-strings/readerEx.03.16/main.cpp)
+[Obenglobish](03-strings/readerEx.03.16/main.cpp)
 
-DNA Snippet Attachment
-![alt tag](03-strings/readerEx.03.18/main.cpp)
+[DNA Snippet Attachment](03-strings/readerEx.03.18/main.cpp)
 
 ### Chapter 4 Streams
 
@@ -82,17 +77,13 @@ Waiting line simulation using queues.
 Bootstrap a set. const Set<char> DIGIT_SET = setFromString("012345");
 Lexicon!
 
-Checkout line simulation
-![alt tag](05-collections/readerEx.05.16/main.cpp)
+[Checkout line simulation](05-collections/readerEx.05.16/main.cpp)
 
-Disney and 'Our Friend the Atom' Fission Simulation with grid ADT.
-![alt tag](05-collections/readerEx.05.18/main.cpp)
+[Disney and 'Our Friend the Atom' Fission Simulation with grid ADT](05-collections/readerEx.05.18/main.cpp)
 
-Morse-code translator
-![alt tag](05-collections/readerEx.05.19/main.cpp)
+[Morse-code translator](05-collections/readerEx.05.19/main.cpp)
 
-Area-code lookups
-![alt tag](05-collections/readerEx.05.20/main.cpp)
+[Area-code lookups](05-collections/readerEx.05.20/main.cpp)
 
 ### Chapter 6 Designing Classes
 
@@ -108,11 +99,10 @@ Case study: rational numbers.
 Case study: token scanner class.
 Encapsulating programs as classes.
 
-Yarn-art
-![alt tag](06-class-design/readerEx.06.04/screen-shots/yarn-art.png)
+[Yarn-art](06-class-design/readerEx.06.04/screen-shots/yarn-art.png)
 
 ### Chapter 7 Intro to Recursion
-
+```
 if (test for simple case) {
    Compute simple solution without using recursion
 } else {
@@ -120,6 +110,7 @@ if (test for simple case) {
    Solve each subprob with recursive call
    Reassemble sub-solutions into whole solution
 }
+```
 factorial
 Fibonacci tn = tn-1 + tn-2
 recurrence relation: each element in seq defined in terms of earlier elements
@@ -134,8 +125,7 @@ Does simplification process converge to simple case?
 Are recursive calls truly identical in form to original call?
 Did you reassemble parts to make whole?
 
-Pascal's Triangle to solve c(n, k).
-![alt tag](07-recursion-intro/readerEx.07.09/main.cpp)
+[Pascal's Triangle to solve c(n, k).](07-recursion-intro/readerEx.07.09/main.cpp)
 
 ### Chapter 8 Recursive Strategies
 
