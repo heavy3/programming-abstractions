@@ -237,3 +237,35 @@ recursion: start with general and reduce to base case.
 ![alt tag](10-algorithmic-analysis/readerEx.10.08/screen_shots/qs-dropthru-to-inssort.png)
 
 [Recursive O(logN) Fibonacci](10-algorithmic-analysis/readerEx.10.12/main.cpp)
+
+### Chapter 11 Pointers and Arrays
+### Chapter 12 Heap Management
+### Chapter 13 Text Editor
+### Chapter 14 Linear Structures
+### Chapter 19 Inheritance
+
+[Hit Detection](19-inheritance/readerEx.19.03/main.cpp)
+
+![alt tag](19-inheritance/readerEx.19.03/screen_shots/hit-detection.png)
+
+[Recursive descent parser](19-inheritance/readerEx.19.07/main.cpp)
+
+![alt tag](19-inheritance/readerEx.19.07/screen_shots/math-parser.png)
+
+### Chapter 20 Iterators
+
+[Growth curves](20-iterators/readerEx.20.02/main.cpp)
+
+![alt tag](20-iterators/readerEx.20.02/screen_shots/growth-cruves.png)
+
+[Parse and plot](20-iterators/readerEx.20.06/main.cpp)
+
+![alt tag](20-iterators/readerEx.20.06/screen_shots/parse-plot.png)
+
+[Numerical integration](20-iterators/readerEx.20.07/main.cpp)
+
+![alt tag](20-iterators/readerEx.20.07/screen_shots/integrate.png)
+
+[max_element](20-iterators/readerEx.20.08/main.cpp)
+
+![alt tag](20-iterators/readerEx.20.08/screen_shots/stl-max-element.png)
