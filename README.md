@@ -9,7 +9,7 @@ The resources I studied included:
 
    * Video: Julie Zelenski's CS106B lectures on iTunes University 2008
 
-   * Assigments: from Keith Schwarz's Spring 2013 section.
+   * Assignments: from Keith Schwarz's Spring 2013 section.
      http://web.stanford.edu/class/archive/cs/cs106b/cs106b.1136
 
 ## The journey of 1000 pages ...
@@ -28,7 +28,7 @@ However, this material does position you to solve interesting problems, to think
 
 ## Disclaimer
 
-Solutions for about 80% of the problems from the text are included in the repository.  I'm self-assessing this to be beginner-level to intermediate-level C++.  I'm not always const-correct, I don't adhere to a strict test driven development scheme, and the code would benefit from some review.  (I'm sure there is a bug or two lurking in the almost 200K+ lines of code. :-) The STL is only leveraged in the final chapter, but this is more a consequence of Stanford's pedagodical decision to initially shield students from some language and library rigors that might stymie the uptake of general concepts around programming abstractions.  Stanford offers their own gentle onramp to collection classes and convenience utilities through the libStanfordCPPLib.a library which I leverage in my solutions.
+Solutions for about 80% of the problems from the text are included in the repository.  I'm self-assessing this to be beginner-level to intermediate-level C++.  I'm not always const-correct, I don't adhere to a strict test driven development scheme, and the code would benefit from some review.  (I'm sure there is a bug or two lurking in the almost 200K+ lines of code. :-) The STL is only leveraged in the final chapter, but this is more a consequence of Stanford's decision to initially shield students from some language and library rigors that might stymie the uptake of general concepts around programming abstractions.  Stanford offers their own gentle onramp to collection classes and convenience utilities through the libStanfordCPPLib.a library which I leverage in my solutions.
 
 ## Assignments (Demo Day!)
 
