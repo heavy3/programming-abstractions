@@ -16,7 +16,11 @@ Computing syllables is tricky, but some heuristics come to the rescue.
 
 Play with vectors, queues, maps, and lexicons to build a word-ladder and a Markov random-writer.
 
+[[code]](2013_spring/02-collections/word_ladder)
+
 ![alt tag](2013_spring/02-collections/word-ladder.png)
+
+[[code]](2013_spring/02-collections/random_writer)
 
 ![alt tag](2013_spring/02-collections/markov-writer.png)
 
