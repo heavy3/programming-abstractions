@@ -8,7 +8,7 @@ Prove we can setup a dev environment and then leverage functions to write some s
 
 Computing syllables is tricky, but some heuristics come to the rescue.
 
-[[code]](01-welcome)
+[[code]](2013_spring/01-welcome)
 
 ![alt tag](2013_spring/01-welcome/4_flesch_kincaid/grade-level-text.png)
 
