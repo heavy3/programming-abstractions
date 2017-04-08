@@ -28,11 +28,15 @@ Play with vectors, queues, maps, and lexicons to build a word-ladder and a Marko
 
 Several opportunities to apply recursive problem solving.  One involves graphical recursion:
 
+[[code]](2013_spring/03-recursion)
+
 ![alt tag](../08-recursion-strategies/readerEx.08.18/screen_shots/sierpinski-triangle.png)
 
 ## 4 Boggle
 
 Use recursion with backtracking -and- the lexicon to create a virtually unbeatable Boggle opponent:
+
+[[code]](2013_spring/04-boggle)
 
 ![alt tag](2013_spring/04-boggle/boggle-des-1.jpg)
 
@@ -42,6 +46,8 @@ Use recursion with backtracking -and- the lexicon to create a virtually unbeatab
 
 Variations on a theme in implementing some priority queues.  These have wide application and they'll surface in the last two assignments.  One of the flavors we implement is based upon a binary heap:
 
+[[code]](2013_spring/05-priority-queues)
+
 ![alt tag](2013_spring/05-priority-queues/pqueue.png)
 
 ## 6 Huffman Encoding
@@ -50,11 +56,15 @@ Variations on a theme in implementing some priority queues.  These have wide app
 
 Implement a program to compress / decompress any kind of file using Huffman's variable-length, prefix-unique algorithm which ascribes the shortest bit encodings to the most frequently occurring symbols and longer encodings to less frequent symbols.  At the heart of the algorithm are encoding trees that look like this:
 
+[[code]](2013_spring/06-huffman-encoding)
+
 ![alt tag](2013_spring/06-huffman-encoding/huffman-encoding.png)
 
 ## 7 Graph Algorithms
 
 Finally, wrap up with a really cool least-cost route finding assignment.  We implement Dijkstra's algorithm and an optimized variant called A* Search which applies a heuristic function to guide the exploration of potential paths from A to B:
+
+[[code]](2013_spring/07-graph-algorithms)
 
 ![alt tag](2013_spring/07-graph-algorithms/screen_shots/dijkstra-v-astar-hires.png)
 
