@@ -50,6 +50,8 @@ General motivation and background for C++ itself.  Language overview, built-in t
 
 ### Chapter 2 Functions and Libraries
 
+[[code]](02-functions-and-libs)
+
 Using functions.  <cmath> library.  Separation of client from underlying implementation through an interface.
 Principles of interface design: 1. Unified 2. Simple 3. Sufficient 4. General 5. Stable
 Design of a random number generator (normalization, scaling, translation, coversion).  Stanford libraries (gwindow.h).
@@ -63,6 +65,8 @@ Design of a random number generator (normalization, scaling, translation, covers
 ![alt tag](02-functions-and-libs/readerEx.02.18/screen_shots/yin-yang-2.png)
 
 ### Chapter 3 Strings
+
+[[code]](03-strings)
 
 Strings as abstract data type.  Intro to <string> library.  str.substr(pos, n), etc.
 Strings are mutable in C++!
@@ -80,6 +84,8 @@ Stanford "strlib.h" library
 
 ### Chapter 4 Streams
 
+[[code]](04-streams)
+
 Using <iostream> and <iomanip> to produce formatted output. setw(int), setprecision(digits).
 File streams <fstream> for ifstream and ofstream. 
 ```
@@ -89,6 +95,8 @@ while ((ch = infile.get()) != EOF)
 Stanford "simpio.h" and "filelib.h" libraries.
 
 ### Chapter 5 Collections
+
+[[code]](05-collections)
 
 Intro to vectors, grids, stacks, queues, maps, sets.
 Waiting line simulation using queues.
@@ -108,6 +116,8 @@ Lexicon!
 
 ### Chapter 6 Designing Classes
 
+[[code]](06-class-design)
+
 Point class. Operator overloading.  Insertion operator.  Equality operator.
 Member function versus free function
 ```
@@ -125,6 +135,9 @@ Encapsulating programs as classes.
 ![alt tag](https://github.com/zenglenn42/programming-abstractions/blob/master/06-class-design/readerEx.06.04/screen_shots/yarn-art.png)
 
 ### Chapter 7 Intro to Recursion
+
+[[code]](07-recursion-intro)
+
 ```
 if (test for simple case) {
    Compute simple solution without using recursion
@@ -152,6 +165,8 @@ Did you reassemble parts to make whole?
 
 ### Chapter 8 Recursive Strategies
 
+[[code]](08-recursion-strategies)
+
 Towers of Hanoi. subset-sum, inclusion/exclusion, permutations.
 Graphical recursion: mondrian, fractals.
 
@@ -175,6 +190,8 @@ Sierpinksi Triangle
 ![alt tag](08-recursion-strategies/readerEx.08.18/screen_shots/sierpinski-triangle.png)
 
 ### Chapter 9 Backtracking Algorithms
+
+[[code]](09-recursion-backtracking)
 
 ```
 if you are already at a solution, report success.
@@ -207,6 +224,8 @@ Limiting recursive depth.
 [Boggle](09-recursion-backtracking/readerEx.09.16/Boggle.cpp)
 
 ### Chapter 10 Algorithmic Analysis
+
+[[code]](10-algorithmic-analysis)
 
 selection sort, computational complexity, Big-O notation
 ```
@@ -249,10 +268,24 @@ recursion: start with general and reduce to base case.
 [Recursive O(logN) Fibonacci](10-algorithmic-analysis/readerEx.10.12/main.cpp)
 
 ### Chapter 11 Pointers and Arrays
+
+[[code]](11-pointers-and-arrays)
+
 ### Chapter 12 Heap Management
+
+[[code]](12-heap-management)
+
 ### Chapter 13 Text Editor
+
+[[code]](13-text-editor)
+
 ### Chapter 14 Linear Structures
+
+[[code]](14-linear-structures)
+
 ### Chapter 19 Inheritance
+
+[[code]](19-inheritance)
 
 [Hit Detection](19-inheritance/readerEx.19.03/main.cpp)
 
@@ -263,6 +296,8 @@ recursion: start with general and reduce to base case.
 ![alt tag](19-inheritance/readerEx.19.07/screen_shots/math-parser.png)
 
 ### Chapter 20 Iterators
+
+[[code]](20-iterators)
 
 [Growth curves](20-iterators/readerEx.20.02/main.cpp)
 
