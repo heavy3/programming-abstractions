@@ -2,11 +2,13 @@
 
 ## 1 Welcome
 
-Prove we can setup a dev environment and then leverage functions to write some simple programs, culminating in an interesting implementation of the Flesch-Kincaide grade-level readability metric that follows this formula:
+Prove we can setup a dev environment and then leverage functions to write some simple programs, culminating in an interesting implementation of the Flesch-Kincaid grade-level readability metric that follows this formula:
 
    Grade = C0 + C1(num words / num sentences) + C2(num syllables / num words)
 
 Computing syllables is tricky, but some heuristics come to the rescue.
+
+[[code]](01-welcome)
 
 ![alt tag](2013_spring/01-welcome/4_flesch_kincaid/grade-level-text.png)
 
