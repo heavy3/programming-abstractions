@@ -21,7 +21,7 @@
 //     asparagine     N     {AAU, AAC}
 //     tryptophan     W     {UGG}
 //
-// See: http://www.ibmpfd.com/Amino%20Acid%20Symbols.pdf for more amino acid symbols mappings.
+// See: http://www.ibmpfd.com/Amino%20Acid%20Symbols.pdf for more amino acid symbol mappings.
 //
 // So the following protein sequence could be encoded two ways:
 //
