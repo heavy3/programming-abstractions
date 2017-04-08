@@ -26,35 +26,35 @@ using namespace std;
 class HeapPriorityQueue {
 public:
     
-	// Constructs a new, empty priority queue backed by a binary heap.
+    // Constructs a new, empty priority queue backed by a binary heap.
     
-	HeapPriorityQueue();
+    HeapPriorityQueue();
 	
-	// Cleans up all memory allocated by this priority queue.
+    // Cleans up all memory allocated by this priority queue.
     
-	~HeapPriorityQueue();
+    ~HeapPriorityQueue();
 	
-	// Returns the number of elements in the priority queue.
+    // Returns the number of elements in the priority queue.
     
-	int size() const;
+    int size() const;
 	
-	// Returns whether or not the priority queue is empty.
+    // Returns whether or not the priority queue is empty.
     
-	bool isEmpty() const;
+    bool isEmpty() const;
 	
-	// Enqueues a new string into the priority queue in O(logN) time.
+    // Enqueues a new string into the priority queue in O(logN) time.
     
-	void enqueue(const string value);
+    void enqueue(const string value);
 	
-	// Returns, but does not remove, the lexicographically first string in the
+    // Returns, but does not remove, the lexicographically first string in the
     // priority queue.
     
-	string peek() const;
+    string peek() const;
 	
-	// Returns and removes the lexicographically first string in the
+    // Returns and removes the lexicographically first string in the
     // priority queue in O(logN) time.
     
-	string dequeueMin();
+    string dequeueMin();
     
     // Returns the string form of the queue object.
     
