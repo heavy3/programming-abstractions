@@ -44,6 +44,8 @@ The following provides chapter highlights.  I've also pointed out a few problems
 
 ### Chapter 1 Overview of C++
 
+[[code]](01-overview)
+
 General motivation and background for C++ itself.  Language overview, built-in types, control flow, structure of programs, using libraries.
 
 ### Chapter 2 Functions and Libraries
