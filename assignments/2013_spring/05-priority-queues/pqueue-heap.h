@@ -63,8 +63,8 @@ public:
 private:
     
     // Conceptually, queue data is managed as references to strings
-    // in a binary.  In practice, those references reside compactly in
-    // a heap-based array that expands as necessary.
+    // in a binary tree.  In practice, those references reside compactly in
+    // a heap-based array that grows as necessary.
     //
     // For example, the queue ["a", "c", "e", "g", "m"] could be represented
     // as:
