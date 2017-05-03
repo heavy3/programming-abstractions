@@ -52,9 +52,9 @@ General motivation and background for C++ itself.  Language overview, built-in t
 
 [[code]](02-functions-and-libs)
 
-Using functions.  <cmath> library.  Separation of client from underlying implementation through an interface.
-Principles of interface design: 1. Unified 2. Simple 3. Sufficient 4. General 5. Stable
-Design of a random number generator (normalization, scaling, translation, coversion).  Stanford libraries (gwindow.h).
+Using functions and cmath library.  Separation of client from underlying implementation through an interface.
+Principles of interface design: 1. Unified 2. Simple 3. Sufficient 4. General 5. Stable.
+Design of a random number generator (normalization, scaling, translation, conversion).  Stanford libraries (gwindow.h).
 
 ![alt tag](02-functions-and-libs/readerEx.02.14/screen_shots/pi-est-1.png)
 ![alt tag](02-functions-and-libs/readerEx.02.16/screen_shots/rb2.png)
@@ -68,15 +68,15 @@ Design of a random number generator (normalization, scaling, translation, covers
 
 [[code]](03-strings)
 
-Strings as abstract data type.  Intro to <string> library.  str.substr(pos, n), etc.
+Strings as abstract data type.  Intro to string library.  str.substr(pos, n), etc.
 Strings are mutable in C++!
-Character-level functions via <cctype> library.  isalpha(ch), toupper(ch), etc.
+Character-level functions via cctype library.  isalpha(ch), toupper(ch), etc.
 Two-flavors running around: C-style and C++ style.
 You may need to cast string literals to get the C++ flavor:
 ```
 string str = string("hello,") + "world";
 ```
-Stanford "strlib.h" library
+Stanford strlib library
 
 [Obenglobish](03-strings/readerEx.03.16/main.cpp)
 
@@ -86,8 +86,8 @@ Stanford "strlib.h" library
 
 [[code]](04-streams)
 
-Using <iostream> and <iomanip> to produce formatted output. setw(int), setprecision(digits).
-File streams <fstream> for ifstream and ofstream. 
+Using iostream and iomanip to produce formatted output. setw(int), setprecision(digits).
+File streams (fstream for ifstream and ofstream). 
 ```
 stream.open(fname), stream.fail(), stream.clear(), stream.eof(), stream.get(), stream.put(ch), getline(stream, str).
 while ((ch = infile.get()) != EOF)
@@ -119,7 +119,7 @@ Lexicon!
 [[code]](06-class-design)
 
 Point class. Operator overloading.  Insertion operator.  Equality operator.
-Member function versus free function
+Member function versus free function.
 ```
 bool Point::operator==(Point rhs) versus friend bool operator==(Point p1, Point p2);
 ```
